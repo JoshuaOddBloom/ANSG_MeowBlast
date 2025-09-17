@@ -84,7 +84,6 @@ func on_area_entered(_other_area: Area2D):
 func add_item_resource(new_resource):
 	item_resource = new_resource
 	Callable(add_properties).call_deferred()
-	
 
 
 func add_properties():

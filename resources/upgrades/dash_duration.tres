@@ -7,7 +7,6 @@
 script = ExtResource("2_cv5j6")
 id = "dash_duration"
 max_quantity = 3
-icon = ExtResource("1_tpkbb")
 name = "Dash Duration +10%"
 add_icon_to_ui = true
 description = "Add 10% to your dash duration"

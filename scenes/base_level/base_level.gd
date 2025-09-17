@@ -15,6 +15,7 @@ extends Node2D
 #@onready var bg_animation_player: AnimationPlayer = %BGAnimationPlayer
 @onready var level_transition_player: AnimationPlayer = $BG/LevelTransitionPlayer
 @onready var pattern_animation_player: AnimationPlayer = %PatternAnimationPlayer
+@onready var game_over_rand_audio_component: RandomAudioStreamPlayer = %GameOverRandAudioComponent
 
 
 
@@ -104,6 +105,7 @@ func on_score_count_changed(_new_amount):
 
 
 func on_game_over():
+	game_over_rand_audio_component.play_random()
 	game_over = true
 
 

@@ -7,7 +7,6 @@
 script = ExtResource("1_crc4w")
 id = "player_speed"
 max_quantity = 2
-icon = ExtResource("1_sk3u1")
 name = "Move Speed"
 add_icon_to_ui = true
 description = "Increases move speed by 10%"

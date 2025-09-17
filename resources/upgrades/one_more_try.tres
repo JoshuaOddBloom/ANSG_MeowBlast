@@ -7,7 +7,5 @@
 script = ExtResource("2_uoedb")
 id = "one_more_try"
 max_quantity = 1
-icon = ExtResource("1_mwyde")
 name = "One More Try"
-add_icon_to_ui = false
 description = "If defeated, Regain 1 Heart Container."

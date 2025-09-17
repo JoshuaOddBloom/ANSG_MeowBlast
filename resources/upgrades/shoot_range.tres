@@ -7,7 +7,6 @@
 script = ExtResource("1_a8y5g")
 id = "shoot_range"
 max_quantity = 3
-icon = ExtResource("1_7hpib")
 name = "Shooting Range"
 add_icon_to_ui = true
 description = "Increases your weapon's range by 25%"

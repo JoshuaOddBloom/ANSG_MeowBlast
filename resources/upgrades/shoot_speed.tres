@@ -7,7 +7,6 @@
 script = ExtResource("2_1cmcc")
 id = "shoot_speed"
 max_quantity = 4
-icon = ExtResource("1_ffwso")
 name = "Shooting Speed"
 add_icon_to_ui = true
 description = "Increases your weapon's rate of fire by 25%"

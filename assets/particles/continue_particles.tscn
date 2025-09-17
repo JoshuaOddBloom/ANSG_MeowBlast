@@ -48,15 +48,15 @@ scale_curve = SubResource("CurveTexture_f1to7")
 
 [node name="ContinueParticles" type="GPUParticles2D"]
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_yu1o5")
 texture = ExtResource("1_3lpx4")
 lifetime = 0.5
 fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_yu1o5")
 script = ExtResource("2_kamq6")
 
 [node name="HeartParticles" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_a2wkv")
 texture = ExtResource("2_jx2r5")
 lifetime = 4.0
 fixed_fps = 0
 trail_lifetime = 1.09
+process_material = SubResource("ParticleProcessMaterial_a2wkv")

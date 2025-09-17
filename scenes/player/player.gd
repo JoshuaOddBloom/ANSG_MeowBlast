@@ -18,7 +18,11 @@ class_name Player
 @onready var projectile_base_wait_time: float = 0.215
 @export var projectile_minimum_wait_time: float = 0.125
 @onready var projectile_spawn_marker_2d: Marker2D = %ProjectileSpawnMarker2D
-@onready var projectile_random_audio_player_component: AudioStreamPlayer = %ProjectileRandomAudioPlayerComponent
+# Audio
+@onready var projectile_rand_audio_component: RandomAudioStreamPlayer = %ProjectileRandAudioComponent
+@onready var player_hit_rand_audio_component_2: RandomAudioStreamPlayer = %PlayerHitRandAudioComponent2
+
+
 
 
 #var current_projectile_selected
@@ -125,7 +129,7 @@ func fire_projectile():
 		return
 	
 	projectile_instance.global_position = projectile_spawn_marker_2d.global_position
-	projectile_random_audio_player_component.play_random()
+	projectile_rand_audio_component.play_random()
 	get_parent().add_child(projectile_instance)
 
 
@@ -134,6 +138,7 @@ func reset_semi_automatic_timer_wait_time():
 
 
 func take_damage(amount):
+	player_hit_rand_audio_component_2.play_random()
 	health_component.take_damage(amount)
 
 

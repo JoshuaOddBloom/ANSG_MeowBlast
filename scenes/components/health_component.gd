@@ -33,6 +33,7 @@ func check_health():
 			GameEvents.player_at_max_health = false
 	
 	if current_health <= 0:
+		
 		defeated.emit()
 
 

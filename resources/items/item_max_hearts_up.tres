@@ -7,9 +7,6 @@
 script = ExtResource("2_th0o0")
 item_name = "max_hearts_up"
 item_icon = ExtResource("1_usptx")
-item_modulate_override_color = Color(0, 0, 0, 1)
 item_weight = 2
-item_fall_speed_multiplier = 1.0
 add_icon_to_ui = false
-max_quantity = 0
 metadata/_custom_type_script = "uid://df24bvw55uwn1"

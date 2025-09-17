@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cojgne2mgqepd"]
+[gd_scene load_steps=16 format=3 uid="uid://cojgne2mgqepd"]
 
 [ext_resource type="Script" uid="uid://bt7qnmy611831" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_je7p5"]
-[ext_resource type="AudioStream" uid="uid://cqbvuy1meunre" path="res://assets/audio/sfx/8Bit_Lazer.wav" id="3_0owmy"]
+[ext_resource type="AudioStream" uid="uid://buuhexsuc44s3" path="res://assets/audio/sfx/8bit_lazer.ogg" id="3_0owmy"]
 [ext_resource type="PackedScene" uid="uid://dhd4f3glgvj4h" path="res://scenes/components/health_component.tscn" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://sanwtepvevca" path="res://assets/textures/movement_trails_2.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bjrny37ardjbv" path="res://assets/textures/star_shot_trail.png" id="3_p47bc"]
 [ext_resource type="Texture2D" uid="uid://bvsfycngq78ov" path="res://scenes/player/original_ship_cleanup.png" id="4_lvxji"]
+[ext_resource type="AudioStream" uid="uid://pgspr8pgqx8s" path="res://assets/audio/sfx/basic_enemy/footstep_carpet_002.ogg" id="4_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(68, 32)
@@ -44,13 +45,21 @@ script = ExtResource("1_8afob")
 power_charge_target = 100.0
 projectile_minimum_wait_time = 0.1
 
-[node name="ProjectileRandomAudioPlayerComponent" parent="." instance=ExtResource("2_je7p5")]
+[node name="ProjectileRandAudioComponent" parent="." instance=ExtResource("2_je7p5")]
 unique_name_in_owner = true
-volume_db = -7.429
 bus = &"SFX"
 streams = Array[AudioStream]([ExtResource("3_0owmy")])
-min_pitch = 1.25
-max_pitch = 1.6
+min_volume = -15.0
+max_volume = -9.0
+min_pitch = 1.75
+max_pitch = 2.5
+
+[node name="PlayerHitRandAudioComponent2" parent="." instance=ExtResource("2_je7p5")]
+unique_name_in_owner = true
+autoplay = true
+bus = &"SFX"
+streams = Array[AudioStream]([ExtResource("4_qek5x")])
+randomize_pitch = false
 
 [node name="UsingPowerTimer" type="Timer" parent="."]
 wait_time = 3.0

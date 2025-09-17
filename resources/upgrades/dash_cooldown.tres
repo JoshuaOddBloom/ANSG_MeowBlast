@@ -7,7 +7,6 @@
 script = ExtResource("2_tl2dg")
 id = "dash_cooldown"
 max_quantity = 3
-icon = ExtResource("1_pw3vd")
 name = "Dash Cool-Down Time (-10%)"
 add_icon_to_ui = true
 description = "Reduce the recharge time for Dashes."
