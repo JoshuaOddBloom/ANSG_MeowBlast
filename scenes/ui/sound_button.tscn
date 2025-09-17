@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7jbkkvivmc7c"]
+
+[ext_resource type="Theme" uid="uid://c0b4wwadsywt2" path="res://assets/themes/default_theme_large_font.tres" id="1_21tmt"]
+[ext_resource type="Script" uid="uid://be674l3lfjtpq" path="res://scenes/ui/sound_button.gd" id="1_eg50c"]
+[ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_imfi4"]
+[ext_resource type="Texture2D" uid="uid://dbendllpfpa23" path="res://assets/ui/ui_empty_icon_16x16.png" id="2_pxxo6"]
+[ext_resource type="AudioStream" uid="uid://dtb7chah7hpw0" path="res://assets/ui/ui_click.wav" id="4_cygyt"]
+[ext_resource type="Texture2D" uid="uid://t8ocdg4v6x4c" path="res://assets/textures/StarALT_128.png" id="6_21tmt"]
+
+[node name="SoundButton" type="Button"]
+custom_minimum_size = Vector2(154, 0)
+offset_right = 6.0
+offset_bottom = 6.0
+size_flags_horizontal = 4
+theme = ExtResource("1_21tmt")
+text = "Sound Button"
+icon = ExtResource("2_pxxo6")
+script = ExtResource("1_eg50c")
+
+[node name="RandomAudioPlayerComponent" parent="." instance=ExtResource("2_imfi4")]
+volume_db = -12.447
+bus = &"SFX"
+streams = Array[AudioStream]([ExtResource("4_cygyt")])
+min_pitch = 2.0
+max_pitch = 3.0
+
+[node name="IconToggleable" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.498039)
+position = Vector2(12, 17)
+rotation = -1.5708
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("6_21tmt")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

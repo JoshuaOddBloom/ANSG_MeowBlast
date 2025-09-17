@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://by6m4ujuqkehj"]
+
+[ext_resource type="Texture2D" uid="uid://baptjn8u2hx3v" path="res://assets/textures/TriParticleOutline.png" id="1_syk7a"]
+[ext_resource type="Script" uid="uid://cd704g80f0w5t" path="res://scenes/ui/ui_texture_rect_icon.gd" id="2_jgmib"]
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_syk7a")
+expand_mode = 1
+script = ExtResource("2_jgmib")

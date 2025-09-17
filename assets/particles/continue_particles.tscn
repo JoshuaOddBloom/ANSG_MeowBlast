@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://da10yhbdl8klh"]
+
+[ext_resource type="Texture2D" uid="uid://bobd06sj1du2v" path="res://assets/textures/particle.png" id="1_3lpx4"]
+[ext_resource type="Texture2D" uid="uid://bqeugnbc3yrvb" path="res://assets/textures/PixelHeart.png" id="2_jx2r5"]
+[ext_resource type="Script" uid="uid://c2q8xsdh30d5n" path="res://assets/particles/continue_particles.gd" id="2_kamq6"]
+
+[sub_resource type="Gradient" id="Gradient_w50xt"]
+colors = PackedColorArray(0.635294, 0.34902, 0.592157, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_idku5"]
+gradient = SubResource("Gradient_w50xt")
+
+[sub_resource type="Curve" id="Curve_74qhw"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1.4), 0.0, 0.0, 0, 0, Vector2(0.545031, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qx75g"]
+curve = SubResource("Curve_74qhw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yu1o5"]
+lifetime_randomness = 0.79
+particle_flag_disable_z = true
+angle_min = -166.4
+angle_max = 170.0
+spread = 67.49
+orbit_velocity_min = -0.0939999
+orbit_velocity_max = 0.0830001
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 121.41
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_qx75g")
+color_ramp = SubResource("GradientTexture1D_idku5")
+
+[sub_resource type="Curve" id="Curve_8dm37"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 3.56), 0.0, 0.0, 0, 0, Vector2(0.0590062, 2.54), 0.0, 0.0, 0, 0, Vector2(0.0931677, 2.94), 0.0, 0.0, 0, 0, Vector2(0.173913, 0.02), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_f1to7"]
+curve = SubResource("Curve_8dm37")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2wkv"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_f1to7")
+
+[node name="ContinueParticles" type="GPUParticles2D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_yu1o5")
+texture = ExtResource("1_3lpx4")
+lifetime = 0.5
+fixed_fps = 0
+script = ExtResource("2_kamq6")
+
+[node name="HeartParticles" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_a2wkv")
+texture = ExtResource("2_jx2r5")
+lifetime = 4.0
+fixed_fps = 0
+trail_lifetime = 1.09

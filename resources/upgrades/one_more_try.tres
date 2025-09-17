@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://dfrjtas24581b"]
+
+[ext_resource type="Texture2D" uid="uid://jkxthk1umhhv" path="res://assets/textures/16x16sqr_yellow.png" id="1_mwyde"]
+[ext_resource type="Script" uid="uid://1vekm3jabhht" path="res://resources/upgrades/ability_upgrade.gd" id="2_uoedb"]
+
+[resource]
+script = ExtResource("2_uoedb")
+id = "one_more_try"
+max_quantity = 1
+icon = ExtResource("1_mwyde")
+name = "One More Try"
+add_icon_to_ui = false
+description = "If defeated, Regain 1 Heart Container."

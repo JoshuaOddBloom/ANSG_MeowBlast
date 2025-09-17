@@ -1,0 +1,60 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ch4ic0feakt4r"]
+
+[ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="1_sx0q5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeamd"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywup1"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov47d"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.32565, 0.2613, 0.39, 1)
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as718"]
+bg_color = Color(1, 1, 1, 0.784314)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0q5"]
+bg_color = Color(0.403922, 0.403922, 0.403922, 0.713726)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sm08"]
+content_margin_left = 1.0
+bg_color = Color(1, 0.00392157, 0.694118, 1)
+border_width_right = 2
+border_color = Color(1, 0.486275, 0.827451, 1)
+
+[resource]
+default_font = ExtResource("1_sx0q5")
+Button/font_sizes/font_size = 32
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_oeamd")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ywup1")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ov47d")
+Label/font_sizes/font_size = 48
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_as718")
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/font_sizes/font_size = 8
+ProgressBar/fonts/font = ExtResource("1_sx0q5")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_sx0q5")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_5sm08")

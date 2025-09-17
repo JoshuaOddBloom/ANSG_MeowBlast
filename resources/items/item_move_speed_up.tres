@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DroppableItem" load_steps=3 format=3 uid="uid://e535cmmuyqbf"]
+
+[ext_resource type="Texture2D" uid="uid://b2bfxiwuhwjru" path="res://assets/textures/item_icon_grey_star_64x64.png" id="1_ms8o8"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="2_n2bor"]
+
+[resource]
+script = ExtResource("2_n2bor")
+item_name = "move_speed_up"
+item_icon = ExtResource("1_ms8o8")
+item_modulate_override_color = Color(0, 0.986765, 0.80742, 1)
+item_weight = 10
+item_fall_speed_multiplier = 1.0
+add_icon_to_ui = false
+max_quantity = 0
+metadata/_custom_type_script = "uid://df24bvw55uwn1"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bstco5w5lxv1u"]
+
+[ext_resource type="Texture2D" uid="uid://b05mxe4btudnq" path="res://assets/textures/16x16sqr.png" id="1_hxy03"]
+[ext_resource type="Material" uid="uid://dly8tweyp5s04" path="res://assets/particles/parti_fire_trail.tres" id="2_ngxsf"]
+
+[node name="FireTrailGPUParticles2D" type="GPUParticles2D"]
+amount = 32
+texture = ExtResource("1_hxy03")
+trail_lifetime = 6.0
+process_material = ExtResource("2_ngxsf")

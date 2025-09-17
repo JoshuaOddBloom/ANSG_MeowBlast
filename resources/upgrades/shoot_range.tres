@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://d1aamm0y2h4u2"]
+
+[ext_resource type="Texture2D" uid="uid://jkxthk1umhhv" path="res://assets/textures/16x16sqr_yellow.png" id="1_7hpib"]
+[ext_resource type="Script" uid="uid://1vekm3jabhht" path="res://resources/upgrades/ability_upgrade.gd" id="1_a8y5g"]
+
+[resource]
+script = ExtResource("1_a8y5g")
+id = "shoot_range"
+max_quantity = 3
+icon = ExtResource("1_7hpib")
+name = "Shooting Range"
+add_icon_to_ui = true
+description = "Increases your weapon's range by 25%"

@@ -1,0 +1,503 @@
+[gd_scene load_steps=21 format=3 uid="uid://0d7fsdntcf5u"]
+
+[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_aac20"]
+[ext_resource type="Script" uid="uid://bjewobefx3y8c" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
+[ext_resource type="PackedScene" uid="uid://bb48nxhowxla8" path="res://scenes/ui/vignette.tscn" id="2_pfayw"]
+[ext_resource type="PackedScene" uid="uid://b7riddmnlhxba" path="res://scenes/ui/progress_bar.tscn" id="3_0dwhk"]
+[ext_resource type="Theme" uid="uid://1cd7prsheyst" path="res://assets/themes/level_overlay_theme.tres" id="3_pfayw"]
+[ext_resource type="StyleBox" uid="uid://dg2apbrae16s0" path="res://assets/themes/level_overlay_style_box_flat.tres" id="4_7vp6q"]
+[ext_resource type="PackedScene" uid="uid://dr45y4w6u441y" path="res://scenes/ui/arena_time_ui.tscn" id="5_uegxj"]
+[ext_resource type="Script" uid="uid://6255youhf50" path="res://scenes/ui/progress_bar.gd" id="5_y220t"]
+[ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="6_4kltc"]
+[ext_resource type="Texture2D" uid="uid://cumppv8gqdv46" path="res://assets/textures/movement_trails_thin.png" id="6_jcn1r"]
+
+[sub_resource type="Animation" id="Animation_uegxj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.611765, 0.960784, 0.996078, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(154, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.00392157, 0.694118, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4kltc"]
+resource_name = "back_to_normal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.611765, 0.960784, 0.996078, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.00392157, 0.694118, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:custom_minimum_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(154, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_y220t"]
+resource_name = "game_start"
+length = 1.5
+
+[sub_resource type="Animation" id="Animation_jcn1r"]
+resource_name = "hit"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.611765, 0.960784, 0.996078, 1), Color(1, 0, 0.0166664, 1), Color(0.611765, 0.960784, 0.996078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hl07w"]
+resource_name = "power_ready"
+length = 0.7
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/PanelContainer:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.71, 0), Color(1, 0.486275, 0.827451, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(154, 32), Vector2(154, 34.31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.00392157, 0.694118, 1), Color(1, 1, 0.713726, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y220t"]
+_data = {
+&"RESET": SubResource("Animation_uegxj"),
+&"back_to_normal": SubResource("Animation_4kltc"),
+&"game_start": SubResource("Animation_y220t"),
+&"hit": SubResource("Animation_jcn1r"),
+&"power_ready": SubResource("Animation_hl07w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5kmx"]
+size = Vector2(190, 600)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uegxj"]
+bg_color = Color(0.324912, 0.262358, 0.455576, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y220t"]
+bg_color = Color(0.94902, 0.603922, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcn1r"]
+bg_color = Color(0, 0, 0, 0.498039)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_g5kmx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_y220t")
+}
+autoplay = "hit"
+
+[node name="MovementBounds" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 8
+
+[node name="LeftColorRect" type="ColorRect" parent="MovementBounds"]
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 170.0
+offset_bottom = 418.0
+color = Color(0, 0, 0, 0.376471)
+
+[node name="RightColorRect" type="ColorRect" parent="MovementBounds"]
+offset_left = 470.0
+offset_top = -19.0
+offset_right = 660.0
+offset_bottom = 418.0
+color = Color(0, 0, 0, 0.376471)
+
+[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="MovementBounds"]
+position = Vector2(75, 180)
+shape = SubResource("RectangleShape2D_g5kmx")
+
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="MovementBounds"]
+position = Vector2(565, 180)
+shape = SubResource("RectangleShape2D_g5kmx")
+
+[node name="FPSTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_aac20")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pfayw")
+theme_override_styles/panel = ExtResource("4_7vp6q")
+
+[node name="LeftUIVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PowerProgressBar" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(154, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("1_aac20")
+script = ExtResource("5_y220t")
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar"]
+show_behind_parent = true
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 50.0
+step = 1.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar"]
+layout_mode = 2
+theme = ExtResource("6_4kltc")
+text = "POWER"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+custom_minimum_size = Vector2(0, 238.76)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HeartContainersHBox" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(154, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 3
+
+[node name="ProjectileCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.669637, 0.632165, 1, 1)
+custom_minimum_size = Vector2(153, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Projectile Count : "
+autowrap_mode = 2
+
+[node name="PlayerHealthLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.612447, 0.753437, 1, 1)
+custom_minimum_size = Vector2(153, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Health : "
+autowrap_mode = 2
+
+[node name="ScoreCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+unique_name_in_owner = true
+modulate = Color(0.908646, 0.629312, 0.968326, 1)
+custom_minimum_size = Vector2(153, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "SCORE
+0"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CenterVBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyHealthBar" parent="MarginContainer/HBoxContainer/CenterVBoxContainer/VBoxContainer" instance=ExtResource("3_0dwhk")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+label_text_override = "ENEMY"
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("4_7vp6q")
+
+[node name="RightUIVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_pfayw")
+
+[node name="ArenaTimeUI" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox" instance=ExtResource("5_uegxj")]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = null
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="NextLevelProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_uegxj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y220t")
+step = 0.1
+fill_mode = 3
+show_percentage = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="NextLevelLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "LEVEL -> 2"
+autowrap_mode = 3
+
+[node name="IncrementValueLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(47.49, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "49 of 50"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarkerTop" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_jcn1r")
+
+[node name="MarkerMid" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_jcn1r")
+
+[node name="MarkerBottom" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.396078)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_jcn1r")
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.908646, 0.629312, 0.968326, 1)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 32
+text = "LEVEL 1"
+autowrap_mode = 2
+
+[node name="ItemsGridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="StatsPanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcn1r")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/StatsPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="StatsVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/StatsPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="StatsLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/StatsPanelContainer/MarginContainer/StatsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "STATS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShootSpeedLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/StatsPanelContainer/MarginContainer/StatsVBox"]
+unique_name_in_owner = true
+modulate = Color(1, 0.7, 0, 1)
+custom_minimum_size = Vector2(128, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "AUTO-SHOOT SPEED :
+5.521"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MoveSpeedLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/StatsPanelContainer/MarginContainer/StatsVBox"]
+unique_name_in_owner = true
+modulate = Color(0, 0.986765, 0.80742, 1)
+custom_minimum_size = Vector2(128, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "MOVE SPEED :
+5.521"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FPSLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+unique_name_in_owner = true
+modulate = Color(0.908646, 0.629312, 0.968326, 1)
+custom_minimum_size = Vector2(116, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "FPS : 9999"
+
+[node name="Vignette" parent="." instance=ExtResource("2_pfayw")]
+
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar/ProgressBar" to="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar" method="_on_progress_bar_value_changed"]

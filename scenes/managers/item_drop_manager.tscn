@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pyao5qbxpx8l"]
+
+[ext_resource type="Script" uid="uid://br3a4aeiff24p" path="res://scenes/managers/item_drop_manager.gd" id="1_vbbop"]
+
+[node name="ItemDropManager" type="Node"]
+script = ExtResource("1_vbbop")

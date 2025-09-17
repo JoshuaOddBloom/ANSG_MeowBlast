@@ -1,0 +1,36 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=6 format=3 uid="uid://dly8tweyp5s04"]
+
+[ext_resource type="Texture2D" uid="uid://bidowek1bc6ef" path="res://assets/gradients/blue_fire_gradient_texture_1d.tres" id="1_vkrc0"]
+
+[sub_resource type="Curve" id="Curve_pk5so"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.487421, 0.994832), 0.0, 0.0, 0, 0, Vector2(0.595912, 1), -0.26274, -0.26274, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_od2tn"]
+curve = SubResource("Curve_pk5so")
+
+[sub_resource type="Curve" id="Curve_ngpf0"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0424528, 0.688), 0.0, 0.0, 0, 0, Vector2(0.672956, 0.56), 2.00232, 2.00232, 0, 0, Vector2(0.833333, 0.2), 1.3568, 1.3568, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_77hc0"]
+curve = SubResource("Curve_ngpf0")
+
+[resource]
+particle_flag_disable_z = true
+angle_min = -359.0
+angle_max = 359.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = 3.15998
+angular_velocity_max = 338.15
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 71.5
+radial_accel_max = 100.0
+scale_curve = SubResource("CurveTexture_77hc0")
+color_ramp = ExtResource("1_vkrc0")
+alpha_curve = SubResource("CurveTexture_od2tn")

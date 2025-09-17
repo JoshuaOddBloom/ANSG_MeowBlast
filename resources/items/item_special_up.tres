@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DroppableItem" load_steps=3 format=3 uid="uid://bb2vd5lpag4ws"]
+
+[ext_resource type="Texture2D" uid="uid://clsr1je5w6vbq" path="res://assets/textures/item_icon_star_64x64.png" id="1_nith1"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="2_57stf"]
+
+[resource]
+script = ExtResource("2_57stf")
+item_name = "special_up"
+item_icon = ExtResource("1_nith1")
+item_modulate_override_color = Color(1, 0.662229, 0.780597, 1)
+item_weight = 10
+item_fall_speed_multiplier = 1.0
+add_icon_to_ui = false
+max_quantity = 0
+metadata/_custom_type_script = "uid://df24bvw55uwn1"

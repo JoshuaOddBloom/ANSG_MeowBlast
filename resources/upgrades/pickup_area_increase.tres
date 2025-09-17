@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://kfweytmrnsac"]
+
+[ext_resource type="Texture2D" uid="uid://jkxthk1umhhv" path="res://assets/textures/16x16sqr_yellow.png" id="1_6ptne"]
+[ext_resource type="Script" uid="uid://1vekm3jabhht" path="res://resources/upgrades/ability_upgrade.gd" id="1_ua7ei"]
+
+[resource]
+script = ExtResource("1_ua7ei")
+id = "pickup_area_increase"
+max_quantity = 1
+icon = ExtResource("1_6ptne")
+name = "Pickup Area +25%"
+add_icon_to_ui = true
+description = "Adds 25% to the player's pickup area."

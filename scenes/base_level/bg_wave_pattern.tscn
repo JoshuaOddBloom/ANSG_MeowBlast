@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://cukkcqfma2wn0"]
+
+[ext_resource type="Texture2D" uid="uid://dnqf8ln7fiv8x" path="res://assets/textures/star_wave_pattern.png" id="1_1pubc"]
+[ext_resource type="Script" uid="uid://bvhn2qdky4d8l" path="res://scenes/base_level/bg_wave_pattern.gd" id="1_ma7mm"]
+
+[sub_resource type="Animation" id="Animation_v60iv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("@SubViewport@11150/BGPattern/WavePattern:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Top:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Bottom:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8o1ni"]
+resource_name = "level_1_idle"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Bottom:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("@SubViewport@11150/BGPattern/WavePattern:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 69)]
+}
+
+[sub_resource type="Animation" id="Animation_5yg0m"]
+resource_name = "level_2_idle"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("@SubViewport@11150/BGPattern/WavePattern:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 27.6), Vector2(0, 69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Top:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("@SubViewport@11150/BGPattern/WavePattern/Bottom:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5yg0m"]
+_data = {
+&"RESET": SubResource("Animation_v60iv"),
+&"level_1_idle": SubResource("Animation_8o1ni"),
+&"level_2_idle": SubResource("Animation_5yg0m")
+}
+
+[sub_resource type="Animation" id="Animation_ma7mm"]
+resource_name = "wave_pattern_1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sdf2"]
+_data = {
+&"wave_pattern_1": SubResource("Animation_ma7mm")
+}
+
+[node name="BGPattern" type="Node2D"]
+script = ExtResource("1_ma7mm")
+
+[node name="BGAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_5yg0m")
+}
+autoplay = "level_1_idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2sdf2")
+}
+
+[node name="WavePattern" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Top" type="Sprite2D" parent="WavePattern"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, -37)
+scale = Vector2(0.293, 0.293)
+texture = ExtResource("1_1pubc")
+
+[node name="Middle1" type="Sprite2D" parent="WavePattern"]
+unique_name_in_owner = true
+position = Vector2(320, 32)
+scale = Vector2(0.293, 0.293)
+texture = ExtResource("1_1pubc")
+
+[node name="Middle2" type="Sprite2D" parent="WavePattern"]
+unique_name_in_owner = true
+position = Vector2(320, 101)
+scale = Vector2(0.293, 0.293)
+texture = ExtResource("1_1pubc")
+
+[node name="Middle3" type="Sprite2D" parent="WavePattern"]
+unique_name_in_owner = true
+position = Vector2(320, 170)
+scale = Vector2(0.293, 0.293)
+texture = ExtResource("1_1pubc")
+
+[node name="Bottom" type="Sprite2D" parent="WavePattern"]
+unique_name_in_owner = true
+position = Vector2(320, 239)
+scale = Vector2(0.293, 0.293)
+texture = ExtResource("1_1pubc")

@@ -1,0 +1,85 @@
+[gd_scene load_steps=18 format=3 uid="uid://c0ayjlpiqu7p8"]
+
+[ext_resource type="Script" uid="uid://dq1towb758dhd" path="res://scenes/game_objects/item_drop/item_drop.gd" id="1_aqoos"]
+[ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_w1avk"]
+[ext_resource type="AudioStream" uid="uid://du8rpgxamtej8" path="res://assets/audio/sfx/experience_vial/impactGeneric_light_000.ogg" id="3_n2l6k"]
+[ext_resource type="AudioStream" uid="uid://c40emst64p6be" path="res://assets/audio/sfx/experience_vial/impactGeneric_light_001.ogg" id="4_ag42a"]
+[ext_resource type="AudioStream" uid="uid://gn454vxbuj3v" path="res://assets/audio/sfx/experience_vial/impactGeneric_light_002.ogg" id="5_72w7q"]
+[ext_resource type="AudioStream" uid="uid://b58kdvosjoxek" path="res://assets/audio/sfx/experience_vial/impactGeneric_light_003.ogg" id="6_863fo"]
+[ext_resource type="AudioStream" uid="uid://5bxehib6x4tb" path="res://assets/audio/sfx/experience_vial/impactGeneric_light_004.ogg" id="7_sf77m"]
+[ext_resource type="PackedScene" uid="uid://bstco5w5lxv1u" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.tscn" id="8_aes1c"]
+[ext_resource type="Texture2D" uid="uid://bt1x01rlktxnr" path="res://assets/textures/TargetReticle.png" id="9_avsdm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrek4"]
+radius = 39.0512
+
+[sub_resource type="Curve" id="Curve_qy8hv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.243711, 1), 0.0, 0.0, 0, 0, Vector2(0.498428, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8og4t"]
+curve = SubResource("Curve_qy8hv")
+
+[sub_resource type="Gradient" id="Gradient_0db03"]
+offsets = PackedFloat32Array(0.122837, 0.489619)
+colors = PackedColorArray(0.98, 0.98, 0.98, 1, 0, 0.666667, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fn2ea"]
+gradient = SubResource("Gradient_0db03")
+
+[sub_resource type="Curve" id="Curve_u4p2j"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.194051, 0.710797), 0.0, 0.0, 0, 0, Vector2(0.502833, 1.22879), 2.67072, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_75ilv"]
+curve = SubResource("Curve_u4p2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yatcx"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_75ilv")
+color_ramp = SubResource("GradientTexture1D_fn2ea")
+alpha_curve = SubResource("CurveTexture_8og4t")
+
+[node name="ItemDrop" type="Node2D"]
+z_index = 2
+script = ExtResource("1_aqoos")
+
+[node name="RandomAudioPlayerComponent" parent="." instance=ExtResource("2_w1avk")]
+volume_db = -9.143
+bus = &"SFX"
+streams = Array[AudioStream]([ExtResource("3_n2l6k"), ExtResource("4_ag42a"), ExtResource("5_72w7q"), ExtResource("6_863fo"), ExtResource("7_sf77m")])
+min_pitch = 3.5
+max_pitch = 5.5
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vrek4")
+debug_color = Color(0, 0.595, 0.7, 0.0901961)
+
+[node name="Visuals" type="Node2D" parent="."]
+modulate = Color(0.17, 0.502, 1, 1)
+
+[node name="RingSprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_avsdm")
+
+[node name="FireTrailGPUParticles2D" parent="Visuals" instance=ExtResource("8_aes1c")]
+unique_name_in_owner = true
+
+[node name="PulsingGPUParticles2D" type="GPUParticles2D" parent="Visuals"]
+unique_name_in_owner = true
+position = Vector2(0, 14)
+amount = 1
+texture = ExtResource("9_avsdm")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_yatcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+offset = Vector2(0, -1)

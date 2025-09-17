@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://t2b0dfuk0wjp"]
+
+[ext_resource type="Texture2D" uid="uid://jkxthk1umhhv" path="res://assets/textures/16x16sqr_yellow.png" id="1_tpkbb"]
+[ext_resource type="Script" uid="uid://1vekm3jabhht" path="res://resources/upgrades/ability_upgrade.gd" id="2_cv5j6"]
+
+[resource]
+script = ExtResource("2_cv5j6")
+id = "dash_duration"
+max_quantity = 3
+icon = ExtResource("1_tpkbb")
+name = "Dash Duration +10%"
+add_icon_to_ui = true
+description = "Add 10% to your dash duration"

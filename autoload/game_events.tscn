@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yso7ajq0ligw"]
+
+[ext_resource type="Script" uid="uid://cv7ljaxahqkoe" path="res://autoload/game_events.gd" id="1_r3yq3"]
+
+[node name="GameEvents" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_r3yq3")

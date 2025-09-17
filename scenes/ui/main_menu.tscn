@@ -1,0 +1,816 @@
+[gd_scene load_steps=18 format=3 uid="uid://deitr7ypebg0a"]
+
+[ext_resource type="Script" uid="uid://ccq8kacuicqus" path="res://scenes/ui/main_menu.gd" id="1_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_x2yvf"]
+[ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_8g5eo"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/sound_button.tscn" id="3_q85j6"]
+[ext_resource type="Texture2D" uid="uid://boe0l42l1g3nq" path="res://assets/ui/main_menu_title.png" id="3_uhagc"]
+[ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_wb0q5"]
+[ext_resource type="PackedScene" uid="uid://c40nj0ydhegyx" path="res://scenes/ui/oddbloom_logo.tscn" id="5_x2yvf"]
+[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_uhagc"]
+[ext_resource type="Texture2D" uid="uid://lyayh1mbv0oa" path="res://assets/ui/all_nighter_survival_guide_title.png" id="9_7suek"]
+
+[sub_resource type="Animation" id="Animation_uhagc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Branding/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Branding/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Branding/Marker2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InputMethod:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputMethod:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainMenuBG:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Branding/ANSGMarker2D/ANSGSprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Branding/MarginContainer:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Branding:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Branding/ANSGMarker2D:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Branding/MarginContainer2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q85j6"]
+resource_name = "ask_for_input_option"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Branding/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Branding/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Branding/Marker2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InputMethod:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputMethod:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_btxxm"]
+resource_name = "auto_opening"
+length = 10.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Branding/Marker2D/OddbloomLogo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_auto_animation"
+}, {
+"args": [],
+"method": &"play_out_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Branding/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.13333, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Branding/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 1.4, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_start_button"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Branding/ANSGMarker2D/ANSGSprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.6, 5.6, 8.73333, 9.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Branding:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Branding/MarginContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Branding/ANSGMarker2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Branding/MarginContainer2:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.6, 5.6, 8.73333, 9.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wb0q5"]
+resource_name = "auto_quick"
+length = 7.4
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Branding/Marker2D/OddbloomLogo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_auto_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Branding/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.3, 7.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Branding/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.675, 2.50833, 3.50833),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_start_button"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Branding/Marker2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Branding/ANSGMarker2D/ANSGSprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.4, 4.075, 5.90833, 6.90833),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Branding/MarginContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Branding/ANSGMarker2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Branding/MarginContainer2:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.4, 4.075, 5.90833, 6.90833),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7suek"]
+resource_name = "show_controls_screen"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus_continue_sound_button"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhagc"]
+_data = {
+&"RESET": SubResource("Animation_uhagc"),
+&"ask_for_input_option": SubResource("Animation_q85j6"),
+&"auto_opening": SubResource("Animation_btxxm"),
+&"auto_quick": SubResource("Animation_wb0q5"),
+&"show_controls_screen": SubResource("Animation_7suek")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb0q5"]
+size = Vector2(193.02, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btxxm"]
+size = Vector2(128, 32)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1kxf")
+
+[node name="WaitToStartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uhagc")
+}
+
+[node name="MainMenuBG" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="TextureRect" parent="MainMenuBG"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("2_x2yvf")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuBG/BG"]
+custom_minimum_size = Vector2(193.19, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 179.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_8g5eo")
+theme_override_font_sizes/font_size = 16
+text = "Artwork by @JoshuaOddBloom"
+horizontal_alignment = 1
+
+[node name="VisualsAndAudioNotFinalLabel" type="Label" parent="MainMenuBG/BG"]
+modulate = Color(1, 0.809552, 0.27686, 1)
+custom_minimum_size = Vector2(193.19, 0)
+layout_mode = 2
+offset_left = 218.0
+offset_top = 3.0
+offset_right = 411.19
+offset_bottom = 16.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_8g5eo")
+theme_override_font_sizes/font_size = 16
+text = "Visuals and Audio Not Final"
+horizontal_alignment = 1
+
+[node name="Title" type="TextureRect" parent="MainMenuBG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("3_uhagc")
+
+[node name="TitleLabel" type="Label" parent="MainMenuBG"]
+unique_name_in_owner = true
+modulate = Color(0.921569, 0.952941, 1, 1)
+layout_mode = 0
+offset_left = 20.11
+offset_top = 96.0
+offset_right = 424.11
+offset_bottom = 147.0
+theme = ExtResource("4_wb0q5")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "ANSG : MEOW BLAST!
+"
+
+[node name="TitleLabel2" type="Label" parent="MainMenuBG/TitleLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 42.67
+offset_right = 404.0
+offset_bottom = 147.67
+theme = ExtResource("4_wb0q5")
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 32
+text = "[ Prototype Build - ver 0.4.6 ]"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 97.82
+offset_top = 233.0
+offset_right = 249.82
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuBG/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuBG/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="StartSoundButton" parent="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_q85j6")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "START"
+
+[node name="ControlsSoundButton" parent="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_q85j6")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "CONTROLS"
+
+[node name="OptionsSoundButton" parent="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_q85j6")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "OPTIONS"
+
+[node name="TouchScreenStartButton" type="TouchScreenButton" parent="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(96.63, 23.88)
+shape = SubResource("RectangleShape2D_wb0q5")
+
+[node name="Branding" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Branding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ANSGMarker2D" type="Marker2D" parent="Branding"]
+visible = false
+
+[node name="ANSGSprite2D" type="Sprite2D" parent="Branding/ANSGMarker2D"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_7suek")
+
+[node name="Marker2D" type="Marker2D" parent="Branding"]
+scale = Vector2(0.05, 0.05)
+
+[node name="OddbloomLogo" parent="Branding/Marker2D" instance=ExtResource("5_x2yvf")]
+
+[node name="MarginContainer" type="MarginContainer" parent="Branding"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Branding/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Branding/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_font_sizes/font_size = 24
+text = "OddBloom Studios"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Branding/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="ProducedByLabel" type="Label" parent="Branding/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_font_sizes/font_size = 18
+text = "Produced by
+Joshua OddBloom"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Branding"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Branding/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Branding/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Branding/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="ProducedByLabel" type="Label" parent="Branding/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_font_sizes/font_size = 18
+text = "Created and Produced by
+MinTheDeadDM"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "MAIN MENU
+"
+
+[node name="InputMethod" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputMethod"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -35.0
+offset_right = 130.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="InputMethod/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Use Touch Controls?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputMethod/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="InputMethod/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenOnButton" type="TouchScreenButton" parent="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+position = Vector2(64, 16)
+shape = SubResource("RectangleShape2D_btxxm")
+
+[node name="Label" type="Label" parent="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "YES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchScreenOffButton" type="Button" parent="InputMethod/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "No"
+
+[connection signal="pressed" from="MainMenuBG/MarginContainer/VBoxContainer/PanelContainer/TouchScreenStartButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2/TouchScreenOnButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="InputMethod/VBoxContainer/HBoxContainer/TouchScreenOffButton" to="." method="_on_keyboard_and_mouse_button_pressed"]
