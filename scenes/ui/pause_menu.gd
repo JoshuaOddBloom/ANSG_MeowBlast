@@ -46,7 +46,7 @@ func play_vignette_animation(anim:String):
 
 func close():
 	if is_closing:
-		print("Pause Menu: AlreadyClosing")
+		#print("Pause Menu: AlreadyClosing")
 		return
 	if options_menu_open:
 		return

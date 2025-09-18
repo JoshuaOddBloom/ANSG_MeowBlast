@@ -13,7 +13,6 @@ extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
-
 var spawn_type: String = ""
 var spawn_texture_chosen: Texture = GameEvents.enemy_sprite_idle1
 var just_hit: bool = false

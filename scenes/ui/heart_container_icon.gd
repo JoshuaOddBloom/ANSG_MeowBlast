@@ -22,7 +22,7 @@ func heart_depleated():
 	animation_player.play("depleted")
 	await animation_player.animation_finished
 	
-	print("Freeing Heart...", self)
+	#print("Freeing Heart...", self)
 	queue_free()
 
 

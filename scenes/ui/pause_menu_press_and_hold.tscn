@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dulc46abndfnx"]
+[gd_scene load_steps=20 format=3 uid="uid://dulc46abndfnx"]
 
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_mvidx"]
 [ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/sound_button.tscn" id="3_2wl57"]
+[ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="4_1y051"]
 [ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="4_wnrpl"]
 
 [sub_resource type="GDScript" id="GDScript_he275"]
@@ -110,7 +111,8 @@ func stop_confirmation(button: SoundButton):
 		return
 	
 	if ! button == null:
-		print(\"button released : \", button.name)
+		#print(\"button released : \", button.name)
+		pass
 	
 	if ! confirmation_timer.is_stopped():
 		confirmation_timer.stop()
@@ -150,7 +152,7 @@ func _on_button_pressed(button: SoundButton):
 	if confirmation_timer.is_stopped():
 			confirmation_timer.start()
 	
-	print(\"button pressed : \", option_chosen)
+	#print(\"button pressed : \", option_chosen)
 	#if the button is released (button_up), stop_confirmation(button) will reset the confirmation
 
 
@@ -195,14 +197,14 @@ func _on_confirmation_timer_timeout():
 	confirmed_modulate_tween.chain().tween_callback(func():
 			match option_chosen:
 				\"ResumeButton\":
-					print(\"CONFIRMED : \", \"ResumeButton\")
+					#print(\"CONFIRMED : \", \"ResumeButton\")
 					animation_player.play(\"out\")
 					await animation_player.animation_finished
 					
 					on_resume_pressed()
 					
 				\"RestoreButton\":
-					print(\"CONFIRMED : \", \"RestoreButton\")
+					#print(\"CONFIRMED : \", \"RestoreButton\")
 					animation_player.play(\"out\")
 					await animation_player.animation_finished
 					
@@ -210,7 +212,7 @@ func _on_confirmation_timer_timeout():
 					queue_free()
 					
 				\"RestartButton\":
-					print(\"CONFIRMED : \", \"RestartButton\")
+					#print(\"CONFIRMED : \", \"RestartButton\")
 					animation_player.play(\"out\")
 					await animation_player.animation_finished
 					
@@ -220,14 +222,14 @@ func _on_confirmation_timer_timeout():
 					queue_free()
 					
 				\"LeaveButton\":
-					print(\"CONFIRMED : \", \"LeaveButton\")
+					#print(\"CONFIRMED : \", \"LeaveButton\")
 					animation_player.play(\"out\")
 					await animation_player.animation_finished
 					
 					ScreenTransition.transition_to_scene(\"res://scenes/ui/main_menu.tscn\")
 					#get_tree().change_scene_to_file(\"res://scenes/ui/main_menu.tscn\")
 					await ScreenTransition.transition_finished
-					print(\"Defeat Menu Terminating\")
+					#print(\"Defeat Menu Terminating\")
 					queue_free()
 			
 			)
@@ -236,7 +238,7 @@ func _on_confirmation_timer_timeout():
 
 func close():
 	if is_closing:
-		print(\"Pause Menu: AlreadyClosing\")
+		#print(\"Pause Menu: AlreadyClosing\")
 		return
 	
 	is_closing = true
@@ -276,7 +278,7 @@ func on_resume_pressed():
 
 func on_pause_button_pressed_again():
 	if ! is_opening:
-		print(\"CONFIRMED : \", \"ResumeButton\")
+		#print(\"CONFIRMED : \", \"ResumeButton\")
 		animation_player.play(\"out\")
 		await animation_player.animation_finished
 		on_resume_pressed()
@@ -583,7 +585,7 @@ expand_margin_bottom = 2.0
 process_mode = 3
 layer = 5
 script = SubResource("GDScript_he275")
-confirmation_timer_base_waittime = 1.5
+confirmation_timer_base_waittime = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -683,6 +685,7 @@ text = "REVIVE"
 position = Vector2(-25.78, 16.17)
 
 [node name="ContinueParticles" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/Choices/RestoreMarginContainer/RestoreButton/Node2D" instance=ExtResource("4_wnrpl")]
+process_material = ExtResource("4_1y051")
 
 [node name="ResumeButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/Choices" instance=ExtResource("3_2wl57")]
 unique_name_in_owner = true

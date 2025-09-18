@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cojgne2mgqepd"]
+[gd_scene load_steps=12 format=3 uid="uid://cojgne2mgqepd"]
 
 [ext_resource type="Script" uid="uid://bt7qnmy611831" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_je7p5"]
@@ -6,35 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dhd4f3glgvj4h" path="res://scenes/components/health_component.tscn" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://sanwtepvevca" path="res://assets/textures/movement_trails_2.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bjrny37ardjbv" path="res://assets/textures/star_shot_trail.png" id="3_p47bc"]
-[ext_resource type="Texture2D" uid="uid://bvsfycngq78ov" path="res://scenes/player/original_ship_cleanup.png" id="4_lvxji"]
-[ext_resource type="AudioStream" uid="uid://pgspr8pgqx8s" path="res://assets/audio/sfx/basic_enemy/footstep_carpet_002.ogg" id="4_qek5x"]
+[ext_resource type="AudioStream" uid="uid://3yclqyiedd6c" path="res://assets/audio/sfx/basic_enemy/footstep_carpet_004.ogg" id="4_qek5x"]
+[ext_resource type="Material" uid="uid://dsne8rx3g808s" path="res://assets/particles/player_power_ready_particle_process_material.tres" id="7_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://csyquygvptofv" path="res://scenes/player/original_ship_cleanup_2.png" id="9_5gtgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(68, 32)
-
-[sub_resource type="Curve" id="Curve_75vfm"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.508834, 0.528648), -0.058554, -0.058554, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_0owmy"]
-curve = SubResource("Curve_75vfm")
-
-[sub_resource type="Gradient" id="Gradient_qek5x"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.43, 0.9145, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5gtgg"]
-gradient = SubResource("Gradient_qek5x")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h17s1"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 30.0
-gravity = Vector3(0, -80, 0)
-scale_min = 0.05
-scale_max = 0.25
-color = Color(1, 0.71, 0.995167, 1)
-color_ramp = SubResource("GradientTexture1D_5gtgg")
-alpha_curve = SubResource("CurveTexture_0owmy")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p47bc"]
 height = 48.0
@@ -54,12 +31,14 @@ max_volume = -9.0
 min_pitch = 1.75
 max_pitch = 2.5
 
-[node name="PlayerHitRandAudioComponent2" parent="." instance=ExtResource("2_je7p5")]
+[node name="DamagedRandomAudioPlayerComponent" parent="." instance=ExtResource("2_je7p5")]
 unique_name_in_owner = true
-autoplay = true
 bus = &"SFX"
 streams = Array[AudioStream]([ExtResource("4_qek5x")])
-randomize_pitch = false
+min_volume = -9.05
+max_volume = -4.01
+min_pitch = 1.23
+max_pitch = 2.09
 
 [node name="UsingPowerTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -86,7 +65,7 @@ unique_name_in_owner = true
 position = Vector2(0, -23)
 texture = ExtResource("3_p47bc")
 preprocess = 0.5
-process_material = SubResource("ParticleProcessMaterial_h17s1")
+process_material = ExtResource("7_5gtgg")
 
 [node name="TrailsLSprite2D" type="Sprite2D" parent="."]
 position = Vector2(-23, 34.84)
@@ -99,9 +78,9 @@ scale = Vector2(0.49, 1.15)
 texture = ExtResource("3_lvxji")
 
 [node name="BodySprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_lvxji")
-offset = Vector2(15, 0)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("9_5gtgg")
+offset = Vector2(1.5, 0)
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true

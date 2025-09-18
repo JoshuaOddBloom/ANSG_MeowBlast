@@ -34,7 +34,7 @@ func mute_audio_bus(toggled_on, bus_name):
 	# IF TOGGLED ON = TRUE, IS MUTED = FALSE
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_mute(bus_index, ! toggled_on)
-	print(bus_name, " Audio Muted")
+	#print(bus_name, " Audio Muted")
 
 
 

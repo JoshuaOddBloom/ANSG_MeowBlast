@@ -20,9 +20,7 @@ class_name Player
 @onready var projectile_spawn_marker_2d: Marker2D = %ProjectileSpawnMarker2D
 # Audio
 @onready var projectile_rand_audio_component: RandomAudioStreamPlayer = %ProjectileRandAudioComponent
-@onready var player_hit_rand_audio_component_2: RandomAudioStreamPlayer = %PlayerHitRandAudioComponent2
-
-
+@onready var damaged_random_audio_player_component: RandomAudioStreamPlayer = %DamagedRandomAudioPlayerComponent
 
 
 #var current_projectile_selected
@@ -37,12 +35,13 @@ var lerp_scale_to_global_scale_target: bool = false
 func _ready() -> void:
 	GameEvents.player_power_charged.connect(on_player_power_charged)
 	GameEvents.request_player_health.connect(on_request_player_health)
-	GameEvents.player_defeated.connect(on_defeated)
+	GameEvents.player_defeated.connect(on_player_defeated)
+	GameEvents.player_damaged.connect(on_player_damaged)
 	GameEvents.score_count_changed.connect(on_score_count_changed)
 	GameEvents.item_drop_collected.connect(on_item_drop_collected)
 	GameEvents.global_scale_target_changed.connect(on_global_scale_target_changed)
 	
-	health_component.defeated.connect(on_defeated)
+	health_component.defeated.connect(on_player_defeated)
 	semi_automatic_timer.timeout.connect(on_semi_automatic_timer_timeout)
 	#boost_automatic_timer.timeout.connect(on_semi_automatic_timer_timeout)
 	using_power_timer.timeout.connect(on_using_power_timer_timeout)
@@ -95,7 +94,7 @@ func _process(delta: float) -> void:
 
 
 func update_player_stats():
-	print("UPDATE PLAYER STATS")
+	#print("UPDATE PLAYER STATS")
 	GameEvents.emit_update_player_stats("move_speed", move_speed)
 	GameEvents.emit_update_player_stats("shooting_speed", semi_automatic_timer.wait_time)
 
@@ -118,14 +117,14 @@ func fire_projectile():
 	if is_using_power:
 		match current_power:
 			"base_x_10":
-				print("BASEX10")
+				#print("BASEX10")
 				projectile_instance = projectile_base_x_10_scene.instantiate()
 		
 	else:
 		projectile_instance = base_projectile.instantiate()
 	
 	if projectile_instance == null:
-		print("projectile.gd.fire_projectile: projectile_scene not found")
+		#print("projectile.gd.fire_projectile: projectile_scene not found")
 		return
 	
 	projectile_instance.global_position = projectile_spawn_marker_2d.global_position
@@ -138,8 +137,15 @@ func reset_semi_automatic_timer_wait_time():
 
 
 func take_damage(amount):
-	player_hit_rand_audio_component_2.play_random()
+	#BUG# ISN'T BEING CALLED
+	#print("PlayerTakingDamage")
+	damaged_random_audio_player_component.play_random()
 	health_component.take_damage(amount)
+
+
+func on_player_damaged(_amount):
+	#print("PlayerTakingDamage")
+	damaged_random_audio_player_component.play_random()
 
 
 func update_power_gauge(current_power_charge_amount, current_power_target):
@@ -167,7 +173,7 @@ func on_request_player_health():
 	health_component.check_health()
 
 
-func on_defeated():
+func on_player_defeated():
 	GameEvents.emit_game_over()
 	queue_free()
 
@@ -182,7 +188,7 @@ func on_score_count_changed(_score):
 		power_charge_amount = power_charge_target
 	
 	update_power_gauge(power_charge_amount, power_charge_target)
-	prints("power charge amount :", power_charge_amount)
+	#prints("power charge amount :", power_charge_amount)
 
 
 func on_global_scale_target_changed():

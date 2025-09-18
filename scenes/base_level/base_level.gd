@@ -67,9 +67,9 @@ func incremement_intensity():
 		
 		
 		previous_score_adjustment = GameEvents.score_count
-		prints("NEW SCORE REACHED", previous_score_adjustment)
+		#prints("NEW SCORE REACHED", previous_score_adjustment)
 		intensity_incremement_count = 0
-		prints("NEW WAIT TIME MIN AND MAX", enemy_spawn_timer_min_wait, enemy_spawn_timer_max_wait)
+		#prints("NEW WAIT TIME MIN AND MAX", enemy_spawn_timer_min_wait, enemy_spawn_timer_max_wait)
 
 
 func create_enemy_instance(): 

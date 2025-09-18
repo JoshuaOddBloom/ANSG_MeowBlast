@@ -1,0 +1,16 @@
+[gd_scene load_steps=11 format=3 uid="uid://di5tndbwdxsay"]
+
+[ext_resource type="Script" uid="uid://wxgodqu3k8ne" path="res://autoload/particles_init.gd" id="1_d1rkr"]
+[ext_resource type="Material" uid="uid://b6f408p4ym4pg" path="res://assets/particles/clouds_particle_process_material.tres" id="2_0bl4l"]
+[ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="3_2uflr"]
+[ext_resource type="Material" uid="uid://ytptb75gvo1r" path="res://assets/particles/fire_trail_back_particle_process_material.tres" id="4_qwvve"]
+[ext_resource type="Material" uid="uid://b352dqe5vtsyn" path="res://assets/particles/fire_trail_front_particle_process_material.tres" id="5_dxaoi"]
+[ext_resource type="Material" uid="uid://bbpdsn2wxy1ep" path="res://assets/particles/fire_trail_item_drop_particle_process_material.tres" id="6_3467v"]
+[ext_resource type="Material" uid="uid://db6p43qyw62dl" path="res://assets/particles/Ooo Pretty.tres" id="7_5hxkf"]
+[ext_resource type="Material" uid="uid://dly8tweyp5s04" path="res://assets/particles/parti_fire_trail.tres" id="8_4dh5x"]
+[ext_resource type="Material" uid="uid://dsne8rx3g808s" path="res://assets/particles/player_power_ready_particle_process_material.tres" id="9_rlwi0"]
+[ext_resource type="Material" uid="uid://dg7le4df83fkj" path="res://assets/particles/pulsing_particle_process_material.tres" id="10_0bl8c"]
+
+[node name="ParticlesInit" type="Node2D"]
+script = ExtResource("1_d1rkr")
+particle_effects = Array[ParticleProcessMaterial]([ExtResource("2_0bl4l"), ExtResource("3_2uflr"), ExtResource("4_qwvve"), ExtResource("5_dxaoi"), ExtResource("6_3467v"), ExtResource("7_5hxkf"), ExtResource("8_4dh5x"), ExtResource("9_rlwi0"), ExtResource("10_0bl8c")])

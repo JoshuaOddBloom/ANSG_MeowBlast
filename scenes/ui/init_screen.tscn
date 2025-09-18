@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://gkmuf153b32r"]
+[gd_scene load_steps=7 format=3 uid="uid://gkmuf153b32r"]
 
 [ext_resource type="Script" uid="uid://bytha3d7nqphc" path="res://init_screen.gd" id="1_6bgux"]
+[ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="2_6l5e5"]
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_sx5u0"]
 [ext_resource type="Theme" uid="uid://c0b4wwadsywt2" path="res://assets/themes/default_theme_large_font.tres" id="3_6l5e5"]
 [ext_resource type="Texture2D" uid="uid://y1vbeihoahxd" path="res://assets/ui/original_ship_cleanup128w.png" id="3_sx5u0"]
@@ -18,21 +19,19 @@ grow_vertical = 2
 script = ExtResource("1_6bgux")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.2
+wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="UI" parent="." instance=ExtResource("2_6l5e5")]
 unique_name_in_owner = true
-layout_mode = 1
+
+[node name="LoadingLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="LoadingLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,8 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
+[node name="MarginContainer" type="MarginContainer" parent="LoadingLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_sx5u0")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="LoadingLayer/MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -57,11 +55,11 @@ size_flags_vertical = 10
 texture = ExtResource("3_sx5u0")
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadingLayer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="LoadingLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -69,8 +67,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "LOADING"
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="LoadingLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(256, 8)
 layout_mode = 2

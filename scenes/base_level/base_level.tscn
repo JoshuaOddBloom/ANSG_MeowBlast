@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c8swocmpm3gl5"]
+[gd_scene load_steps=34 format=3 uid="uid://c8swocmpm3gl5"]
 
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="1_8hega"]
 [ext_resource type="Script" uid="uid://b6viu7q5cjl1f" path="res://scenes/base_level/base_level.gd" id="1_k2up0"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="6_8o1ni"]
 [ext_resource type="Resource" uid="uid://e535cmmuyqbf" path="res://resources/items/item_move_speed_up.tres" id="9_5uif2"]
 [ext_resource type="Texture2D" uid="uid://dnqf8ln7fiv8x" path="res://assets/textures/star_wave_pattern.png" id="12_c2ddb"]
+[ext_resource type="Material" uid="uid://b6f408p4ym4pg" path="res://assets/particles/clouds_particle_process_material.tres" id="16_5uif2"]
 
 [sub_resource type="Animation" id="Animation_dojjm"]
 length = 0.001
@@ -549,35 +550,6 @@ _data = {
 &"level_1": SubResource("Animation_8diyn")
 }
 
-[sub_resource type="Curve" id="Curve_v60iv"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.130742, 1), 0.0, 0.0, 0, 0, Vector2(0.924028, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_5yg0m"]
-curve = SubResource("Curve_v60iv")
-
-[sub_resource type="Curve" id="Curve_8eac3"]
-_limits = [-5.0, 5.0, 0.0, 1.0]
-_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.770318, -5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0wob2"]
-curve_y = SubResource("Curve_8eac3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a8gkr"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(400, 1, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 0, 1)
-directional_velocity_min = -5.00002
-directional_velocity_max = 2.49998
-directional_velocity_curve = SubResource("CurveXYZTexture_0wob2")
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.6
-color = Color(0.553273, 0.60896, 0.685211, 1)
-alpha_curve = SubResource("CurveTexture_5yg0m")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlp5g"]
 size = Vector2(190, 600)
 
@@ -687,7 +659,7 @@ amount = 48
 texture = ExtResource("3_8eac3")
 lifetime = 5.0
 preprocess = 2.5
-process_material = SubResource("ParticleProcessMaterial_a8gkr")
+process_material = ExtResource("16_5uif2")
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -753,6 +725,7 @@ position = Vector2(319, 38)
 unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(320, 420)
@@ -763,6 +736,7 @@ debug_color = Color(0.987971, 0, 0.307194, 0.42)
 unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 4
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileBounds"]
 position = Vector2(320, 4)

@@ -11,9 +11,9 @@ extends Node2D
 #func _ready() -> void:
 	#match choosen_type:
 		#0:
-			#print("black")
+			##print("black")
 		#1:
-			#print("white")
+			##print("white")
 
 
 func play_auto_animation():

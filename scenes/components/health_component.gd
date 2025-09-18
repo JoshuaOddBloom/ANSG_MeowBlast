@@ -23,10 +23,10 @@ func _ready() -> void:
 
 
 func check_health():
-	prints(owner.name, "HealthComponent:", "check_health")
+	##prints(owner.name, "HealthComponent:", "check_health")
 	if owner.is_in_group("player"):
 		GameEvents.emit_player_health_changed(current_health)
-		prints("\nplayer.health_component: current health = ", current_health, "max health = ", max_health)
+		##prints("\nplayer.health_component: current health = ", current_health, "max health = ", max_health)
 		if current_health == max_health:
 			GameEvents.player_at_max_health = true
 		else:
@@ -39,14 +39,14 @@ func check_health():
 
 func take_damage(amount):
 	damage(amount)
-	if is_player_health_component:
-		prints(owner.name, "HealthComponent:", "take_damage")
+	#if is_player_health_component:
+		##prints(owner.name, "HealthComponent:", "take_damage")
 		#GameEvents.emit_player_damaged(amount)
 	check_health()
 
 
 func heal(amount):
-	prints(owner.name, "HealthComponent:", "heal", amount)
+	##prints(owner.name, "HealthComponent:", "heal", amount)
 	if current_health == max_health and is_player_health_component:
 		current_health = max_health
 		check_health()
@@ -56,12 +56,12 @@ func heal(amount):
 
 
 func damage(amount):
-	prints(owner.name, "HealthComponent:", "damage", amount)
+	##prints(owner.name, "HealthComponent:", "damage", amount)
 	current_health -= amount
 
 #
 func on_player_damaged(amount):
 	if is_player_health_component:
-		prints(owner.name, "HealthComponent:", "on_player_damage", amount)
+		##prints(owner.name, "HealthComponent:", "on_player_damage", amount)
 		damage(amount)
 		check_health()

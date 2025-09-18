@@ -23,9 +23,9 @@ func add_droppable_items_to_item_pool():
 			return
 		
 		item_pool.add_item(i, i.item_weight)
-		print("item added ", i.item_name)
+		#print("item added ", i.item_name)
 	
-	prints("item_pool", item_pool)
+	#prints("item_pool", item_pool)
 
 
 func on_item_drop_requested(given_location):
@@ -47,8 +47,8 @@ func on_item_drop_requested(given_location):
 	
 	
 	#item_instance.item_resource = item_chosen
-	print(item_instance.item_resource)
-	prints("item chosen", item_chosen)
+	#print(item_instance.item_resource)
+	#prints("item chosen", item_chosen)
 	item_instance.global_position = given_location
 	
 	#Callable(entities_layer.add_child(item_instance)).call_deferred()

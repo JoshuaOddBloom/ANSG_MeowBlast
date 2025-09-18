@@ -14,7 +14,7 @@ extends Node2D
 
 func _ready():
 	$Area2D.area_entered.connect(on_area_entered)
-	prints("Item Drop Created - ", name)
+	#prints("Item Drop Created - ", name)
 
 
 func _physics_process(delta: float) -> void:
@@ -38,7 +38,7 @@ func tween_collect(percent: float, start_position: Vector2):
 func collect():
 	$RandomAudioPlayerComponent.play_random()
 	await $RandomAudioPlayerComponent.finished
-	#print(item_resource)
+	##print(item_resource)
 	#if item_drop_manager != null:
 		#item_drop_manager.collect_upgrade(item_resource)
 	Callable(item_drop_collected).call_deferred()
@@ -55,7 +55,7 @@ func item_drop_collected():
 
 
 func destroy_item():
-	print("projectile_destroyed")
+	#print("projectile_destroyed")
 	queue_free()
 
 

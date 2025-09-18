@@ -24,7 +24,7 @@ func _ready() -> void:
 		#return
 	#
 	#progress_bar.value += progress_bar.max_value
-	#prints("progress_bar :", progress_bar.value)
+	##prints("progress_bar :", progress_bar.value)
 
 #
 #func on_player_power_being_used():

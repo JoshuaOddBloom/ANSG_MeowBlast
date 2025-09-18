@@ -1,42 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0ayjlpiqu7p8"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ayjlpiqu7p8"]
 
 [ext_resource type="Script" uid="uid://dq1towb758dhd" path="res://scenes/game_objects/item_drop/item_drop.gd" id="1_aqoos"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_w1avk"]
 [ext_resource type="AudioStream" uid="uid://csxvnvfnvhio0" path="res://assets/audio/sfx/fifthSaw_stab_fast.ogg" id="3_qc6ap"]
+[ext_resource type="Material" uid="uid://bbpdsn2wxy1ep" path="res://assets/particles/fire_trail_item_drop_particle_process_material.tres" id="6_ohdkh"]
+[ext_resource type="Material" uid="uid://dg7le4df83fkj" path="res://assets/particles/pulsing_particle_process_material.tres" id="7_pwilr"]
 [ext_resource type="PackedScene" uid="uid://bstco5w5lxv1u" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.tscn" id="8_aes1c"]
 [ext_resource type="Texture2D" uid="uid://bt1x01rlktxnr" path="res://assets/textures/TargetReticle.png" id="9_avsdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrek4"]
 radius = 39.0512
-
-[sub_resource type="Curve" id="Curve_qy8hv"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.243711, 1), 0.0, 0.0, 0, 0, Vector2(0.498428, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_8og4t"]
-curve = SubResource("Curve_qy8hv")
-
-[sub_resource type="Gradient" id="Gradient_0db03"]
-offsets = PackedFloat32Array(0.122837, 0.489619)
-colors = PackedColorArray(0.98, 0.98, 0.98, 1, 0, 0.666667, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fn2ea"]
-gradient = SubResource("Gradient_0db03")
-
-[sub_resource type="Curve" id="Curve_u4p2j"]
-_limits = [0.0, 3.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.194051, 0.710797), 0.0, 0.0, 0, 0, Vector2(0.502833, 1.22879), 2.67072, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_75ilv"]
-curve = SubResource("Curve_u4p2j")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yatcx"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_75ilv")
-color_ramp = SubResource("GradientTexture1D_fn2ea")
-alpha_curve = SubResource("CurveTexture_8og4t")
 
 [node name="ItemDrop" type="Node2D"]
 z_index = 2
@@ -66,6 +39,7 @@ texture = ExtResource("9_avsdm")
 
 [node name="FireTrailGPUParticles2D" parent="Visuals" instance=ExtResource("8_aes1c")]
 unique_name_in_owner = true
+process_material = ExtResource("6_ohdkh")
 
 [node name="PulsingGPUParticles2D" type="GPUParticles2D" parent="Visuals"]
 unique_name_in_owner = true
@@ -73,7 +47,7 @@ position = Vector2(0, 14)
 amount = 1
 texture = ExtResource("9_avsdm")
 lifetime = 2.0
-process_material = SubResource("ParticleProcessMaterial_yatcx")
+process_material = ExtResource("7_pwilr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true

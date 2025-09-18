@@ -24,7 +24,7 @@ func _on_focus_entered() -> void:
 
 func _on_mouse_entered() -> void:
 	if disabled:
-		print("soundbutton disabled")
+		#print("soundbutton disabled")
 		return
 	#previously_focused_item = self
 	self.grab_focus()

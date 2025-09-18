@@ -18,7 +18,7 @@ func check_for_animations(check_child):
 	if check_child is AnimationPlayer:
 			var animations_in_player = check_child.get_animation_list()
 			for i in animations_in_player:
-				prints("playing - ", check_child, i)
+				#prints("playing - ", check_child, i)
 				check_child.play(str(i))
 
 

@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal init_finished
+
 # UI
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 # Left Side UI
@@ -50,8 +52,18 @@ func _ready() -> void:
 	level_increment_update()
 
 
-func game_start():
-	GameEvents.emit_game_paused("done")
+func init():
+	var animation_list = animation_player.get_animation_list()
+	for anim in animation_list:
+		var original_loop_mode = animation_player.get_animation(anim).get_loop_mode()
+		animation_player.get_animation(anim).set_loop_mode(Animation.LOOP_NONE)
+		
+		animation_player.play(anim)
+		await animation_player.animation_finished
+		animation_player.get_animation(anim).set_loop_mode(original_loop_mode)
+		
+	add_ui_heart_container_icon(9)
+	init_finished.emit()
 
 
 # Heart Containers
@@ -78,7 +90,7 @@ func deplete_ui_heart_container_icon():
 		return
 	active_hearts[len(active_hearts)-1].heart_depleated() # run heart_depleted() on the last heart in the group (switches hearts to inactive immediately)
 	update_current_hearts() # update changes in active hearts for correctness
-	print("UI.deplete_ui_heart_container_icon.hearts : ", len(active_hearts))
+	#print("UI.deplete_ui_heart_container_icon.hearts : ", len(active_hearts))
 
 
 func level_increment_update():
@@ -132,9 +144,9 @@ func on_player_health_changed(new_amount):
 	player_health_label.text = str("Health : ", new_amount)
 	update_current_hearts()
 	var hearts_diff = new_amount - current_hearts
-	print("UI.on_update_player_health : hearts_diff : ", hearts_diff)
+	#print("UI.on_update_player_health : hearts_diff : ", hearts_diff)
 	add_ui_heart_container_icon(hearts_diff)
-	print("active_hearts : ", active_hearts)
+	#print("active_hearts : ", active_hearts)
 
 
 func on_player_damaged(damage_amount):

@@ -96,7 +96,6 @@ func emit_global_scale_target_changed():
 	global_scale_target_changed.emit()
 
 
-
 func emit_score_count_changed(amount_changed):
 	score_count += amount_changed
 	score_count_changed.emit(score_count*5)

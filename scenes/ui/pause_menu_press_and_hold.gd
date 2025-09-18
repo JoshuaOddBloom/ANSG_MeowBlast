@@ -88,7 +88,7 @@ func stop_confirmation(button: SoundButton):
 		return
 	
 	if ! button == null:
-		print("button released : ", button.name)
+		#print("button released : ", button.name)
 	
 	if ! confirmation_timer.is_stopped():
 		confirmation_timer.stop()
@@ -123,7 +123,7 @@ func _on_button_pressed(button: SoundButton):
 	if confirmation_timer.is_stopped():
 			confirmation_timer.start()
 	
-	print("button pressed : ", option_chosen)
+	#print("button pressed : ", option_chosen)
 	#if the button is released (button_up), stop_confirmation(button) will reset the confirmation
 
 
@@ -169,14 +169,14 @@ func _on_confirmation_timer_timeout():
 				"":
 					pass
 				"ResumeButton":
-					print("CONFIRMED : ", "ResumeButton")
+					#print("CONFIRMED : ", "ResumeButton")
 					animation_player.play("out")
 					await animation_player.animation_finished
 					
 					on_resume_pressed()
 					
 				"RestoreButton":
-					print("CONFIRMED : ", "RestoreButton")
+					#print("CONFIRMED : ", "RestoreButton")
 					animation_player.play("out")
 					await animation_player.animation_finished
 					
@@ -184,7 +184,7 @@ func _on_confirmation_timer_timeout():
 					queue_free()
 					
 				"RestartButton":
-					print("CONFIRMED : ", "RestartButton")
+					#print("CONFIRMED : ", "RestartButton")
 					animation_player.play("out")
 					await animation_player.animation_finished
 					
@@ -194,14 +194,14 @@ func _on_confirmation_timer_timeout():
 					queue_free()
 					
 				"LeaveButton":
-					print("CONFIRMED : ", "LeaveButton")
+					#print("CONFIRMED : ", "LeaveButton")
 					animation_player.play("out")
 					await animation_player.animation_finished
 					
 					ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
 					#get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 					await ScreenTransition.transition_finished
-					print("Defeat Menu Terminating")
+					#print("Defeat Menu Terminating")
 					queue_free()
 			
 			)
@@ -210,7 +210,7 @@ func _on_confirmation_timer_timeout():
 
 func close():
 	if is_closing:
-		print("Pause Menu: AlreadyClosing")
+		#print("Pause Menu: AlreadyClosing")
 		return
 	
 	is_closing = true
