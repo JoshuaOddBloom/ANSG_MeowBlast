@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if global_position.y <= -500:
-		# Delete Projectile
 		defeated()
+	
 	# Move Projectile
 	position.y -= projectile_move_speed * delta
 

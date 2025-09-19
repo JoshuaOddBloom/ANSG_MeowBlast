@@ -182,10 +182,12 @@ health_component = NodePath("../HealthComponent")
 
 [node name="FireTrailGPUParticles2D2" parent="." instance=ExtResource("7_nbhyu")]
 position = Vector2(0, 11)
+fixed_fps = 12
 process_material = ExtResource("4_13gj6")
 
 [node name="FireTrailGPUParticles2D" parent="." instance=ExtResource("7_nbhyu")]
 position = Vector2(0, 11)
+fixed_fps = 12
 process_material = ExtResource("5_4efjx")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_a3pup")]

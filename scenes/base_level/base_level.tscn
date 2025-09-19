@@ -583,7 +583,7 @@ max_pitch = 1.2
 
 [node name="ItemDropManager" parent="." instance=ExtResource("3_dojjm")]
 unique_name_in_owner = true
-drop_percent = 1.0
+drop_percent = 0.1
 droppable_items = Array[ExtResource("4_8tryd")]([ExtResource("5_0rn38"), ExtResource("6_0rn38"), ExtResource("9_5uif2")])
 
 [node name="BG" type="Node2D" parent="."]
@@ -608,6 +608,7 @@ texture = ExtResource("3_5yg0m")
 centered = false
 
 [node name="Comet" type="Node2D" parent="BG"]
+visible = false
 
 [node name="BGPatterns" type="Node2D" parent="BG"]
 
@@ -713,13 +714,7 @@ unique_name_in_owner = true
 position = Vector2(320, 331)
 
 [node name="Enemy" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(318, 233)
-
-[node name="Enemy2" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(319, 130)
-
-[node name="Enemy3" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(319, 38)
+position = Vector2(320, -60)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["level_enemy_bounds"]]
 unique_name_in_owner = true

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dri3glp54xdi0"]
-
-[ext_resource type="Script" uid="uid://b324yv1k715jr" path="res://pre_compile.gd" id="1_66d8r"]
-[ext_resource type="PackedScene" uid="uid://deitr7ypebg0a" path="res://scenes/ui/main_menu.tscn" id="2_i3ay6"]
-
-[node name="PreCompile" type="Node"]
-script = ExtResource("1_66d8r")
-
-[node name="MainMenu" parent="." instance=ExtResource("2_i3ay6")]

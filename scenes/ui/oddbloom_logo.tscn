@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c40nj0ydhegyx"]
+[gd_scene load_steps=8 format=3 uid="uid://c40nj0ydhegyx"]
 
 [ext_resource type="Script" uid="uid://g8usbsvp8uwt" path="res://scenes/ui/oddbloom_logo.gd" id="1_itoj5"]
 [ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/White LINES 3 Eye.png" id="2_sqt1x"]
 [ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/White LINES 3 Petals.png" id="3_ffil2"]
-[ext_resource type="Texture2D" uid="uid://b4l1umtvwqnoy" path="res://scenes/ui/Black LINES 3 Eye.png" id="4_f84ix"]
-[ext_resource type="Texture2D" uid="uid://ds1tu5ujo6iyp" path="res://scenes/ui/Black LINES 3 Petals.png" id="5_g8e7m"]
 
 [sub_resource type="Animation" id="Animation_ffil2"]
 length = 0.001
@@ -23,34 +21,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Black/Petals:rotation")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1e-05)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1e-05)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -76,34 +62,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Black/Petals:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.9),
 "transitions": PackedFloat32Array(1, 0.933033, 1),
 "update": 0,
 "values": [Vector2(1, 1e-05), Vector2(1, 1.05), Vector2(1, 1)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -127,34 +101,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Black/Petals:rotation")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -171,11 +133,10 @@ _data = {
 [node name="OddbloomLogo" type="Node2D"]
 scale = Vector2(1, 1e-05)
 script = ExtResource("1_itoj5")
-choosen_type = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="OddBloomLogoAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_f84ix")
@@ -189,13 +150,3 @@ texture = ExtResource("2_sqt1x")
 
 [node name="Petals" type="Sprite2D" parent="White"]
 texture = ExtResource("3_ffil2")
-
-[node name="Black" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="Eye" type="Sprite2D" parent="Black"]
-texture = ExtResource("4_f84ix")
-
-[node name="Petals" type="Sprite2D" parent="Black"]
-texture = ExtResource("5_g8e7m")

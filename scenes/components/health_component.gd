@@ -11,10 +11,10 @@ var is_player_health_component: bool = false
 
 
 func _ready() -> void:
-	GameEvents.player_damaged.connect(on_player_damaged)
 	current_health = max_health
 	# Send out the player's health
 	if owner.is_in_group("player"):
+		GameEvents.player_damaged.connect(on_player_damaged)
 		current_health = start_health
 		is_player_health_component = true
 		GameEvents.emit_player_health_changed(current_health)

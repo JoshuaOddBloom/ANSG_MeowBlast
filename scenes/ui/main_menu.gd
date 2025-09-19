@@ -6,7 +6,7 @@ extends Control
 @onready var title: TextureRect = %Title
 #@onready var start_button: TextureButton = %StartButton
 @onready var marker_2d: Marker2D = $Branding/Marker2D
-@onready var oddbloom_logo = load("res://scenes/ui/oddbloom_logo.tscn")
+@onready var oddbloom_logo: Node2D = %OddbloomLogo
 @onready var ansg_marker_2d: Marker2D = $Branding/ANSGMarker2D
 @onready var ansg_sprite_2d: Sprite2D = $Branding/ANSGMarker2D/ANSGSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -51,6 +51,10 @@ func _ready() -> void:
 func on_wait_to_start_timer_timeout():
 	#disable_input_method_buttons()
 	animation_player.play("auto_quick")
+
+
+func oddbloom_logo_queue_free():
+	oddbloom_logo.queue_free()
 
 
 func focus_start_button():

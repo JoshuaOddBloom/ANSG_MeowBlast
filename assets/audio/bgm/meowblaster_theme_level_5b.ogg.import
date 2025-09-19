@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/meowblaster_theme_level_5b.ogg-417e2b869d0bf0
 [params]
 
 loop=true
-loop_offset=0.09
+loop_offset=0.079
 bpm=165.0
 beat_count=0
 bar_beats=4

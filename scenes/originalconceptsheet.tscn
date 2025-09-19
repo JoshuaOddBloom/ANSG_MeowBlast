@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://w47e1wbbbcpo"]
 
-[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_74db7"]
-[ext_resource type="Texture2D" uid="uid://cevs8187oabfp" path="res://assets/ansg_meowblast.jpeg" id="2_dt253"]
-[ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="3_1qxjc"]
-[ext_resource type="PackedScene" uid="uid://b7riddmnlhxba" path="res://scenes/ui/progress_bar.tscn" id="4_dt253"]
+[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_4w0ok"]
+[ext_resource type="Texture2D" uid="uid://cevs8187oabfp" path="res://assets/ansg_meowblast.jpeg" id="2_diih5"]
+[ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="3_7taxw"]
+[ext_resource type="PackedScene" uid="uid://b7riddmnlhxba" path="res://scenes/ui/progress_bar.tscn" id="4_6l226"]
 
 [node name="ORIGINALCONCEPTSHEET" type="Node2D"]
 
@@ -12,13 +12,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_74db7")
+theme = ExtResource("1_4w0ok")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_right = 3300.0
 offset_bottom = 2400.0
-texture = ExtResource("2_dt253")
+texture = ExtResource("2_diih5")
 
 [node name="ColorRect" type="ColorRect" parent="Control/TextureRect"]
 layout_mode = 0
@@ -32,7 +32,7 @@ offset_left = 1831.0
 offset_top = 780.0
 offset_right = 2863.0
 offset_bottom = 882.0
-theme = ExtResource("3_1qxjc")
+theme = ExtResource("3_7taxw")
 text = "MOCHI GAME \"MEOW Blast\""
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
@@ -42,5 +42,5 @@ offset_top = 2199.0
 offset_right = 1146.0
 offset_bottom = 2467.0
 
-[node name="Panel" parent="Control/MarginContainer" instance=ExtResource("4_dt253")]
+[node name="Panel" parent="Control/MarginContainer" instance=ExtResource("4_6l226")]
 layout_mode = 2
