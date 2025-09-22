@@ -8,6 +8,7 @@ extends Control
 @onready var color_rect: ColorRect = %ColorRect
 @onready var loading_layer: CanvasLayer = %LoadingLayer
 @onready var ui: CanvasLayer = %UI
+@onready var enemy: Node2D = $Node2D/Enemy
 
 var init_ui_finished: bool = false
 var can_proceed: bool = false
@@ -17,7 +18,8 @@ func _ready() -> void:
 	get_window().grab_focus()
 	timer.timeout.connect(on_timer_timeout)
 	progress_bar.max_value = timer.wait_time
-	ui.init_finished.connect(func(): init_ui_finished = true; ui.queue_free(); loading_layer.layer = -1)
+	ui.init_finished.connect(func(): init_ui_finished = true; loading_layer.layer = -1; enemy.init())
+	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = -1)
 	ui.init()
 
 

@@ -39,7 +39,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.247059, 0.14902, 0.192157, 1)]
+"values": [Color(0.2976, 0.186, 0.31, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -51,7 +51,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bjiwi"]
@@ -223,7 +223,7 @@ _data = {
 shader = ExtResource("1_t2t0c")
 shader_parameter/vignette_intensity = 0.24
 shader_parameter/vignette_opacity = 0.256
-shader_parameter/vignette_rgb = Color(0.247059, 0.14902, 0.192157, 1)
+shader_parameter/vignette_rgb = Color(0.2976, 0.186, 0.31, 1)
 
 [node name="Vignette" type="CanvasLayer"]
 script = ExtResource("1_3spf5")
@@ -235,6 +235,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_0kfch")
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,5 +1,6 @@
 extends Node2D
 
+signal init_finished
 
 @export var fall_speed: float = 40.0
 @export var hurt_damage: int = 1
@@ -27,6 +28,20 @@ func _ready() -> void:
 	hurt_box.area_entered.connect(on_hurt_box_entered)
 	hurt_sprite_timer.timeout.connect(on_hurt_sprite_timer_timeout)
 	set_spawn_type()
+
+
+func init():
+	var animation_list = animation_player.get_animation_list()
+	for anim in animation_list:
+		var original_loop_mode = animation_player.get_animation(anim).get_loop_mode()
+		animation_player.get_animation(anim).set_loop_mode(Animation.LOOP_NONE)
+		
+		animation_player.play(anim)
+		await animation_player.animation_finished
+		animation_player.get_animation(anim).set_loop_mode(original_loop_mode)
+		
+	animation_player.play("RESET")
+	init_finished.emit()
 
 
 func _process(delta: float) -> void:

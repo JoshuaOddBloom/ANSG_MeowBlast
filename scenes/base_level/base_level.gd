@@ -18,7 +18,6 @@ extends Node2D
 @onready var game_over_rand_audio_component: RandomAudioStreamPlayer = %GameOverRandAudioComponent
 
 
-
 var projectile_count : int = 0
 var intensity_incremement_count: int = 0
 var intensity_incremement_target: int = 25 # Counts to 10

@@ -26,6 +26,7 @@ class_name Player
 #var current_projectile_selected
 var can_shoot: bool = true
 var power_charge_amount: float = 0.0
+var power_previous_charge_amount: float = 0.0
 var can_use_power: bool = false
 var is_using_power: bool = false
 var current_power: String = "base_x_10"
@@ -167,6 +168,10 @@ func on_using_power_timer_timeout():
 	reset_semi_automatic_timer_wait_time()
 	is_using_power = false
 	GameEvents.emit_player_power_used()
+	if power_previous_charge_amount > 0.0:
+		power_charge_amount = power_previous_charge_amount
+		GameEvents.emit_player_update_power_value(power_previous_charge_amount, power_charge_target)
+		power_previous_charge_amount = 0.0
 
 
 func on_request_player_health():
@@ -199,6 +204,10 @@ func on_global_scale_target_changed():
 
 func on_item_drop_collected(item_resource_name):
 	match item_resource_name:
+		"power_up":
+			power_previous_charge_amount = power_charge_amount
+			GameEvents.emit_player_update_power_value(power_charge_target, power_charge_target)
+			
 		"max_hearts_up":
 			if health_component.max_health >= 9:
 				GameEvents.score_count += 500

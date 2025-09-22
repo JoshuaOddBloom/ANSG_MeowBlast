@@ -53,6 +53,13 @@ func _ready() -> void:
 
 
 func init():
+	add_ui_heart_container_icon(6)
+	await get_tree().create_timer(1.0).timeout
+	for i in heart_containers_hbox.get_children():
+		deplete_ui_heart_container_icon()
+	
+	await get_tree().create_timer(1.0).timeout
+	
 	var animation_list = animation_player.get_animation_list()
 	for anim in animation_list:
 		var original_loop_mode = animation_player.get_animation(anim).get_loop_mode()
@@ -61,9 +68,11 @@ func init():
 		animation_player.play(anim)
 		await animation_player.animation_finished
 		animation_player.get_animation(anim).set_loop_mode(original_loop_mode)
-		
-	add_ui_heart_container_icon(9)
+	
+	animation_player.play("RESET")
+	
 	init_finished.emit()
+	hide()
 
 
 # Heart Containers

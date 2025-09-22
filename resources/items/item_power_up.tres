@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DroppableItem" load_steps=3 format=3 uid="uid://bif8w4hwnlvhd"]
+
+[ext_resource type="Texture2D" uid="uid://b2bfxiwuhwjru" path="res://assets/textures/item_icon_grey_star_64x64.png" id="1_at6o0"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="2_mcu6u"]
+
+[resource]
+script = ExtResource("2_mcu6u")
+item_name = "power_up"
+item_icon = ExtResource("1_at6o0")
+item_modulate_override_color = Color(0.996078, 0.0196078, 0.67451, 1)
+item_weight = 3
+item_fall_speed_multiplier = 1.25
+add_icon_to_ui = false
+max_quantity = 0
+metadata/_custom_type_script = "uid://df24bvw55uwn1"
