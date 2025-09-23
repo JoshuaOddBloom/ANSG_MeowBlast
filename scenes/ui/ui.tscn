@@ -295,45 +295,54 @@ theme_override_constants/margin_bottom = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(154, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 columns = 3
 
 [node name="HeartIcon" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon2" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon3" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon4" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon5" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon6" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon7" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon8" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="HeartIcon9" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="ProjectileCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
 unique_name_in_owner = true

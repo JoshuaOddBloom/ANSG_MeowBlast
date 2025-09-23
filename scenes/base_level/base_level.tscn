@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8swocmpm3gl5"]
+[gd_scene load_steps=30 format=3 uid="uid://c8swocmpm3gl5"]
 
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="1_8hega"]
 [ext_resource type="Script" uid="uid://b6viu7q5cjl1f" path="res://scenes/base_level/base_level.gd" id="1_k2up0"]
@@ -9,14 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://cl5nuu87syh1m" path="res://assets/audio/bgm/meowblaster_theme_level_5b.ogg" id="3_g525y"]
 [ext_resource type="PackedScene" uid="uid://bw7votl21cark" path="res://scenes/enemy/enemy.tscn" id="3_jlp5g"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="4_4cbhi"]
-[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="4_8tryd"]
 [ext_resource type="Texture2D" uid="uid://cr40kg8av6puu" path="res://scenes/base_level/res_level_1_bg_gradient.tres" id="4_jnmbr"]
-[ext_resource type="Resource" uid="uid://c223l7gta8v5g" path="res://resources/items/item_health_up.tres" id="5_0rn38"]
 [ext_resource type="AudioStream" uid="uid://cmg2fj7ueete7" path="res://assets/audio/sfx/player/player_death_1.ogg" id="5_5uif2"]
-[ext_resource type="Resource" uid="uid://csb43hrg77037" path="res://resources/items/item_shooting_speed_up.tres" id="6_0rn38"]
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="6_8o1ni"]
-[ext_resource type="Resource" uid="uid://e535cmmuyqbf" path="res://resources/items/item_move_speed_up.tres" id="9_5uif2"]
-[ext_resource type="Resource" uid="uid://bif8w4hwnlvhd" path="res://resources/items/item_power_up.tres" id="12_8diyn"]
 [ext_resource type="Texture2D" uid="uid://dnqf8ln7fiv8x" path="res://assets/textures/star_wave_pattern.png" id="12_c2ddb"]
 [ext_resource type="Material" uid="uid://b6f408p4ym4pg" path="res://assets/particles/clouds_particle_process_material.tres" id="16_5uif2"]
 
@@ -585,7 +580,6 @@ max_pitch = 1.2
 [node name="ItemDropManager" parent="." instance=ExtResource("3_dojjm")]
 unique_name_in_owner = true
 drop_percent = 1.0
-droppable_items = Array[ExtResource("4_8tryd")]([ExtResource("5_0rn38"), ExtResource("6_0rn38"), ExtResource("9_5uif2"), ExtResource("12_8diyn")])
 
 [node name="BG" type="Node2D" parent="."]
 

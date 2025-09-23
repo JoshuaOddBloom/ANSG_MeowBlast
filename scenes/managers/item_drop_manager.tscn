@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://pyao5qbxpx8l"]
+[gd_scene load_steps=6 format=3 uid="uid://pyao5qbxpx8l"]
 
 [ext_resource type="Script" uid="uid://br3a4aeiff24p" path="res://scenes/managers/item_drop_manager.gd" id="1_vbbop"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="2_mefpy"]
+[ext_resource type="Resource" uid="uid://c223l7gta8v5g" path="res://resources/items/item_health_up.tres" id="3_qsocr"]
+[ext_resource type="Resource" uid="uid://csb43hrg77037" path="res://resources/items/item_shooting_speed_up.tres" id="5_ml8pe"]
+[ext_resource type="Resource" uid="uid://e535cmmuyqbf" path="res://resources/items/item_move_speed_up.tres" id="6_1d8vk"]
 
 [node name="ItemDropManager" type="Node"]
 script = ExtResource("1_vbbop")
+droppable_items = Array[ExtResource("2_mefpy")]([ExtResource("3_qsocr"), ExtResource("5_ml8pe"), ExtResource("6_1d8vk")])

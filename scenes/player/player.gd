@@ -24,6 +24,7 @@ class_name Player
 
 
 #var current_projectile_selected
+var is_init: bool = false
 var can_shoot: bool = true
 var power_charge_amount: float = 0.0
 var power_previous_charge_amount: float = 0.0
@@ -35,7 +36,7 @@ var lerp_scale_to_global_scale_target: bool = false
 
 func _ready() -> void:
 	GameEvents.player_power_charged.connect(on_player_power_charged)
-	GameEvents.request_player_health.connect(on_request_player_health)
+	GameEvents.get_player_health.connect(on_get_player_health)
 	GameEvents.player_defeated.connect(on_player_defeated)
 	GameEvents.player_damaged.connect(on_player_damaged)
 	GameEvents.score_count_changed.connect(on_score_count_changed)
@@ -54,6 +55,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if is_init:
+		return
 	## Input Monitoring
 	
 	if lerp_scale_to_global_scale_target:
@@ -168,13 +171,15 @@ func on_using_power_timer_timeout():
 	reset_semi_automatic_timer_wait_time()
 	is_using_power = false
 	GameEvents.emit_player_power_used()
+	
 	if power_previous_charge_amount > 0.0:
 		power_charge_amount = power_previous_charge_amount
-		GameEvents.emit_player_update_power_value(power_previous_charge_amount, power_charge_target)
+		update_power_gauge(power_charge_amount, power_charge_target)
+		GameEvents.emit_player_update_power_value(power_charge_amount, power_charge_target)
 		power_previous_charge_amount = 0.0
 
 
-func on_request_player_health():
+func on_get_player_health():
 	health_component.check_health()
 
 
@@ -206,7 +211,9 @@ func on_item_drop_collected(item_resource_name):
 	match item_resource_name:
 		"power_up":
 			power_previous_charge_amount = power_charge_amount
+			update_power_gauge(power_charge_amount, power_charge_target)
 			GameEvents.emit_player_update_power_value(power_charge_target, power_charge_target)
+			can_use_power = true
 			
 		"max_hearts_up":
 			if health_component.max_health >= 9:

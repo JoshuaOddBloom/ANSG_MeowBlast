@@ -9,6 +9,8 @@ extends Control
 @onready var loading_layer: CanvasLayer = %LoadingLayer
 @onready var ui: CanvasLayer = %UI
 @onready var enemy: Node2D = $Node2D/Enemy
+@onready var player: Player = $Node2D/Player
+@onready var item_drop_manager: Node = %ItemDropManager
 
 var init_ui_finished: bool = false
 var can_proceed: bool = false
@@ -21,6 +23,10 @@ func _ready() -> void:
 	ui.init_finished.connect(func(): init_ui_finished = true; loading_layer.layer = -1; enemy.init())
 	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = -1)
 	ui.init()
+	player.is_init = true
+	item_drop_manager.init()
+	
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 
 
 func _process(_delta: float) -> void:
@@ -44,6 +50,7 @@ func on_timer_timeout():
 		return
 	
 	label.hide()
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	var show_controls_screen_instance = show_controls_screen.instantiate()
 	show_controls_screen_instance.closed.connect(on_sound_button_pressed)
 	add_child(show_controls_screen_instance)

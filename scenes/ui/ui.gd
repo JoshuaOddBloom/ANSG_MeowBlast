@@ -6,6 +6,7 @@ signal init_finished
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 # Left Side UI
 @onready var score_count_label: Label = %ScoreCountLabel
+@onready var power_containers_h_box: HBoxContainer = %PowerContainersHBox
 @onready var level_label: Label = %LevelLabel
 @onready var projectile_count_label: Label = %ProjectileCountLabel
 @onready var player_health_label: Label = %PlayerHealthLabel
@@ -50,6 +51,8 @@ func _ready() -> void:
 	#retry_button.pressed.connect(on_retry_button_pressed)
 	enemy_health_bar.hide()
 	level_increment_update()
+	
+	power_containers_h_box.hide()
 
 
 func init():

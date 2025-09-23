@@ -1,15 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://gkmuf153b32r"]
+[gd_scene load_steps=10 format=3 uid="uid://gkmuf153b32r"]
 
 [ext_resource type="Script" uid="uid://bytha3d7nqphc" path="res://scenes/ui/init_screen.gd" id="1_6bgux"]
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="2_6l5e5"]
+[ext_resource type="PackedScene" uid="uid://pyao5qbxpx8l" path="res://scenes/managers/item_drop_manager.tscn" id="2_q7rr7"]
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_sx5u0"]
 [ext_resource type="Theme" uid="uid://c0b4wwadsywt2" path="res://assets/themes/default_theme_large_font.tres" id="3_6l5e5"]
 [ext_resource type="Texture2D" uid="uid://y1vbeihoahxd" path="res://assets/ui/original_ship_cleanup128w.png" id="3_sx5u0"]
 [ext_resource type="PackedScene" uid="uid://bw7votl21cark" path="res://scenes/enemy/enemy.tscn" id="6_nyqts"]
-[ext_resource type="PackedScene" uid="uid://c0ayjlpiqu7p8" path="res://scenes/game_objects/item_drop/item_drop.tscn" id="7_osrwe"]
-[ext_resource type="Resource" uid="uid://c223l7gta8v5g" path="res://resources/items/item_health_up.tres" id="8_q7rr7"]
-[ext_resource type="Resource" uid="uid://csb43hrg77037" path="res://resources/items/item_shooting_speed_up.tres" id="9_jloie"]
-[ext_resource type="Resource" uid="uid://e535cmmuyqbf" path="res://resources/items/item_move_speed_up.tres" id="10_8p1eq"]
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="11_ennjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyqts"]
@@ -89,20 +86,12 @@ show_percentage = false
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[node name="ItemDropManager" parent="Node2D" instance=ExtResource("2_q7rr7")]
+unique_name_in_owner = true
+drop_percent = 1.0
+
 [node name="Enemy" parent="Node2D" instance=ExtResource("6_nyqts")]
 position = Vector2(-55, 0)
-
-[node name="ItemDrop" parent="Node2D" instance=ExtResource("7_osrwe")]
-position = Vector2(284, 180)
-item_resource = ExtResource("8_q7rr7")
-
-[node name="ItemDrop2" parent="Node2D" instance=ExtResource("7_osrwe")]
-position = Vector2(284, 180)
-item_resource = ExtResource("9_jloie")
-
-[node name="ItemDrop3" parent="Node2D" instance=ExtResource("7_osrwe")]
-position = Vector2(284, 180)
-item_resource = ExtResource("10_8p1eq")
 
 [node name="Player" parent="Node2D" instance=ExtResource("11_ennjc")]
 position = Vector2(287, 302)

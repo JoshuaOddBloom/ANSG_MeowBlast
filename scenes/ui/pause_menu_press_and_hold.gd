@@ -88,6 +88,7 @@ func stop_confirmation(button: SoundButton):
 		return
 	
 	if ! button == null:
+		pass
 		#print("button released : ", button.name)
 	
 	if ! confirmation_timer.is_stopped():

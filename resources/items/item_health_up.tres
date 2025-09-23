@@ -11,4 +11,5 @@ item_modulate_override_color = Color(0, 1, 0.0392157, 1)
 item_weight = 4
 item_fall_speed_multiplier = 1.1
 add_icon_to_ui = false
+max_quantity = 0
 metadata/_custom_type_script = "uid://df24bvw55uwn1"

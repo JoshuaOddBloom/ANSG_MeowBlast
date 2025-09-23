@@ -12,7 +12,7 @@ signal player_power_charged
 signal player_power_used
 signal player_power_being_used
 signal player_update_power_value(current_power, power_target)
-signal request_player_health
+signal get_player_health
 signal player_health_changed(new_player_health_amount)
 signal player_damaged(amount)
 signal player_defeated
@@ -64,8 +64,16 @@ func level_launch_signal_request():
 	emit_projectile_count_changed(projectile_count)
 	emit_level_incremement_changed()
 	
-	request_player_health.emit()
+	get_player_health.emit()
 	emit_level_changed(current_level)
+
+
+func get_player_position():
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	else:
+		return player.global_position
 
 
 func check_level_incremement():

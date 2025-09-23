@@ -4,7 +4,7 @@ extends Node
 @export var item_base = preload("res://scenes/game_objects/item_drop/item_drop.tscn")
 const ITEM_HEALTH_UP = preload("res://resources/items/item_health_up.tres")
 @export var droppable_items: Array[DroppableItem]
-@onready var entities_layer: Node2D = %EntitiesLayer
+@onready var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 
 
 var item_pool : WeightedTable = WeightedTable.new()
@@ -15,6 +15,14 @@ func _ready() -> void:
 	GameEvents.item_drop_requested.connect(on_item_drop_requested)
 	#GameEvents.item_drop_collected.connect(on_item_drop_collected)
 	add_droppable_items_to_item_pool()
+
+
+func init():
+	for i in droppable_items:
+		var item_instance = item_base.instantiate()
+		self.add_child(item_instance)
+		item_instance.global_position = GameEvents.get_player_position()
+		item_instance.add_item_resource(i)
 
 
 func add_droppable_items_to_item_pool():
