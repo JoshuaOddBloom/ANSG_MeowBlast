@@ -56,6 +56,10 @@ func _process(_delta: float) -> void:
 		stop_confirmation(null)
 
 
+func is_fully_opened():
+	pass
+
+
 func animation_player_play_restore():
 	if GameEvents.player_can_restore:
 		animation_player.play("restore")

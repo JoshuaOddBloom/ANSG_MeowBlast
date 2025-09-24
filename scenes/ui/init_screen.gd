@@ -20,7 +20,7 @@ func _ready() -> void:
 	get_window().grab_focus()
 	timer.timeout.connect(on_timer_timeout)
 	progress_bar.max_value = timer.wait_time
-	ui.init_finished.connect(func(): init_ui_finished = true; loading_layer.layer = -1; enemy.init())
+	ui.init_finished.connect(func(): init_ui_finished = true; loading_layer.layer = -1; enemy.init(); player.hide())
 	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = -1)
 	ui.init()
 	player.is_init = true

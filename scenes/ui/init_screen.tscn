@@ -21,6 +21,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6bgux")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ItemDropManager" parent="Node2D" instance=ExtResource("2_q7rr7")]
+unique_name_in_owner = true
+drop_percent = 1.0
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("6_nyqts")]
+position = Vector2(-55, 0)
+
+[node name="Player" parent="Node2D" instance=ExtResource("11_ennjc")]
+position = Vector2(287, 302)
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -33,7 +45,6 @@ layer = -1
 [node name="LoadingLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 5
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="LoadingLayer"]
 unique_name_in_owner = true
@@ -83,15 +94,3 @@ size_flags_vertical = 8
 theme = ExtResource("3_6l5e5")
 theme_override_styles/background = SubResource("StyleBoxFlat_nyqts")
 show_percentage = false
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="ItemDropManager" parent="Node2D" instance=ExtResource("2_q7rr7")]
-unique_name_in_owner = true
-drop_percent = 1.0
-
-[node name="Enemy" parent="Node2D" instance=ExtResource("6_nyqts")]
-position = Vector2(-55, 0)
-
-[node name="Player" parent="Node2D" instance=ExtResource("11_ennjc")]
-position = Vector2(287, 302)

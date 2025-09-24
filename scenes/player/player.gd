@@ -101,6 +101,7 @@ func update_player_stats():
 	#print("UPDATE PLAYER STATS")
 	GameEvents.emit_update_player_stats("move_speed", move_speed)
 	GameEvents.emit_update_player_stats("shooting_speed", semi_automatic_timer.wait_time)
+	GameEvents.player_update_power_value.emit(power_charge_amount, power_charge_target)
 
 
 

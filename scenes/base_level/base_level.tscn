@@ -579,7 +579,7 @@ max_pitch = 1.2
 
 [node name="ItemDropManager" parent="." instance=ExtResource("3_dojjm")]
 unique_name_in_owner = true
-drop_percent = 1.0
+drop_percent = 0.1
 
 [node name="BG" type="Node2D" parent="."]
 
