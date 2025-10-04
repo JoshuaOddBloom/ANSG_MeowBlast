@@ -3,7 +3,6 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var enemy_spawn_timer_min_wait: float = 1.5
 @export var enemy_spawn_timer_max_wait: float = 2.5
-
 @onready var entities_layer: Node2D = %EntitiesLayer
 @onready var player: Player = %Player
 @onready var enemy_spawner_timer: Timer = $EnemySpawnerTimer
@@ -12,7 +11,6 @@ extends Node2D
 @onready var projectile_bounds: Area2D = %ProjectileBounds
 @onready var hurt_box: Area2D = %HurtBox
 # Levels
-#@onready var bg_animation_player: AnimationPlayer = %BGAnimationPlayer
 @onready var level_transition_player: AnimationPlayer = $BG/LevelTransitionPlayer
 @onready var pattern_animation_player: AnimationPlayer = %PatternAnimationPlayer
 @onready var game_over_rand_audio_component: RandomAudioStreamPlayer = %GameOverRandAudioComponent
@@ -33,11 +31,9 @@ func _ready() -> void:
 	enemy_spawner_timer_2.timeout.connect(on_enemy_spawner_timer_2_timeout)
 	enemy_spawner_timer_3.timeout.connect(on_enemy_spawner_timer_3_timeout)
 	GameEvents.level_changed.connect(on_level_changed)
-	
 	# For UI initial status
 	GameEvents.level_launch_signal_request()
 	player.update_player_stats()
-	
 	projectile_bounds.area_entered.connect(on_projectile_bounds_entered)
 	hurt_box.area_entered.connect(on_hurt_box_entered)
 	GameEvents.game_played = true

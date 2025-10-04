@@ -47,6 +47,7 @@ func _ready() -> void:
 	GameEvents.update_player_stats.connect(on_update_player_stats)
 	GameEvents.game_over.connect(on_game_over)
 	
+	score_count_label.text = "SCORE\n0"
 	fps_timer.timeout.connect(on_fps_timer_timeout)
 	#retry_button.pressed.connect(on_retry_button_pressed)
 	enemy_health_bar.hide()

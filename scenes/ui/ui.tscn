@@ -11,7 +11,6 @@
 [ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="6_4kltc"]
 [ext_resource type="Texture2D" uid="uid://cumppv8gqdv46" path="res://assets/textures/movement_trails_thin.png" id="6_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://hm13npaclqff" path="res://scenes/ui/power_up_container_icon.tscn" id="7_hl07w"]
-[ext_resource type="PackedScene" uid="uid://cfavwx3yccek6" path="res://scenes/ui/heart_container_icon.tscn" id="8_swkix"]
 
 [sub_resource type="Animation" id="Animation_uegxj"]
 length = 0.001
@@ -163,6 +162,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5kmx"]
 size = Vector2(190, 600)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl07w"]
+size = Vector2(145, 34.1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uegxj"]
 bg_color = Color(0.324912, 0.262358, 0.455576, 1)
 
@@ -241,6 +243,19 @@ custom_minimum_size = Vector2(156, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="ScoreCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+unique_name_in_owner = true
+modulate = Color(0.908646, 0.629312, 0.968326, 1)
+custom_minimum_size = Vector2(153, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "SCORE
+00000000000"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="PowerProgressBar" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
 unique_name_in_owner = true
 clip_contents = true
@@ -268,8 +283,21 @@ theme = ExtResource("6_4kltc")
 text = "POWER"
 horizontal_alignment = 1
 
+[node name="PowerButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(145, 24)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
+position = Vector2(77, 16)
+shape = SubResource("RectangleShape2D_hl07w")
+action = "mouse_button_left"
+
 [node name="PowerContainersHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -296,53 +324,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(154, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 8
 columns = 3
-
-[node name="HeartIcon" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon2" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon3" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon4" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon5" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon6" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon7" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon8" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="HeartIcon9" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/MarginContainer/HeartContainersHBox" instance=ExtResource("8_swkix")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
 
 [node name="ProjectileCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
 unique_name_in_owner = true
@@ -366,19 +349,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "Health : "
-autowrap_mode = 2
-
-[node name="ScoreCountLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
-unique_name_in_owner = true
-modulate = Color(0.908646, 0.629312, 0.968326, 1)
-custom_minimum_size = Vector2(153, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
-text = "SCORE
-0"
-horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CenterVBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -409,7 +379,7 @@ size_flags_horizontal = 8
 theme = ExtResource("3_pfayw")
 
 [node name="ArenaTimeUI" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox" instance=ExtResource("5_uegxj")]
-custom_minimum_size = Vector2(48, 32)
+custom_minimum_size = Vector2(48, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = null
@@ -451,7 +421,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 16
-text = "49 of 50"
+text = "0 of 50"
 horizontal_alignment = 2
 vertical_alignment = 1
 

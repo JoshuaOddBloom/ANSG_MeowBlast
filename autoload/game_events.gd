@@ -8,6 +8,7 @@ signal projectile_count_changed(new_projectile_count)
 # Game-flow elements
 signal global_scale_target_changed
 signal update_player_stats(stat: String, value: float)
+signal use_power
 signal player_power_charged
 signal player_power_used
 signal player_power_being_used
@@ -122,6 +123,10 @@ func emit_projectile_count_changed(amount_changed):
 	if projectile_count < 0:
 		projectile_count = 0
 	projectile_count_changed.emit(projectile_count)
+
+
+func emit_use_power():
+	use_power.emit()
 
 
 func emit_player_power_charged():

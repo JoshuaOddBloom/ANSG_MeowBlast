@@ -3,6 +3,7 @@ extends PanelContainer
 @export var label_text_override: String = ""
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var label: Label = $Label
+@onready var power_button: Button = %PowerButton
 
 var power_being_used: bool = false
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 	#GameEvents.player_power_used.connect(on_player_power_used)
 	#GameEvents.player_power_being_used.connect(on_player_power_being_used)
 	GameEvents.player_update_power_value.connect(on_player_update_power_value)
+	power_button.pressed.connect(on_power_button_pressed)
 	#GameEvents.score_count_changed.connect(on_score_count_changed)
 	if label_text_override != "":
 		label.text = label_text_override
@@ -46,3 +48,7 @@ func _on_progress_bar_value_changed(value: float) -> void:
 func on_player_update_power_value(current_power, power_target):
 	progress_bar.max_value = power_target
 	progress_bar.value = current_power
+
+
+func on_power_button_pressed():
+	GameEvents.emit_use_power()

@@ -35,6 +35,7 @@ var lerp_scale_to_global_scale_target: bool = false
 
 
 func _ready() -> void:
+	GameEvents.use_power.connect(use_power)
 	GameEvents.player_power_charged.connect(on_player_power_charged)
 	GameEvents.get_player_health.connect(on_get_player_health)
 	GameEvents.player_defeated.connect(on_player_defeated)
@@ -42,15 +43,15 @@ func _ready() -> void:
 	GameEvents.score_count_changed.connect(on_score_count_changed)
 	GameEvents.item_drop_collected.connect(on_item_drop_collected)
 	GameEvents.global_scale_target_changed.connect(on_global_scale_target_changed)
-	
+	#
 	health_component.defeated.connect(on_player_defeated)
 	semi_automatic_timer.timeout.connect(on_semi_automatic_timer_timeout)
 	#boost_automatic_timer.timeout.connect(on_semi_automatic_timer_timeout)
 	using_power_timer.timeout.connect(on_using_power_timer_timeout)
 	
+	GameEvents.emit_player_health_changed(health_component.current_health)
 	power_ready_gpu_particles_2d.emitting = false
 	semi_automatic_timer.wait_time = projectile_base_wait_time
-	
 	update_player_stats()
 
 
@@ -65,16 +66,22 @@ func _process(delta: float) -> void:
 		elif scale == GameEvents.global_scale_target:
 			lerp_scale_to_global_scale_target = false
 	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var global_mouse_position = get_global_mouse_position()
+		if global_mouse_position.x <= 170 or global_mouse_position.x >= 470:
+			return
+		
+		global_position.x = global_mouse_position.x
+	
 	# Move Left
 	if Input.is_action_pressed("ui_left"):
 		global_position.x -= move_speed * delta
-	
 	# Move Right
 	elif Input.is_action_pressed("ui_right"):
 		global_position.x += move_speed * delta
 	
 	# Fire Projectile
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("mouse_button_left"):
 		if ! can_shoot:
 			# Cannot shoot, break out of loop
 			return
@@ -82,19 +89,23 @@ func _process(delta: float) -> void:
 		
 		semi_automatic_timer.start()
 		
-	elif Input.is_action_just_released("shoot"):
+	elif Input.is_action_just_released("shoot") or Input.is_action_just_released("mouse_button_left"):
 		semi_automatic_timer.stop()
 	
-	if Input.is_action_just_pressed("use_power"):
-		if can_use_power:
+	if Input.is_action_just_pressed("use_power") or Input.is_action_just_pressed("mouse_button_right"):
+		use_power()
+	
+	move_and_slide()
+
+
+func use_power():
+	if can_use_power:
 			projectile_base_wait_time = semi_automatic_timer.wait_time
 			can_use_power = false
 			is_using_power = true
 			set_power_parameters()
 			using_power_timer.start()
 			update_power_bar_value_timer.start()
-	
-	move_and_slide()
 
 
 func update_player_stats():

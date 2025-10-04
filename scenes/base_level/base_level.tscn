@@ -560,6 +560,8 @@ script = ExtResource("1_k2up0")
 enemy_scene = ExtResource("3_jlp5g")
 enemy_spawn_timer_min_wait = 1.0
 enemy_spawn_timer_max_wait = 2.25
+metadata/_edit_vertical_guides_ = [170.0, 470.0]
+metadata/_edit_horizontal_guides_ = [-27.0, -3.0]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_g525y")
@@ -729,7 +731,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileBounds"]
-position = Vector2(320, -27.5)
+position = Vector2(322, -27)
 shape = SubResource("RectangleShape2D_0wob2")
 debug_color = Color(0.92705, 0.269834, 7.70092e-07, 0.42)
 
