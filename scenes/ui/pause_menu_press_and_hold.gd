@@ -10,6 +10,8 @@ extends CanvasLayer
 @onready var choices: VBoxContainer = %Choices
 @onready var restore_margin_container: MarginContainer = %RestoreMarginContainer
 @onready var resume_button: SoundButton = %ResumeButton
+@onready var controls_button: SoundButton = %ControlsButton
+@onready var options_button: SoundButton = %OptionsButton
 @onready var restore_button: Button = %RestoreButton
 @onready var restart_button: Button = %RestartButton
 @onready var leave_button: Button = %LeaveButton
@@ -33,10 +35,14 @@ func _ready() -> void:
 	#Button down
 	resume_button.button_down.connect(_on_button_pressed.bind(resume_button))
 	restore_button.button_down.connect(_on_button_pressed.bind(restore_button))
+	controls_button.button_down.connect(_on_button_pressed.bind(controls_button))
+	options_button.button_down.connect(_on_button_pressed.bind(options_button))
 	restart_button.button_down.connect(_on_button_pressed.bind(restart_button))
 	leave_button.button_down.connect(_on_button_pressed.bind(leave_button))
 	#button up
 	resume_button.button_up.connect(stop_confirmation.bind(resume_button))
+	#controls_button.button_up.connect(_on_button_pressed.bind(controls_button))
+	#options_button.button_up.connect(_on_button_pressed.bind(options_button))
 	restore_button.button_up.connect(stop_confirmation.bind(restore_button))
 	restart_button.button_up.connect(stop_confirmation.bind(restart_button))
 	leave_button.button_up.connect(stop_confirmation.bind(leave_button))
@@ -104,6 +110,13 @@ func _on_button_pressed(button: SoundButton):
 	if option_confirmed:
 		return
 	
+	if button == controls_button:
+		# call the controls screen exactly as it is in the main menu
+		pass
+	elif button == options_button:
+#		call the options screen exactly as it is in the main menu
+		pass
+	
 	Input.start_joy_vibration(0,.1, 0.1, 0.1) #First Vibration
 	progress_notch_1.modulate = Color.WHITE
 	
@@ -128,8 +141,6 @@ func _on_button_pressed(button: SoundButton):
 	if confirmation_timer.is_stopped():
 			confirmation_timer.start()
 	
-	#print("button pressed : ", option_chosen)
-	#if the button is released (button_up), stop_confirmation(button) will reset the confirmation
 
 
 func _on_confirmation_timer_timeout():

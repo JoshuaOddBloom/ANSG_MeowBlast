@@ -13,7 +13,7 @@ config_version=5
 config/name="ANSG_MeowBlaster"
 config/tags=PackedStringArray("ansg", "gdscript", "oddbloomstudios")
 run/main_scene="uid://gkmuf153b32r"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,6 +30,10 @@ window/size/always_on_top=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 
 [file_customization]
 

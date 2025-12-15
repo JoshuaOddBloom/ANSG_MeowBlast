@@ -1,0 +1,59 @@
+{
+	"categories": [
+		{
+			"uuid": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"title": "Task",
+			"color": "ff6ee0"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "f74b1513-6b50-43b6-895b-b0059d0584cd",
+			"title": "Todo",
+			"tasks": [
+				"179448fe-f0be-4289-aee0-09ff590a5dc9"
+			]
+		},
+		{
+			"uuid": "269233df-2f6c-4020-a38c-0e039b78480e",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "48dc1195-2604-42bb-ac0d-c2a07de2cc0b",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "179448fe-f0be-4289-aee0-09ff590a5dc9",
+			"title": "Pause Menu",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Controls Button not working",
+					"done": false
+				},
+				{
+					"details": "Press and Hold not working",
+					"done": false
+				}
+			]
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"f74b1513-6b50-43b6-895b-b0059d0584cd"
+			],
+			[
+				"269233df-2f6c-4020-a38c-0e039b78480e"
+			],
+			[
+				"48dc1195-2604-42bb-ac0d-c2a07de2cc0b"
+			]
+		]
+	}
+}

@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otr3d"]
-bg_color = Color(0.1564, 0.1196, 0.23, 0.870588)
+bg_color = Color(0.15686275, 0.11764706, 0.23137255, 0.94509804)
 border_width_left = 1
 border_width_top = 4
 border_width_right = 1
@@ -180,7 +180,7 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "ESC / TAB"
+text = "ESC or TAB"
 vertical_alignment = 2
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
@@ -201,7 +201,7 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "J / Space / Enter"
+text = "J or Space or Enter"
 vertical_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
@@ -222,7 +222,7 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "A+D / Left+Right Arrows"
+text = "A+D or Left+Right Arrows"
 vertical_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
@@ -242,7 +242,7 @@ text = "Shoot : "
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "J / Space / Enter 
+text = "J or Space or Enter 
 [ Hold to auto-fire ]"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
@@ -263,7 +263,7 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "K / Shift"
+text = "K or Shift"
 
 [node name="ControllerPanelContainer" type="PanelContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
@@ -302,7 +302,7 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "Option (PlayStation) / Menu (XBOX)"
+text = "Option (PlayStation) or Menu (XBOX)"
 vertical_alignment = 2
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
@@ -323,7 +323,7 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "X (Playstation) / A (XBOX)"
+text = "X (Playstation) or A (XBOX)"
 vertical_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
@@ -344,7 +344,7 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "D-Pad / Left or Right Stick"
+text = "D-Pad or Either JoyStick"
 vertical_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
@@ -391,9 +391,10 @@ X or LB  (XBOX)"
 
 [node name="HowToAccessInfoLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(1, 0.85866666, 0.47000003, 1)
 layout_mode = 2
 theme = ExtResource("2_nnn4t")
-text = "You can access this screen in-game from the Pause menu"
+text = "YOU CAN ALSO ACCESS THIS SCREEN FROM THE PAUSE MENU"
 horizontal_alignment = 1
 
 [node name="SoundButton" parent="MarginContainer/ControlsPanel/VBoxContainer" instance=ExtResource("3_ge8p4")]
