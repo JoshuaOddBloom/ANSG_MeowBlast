@@ -11,7 +11,9 @@
 			"uuid": "f74b1513-6b50-43b6-895b-b0059d0584cd",
 			"title": "Todo",
 			"tasks": [
-				"179448fe-f0be-4289-aee0-09ff590a5dc9"
+				"bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
+				"8e9d04a4-f1de-405a-9026-57f3e2f1b71c",
+				"139a58c3-3953-4a48-a15b-f20cbe9dd70e"
 			]
 		},
 		{
@@ -22,7 +24,9 @@
 		{
 			"uuid": "48dc1195-2604-42bb-ac0d-c2a07de2cc0b",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"179448fe-f0be-4289-aee0-09ff590a5dc9"
+			]
 		}
 	],
 	"tasks": [
@@ -34,10 +38,50 @@
 			"steps": [
 				{
 					"details": "Controls Button not working",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Press and Hold not working",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
+			"title": "Controls Screen",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Not showing Mouse / Touch Input",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "8e9d04a4-f1de-405a-9026-57f3e2f1b71c",
+			"title": "Player",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Create Power Charge Levels (3 max)",
+					"done": false
+				},
+				{
+					"details": "- Adjust UI to reflect",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "139a58c3-3953-4a48-a15b-f20cbe9dd70e",
+			"title": "After being defeated",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Add a little animation where the earth starts to glow pink to symbolize that the cats have started destroying it",
 					"done": false
 				}
 			]

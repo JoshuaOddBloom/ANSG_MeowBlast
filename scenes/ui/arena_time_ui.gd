@@ -9,6 +9,7 @@ var tell_time: bool = true
 
 func _ready():
 	GameEvents.game_paused.connect(on_game_paused)
+	GameEvents.game_unpaused.connect(on_game_unpaused)
 	GameEvents.player_defeated.connect(on_player_defeated)
 	GameEvents.game_over.connect(on_game_over)
 	timer.timeout.connect(on_timer_timeout)
@@ -36,8 +37,10 @@ func on_game_paused(occassion):
 		animation_player.play("paused_test")
 	elif occassion == "paused":
 		animation_player.play("paused")
-	elif occassion == "done":
-		animation_player.play("RESET")
+
+
+func on_game_unpaused():
+	animation_player.play("RESET")
 
 
 func on_player_defeated():

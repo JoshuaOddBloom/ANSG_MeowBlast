@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://0d7fsdntcf5u"]
+[gd_scene load_steps=24 format=3 uid="uid://0d7fsdntcf5u"]
 
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_aac20"]
 [ext_resource type="Script" uid="uid://bjewobefx3y8c" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="6_4kltc"]
 [ext_resource type="Texture2D" uid="uid://cumppv8gqdv46" path="res://assets/textures/movement_trails_thin.png" id="6_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://hm13npaclqff" path="res://scenes/ui/power_up_container_icon.tscn" id="7_hl07w"]
+[ext_resource type="Texture2D" uid="uid://co0o3nrjlujc7" path="res://assets/textures/ui/pause_button.png" id="11_hl07w"]
 
 [sub_resource type="Animation" id="Animation_uegxj"]
 length = 0.001
@@ -163,7 +164,7 @@ _data = {
 size = Vector2(190, 600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl07w"]
-size = Vector2(145, 34.1)
+size = Vector2(155, 36)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uegxj"]
 bg_color = Color(0.324912, 0.262358, 0.455576, 1)
@@ -178,7 +179,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="UI" type="CanvasLayer"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swkix"]
+size = Vector2(32, 32)
+
+[node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_g5kmx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -290,8 +294,9 @@ custom_minimum_size = Vector2(145, 24)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox"]
-position = Vector2(77, 16)
+[node name="PowerTouchScreenButton" type="TouchScreenButton" parent="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar"]
+unique_name_in_owner = true
+position = Vector2(77, 17)
 shape = SubResource("RectangleShape2D_hl07w")
 action = "mouse_button_left"
 
@@ -379,7 +384,7 @@ size_flags_horizontal = 8
 theme = ExtResource("3_pfayw")
 
 [node name="ArenaTimeUI" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox" instance=ExtResource("5_uegxj")]
-custom_minimum_size = Vector2(48, 64)
+custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = null
@@ -518,16 +523,38 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="FPSLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="FPSLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/HBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(0.908646, 0.629312, 0.968326, 1)
 custom_minimum_size = Vector2(116, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
-text = "FPS : 9999"
+text = "FPS : 999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("11_hl07w")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PauseTouchScreenButton" type="TouchScreenButton" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/HBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(18, 16)
+shape = SubResource("RectangleShape2D_swkix")
+visibility_mode = 1
 
 [node name="Vignette" parent="." instance=ExtResource("2_pfayw")]
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar/ProgressBar" to="MarginContainer/HBoxContainer/PanelContainer/LeftUIVBox/PowerProgressBar" method="_on_progress_bar_value_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/HBoxContainer/PauseTouchScreenButton" to="." method="_on_pause_touch_screen_button_pressed"]

@@ -21,6 +21,7 @@ signal player_restored
 signal game_over
 # Pausing
 signal game_paused(occassion)
+signal game_unpaused
 # Item Drops
 signal item_drop_collected(item_resource_name: String)
 signal item_drop_requested(location)
@@ -44,7 +45,7 @@ var score_count: int = 0
 var projectile_count: int = 0
 # pausing
 var can_pause: bool = true
-var pause_menu_scene = preload("res://scenes/ui/pause_menu_press_and_hold.tscn")
+var pause_menu_scene = preload("res://scenes/ui/pause_menu_with_confirm.tscn")
 var previous_pause_state
 var main_menu_shown_before: bool = false
 var game_played: bool = false
@@ -171,7 +172,17 @@ func emit_game_over():
 
 func emit_game_paused(occassion): #good for adding animations to static elements while the game is paused
 	## NOTE: EVERY EMIT SHOULD HAVE AN OCCASSION : "done" for when the game is resuming
-	game_paused.emit(occassion)
+	match occassion:
+		"paused":
+			if can_pause:
+				add_child(GameEvents.pause_menu_scene.instantiate())
+				game_paused.emit(occassion)
+		"done":
+			pass
+
+
+func emit_game_unpaused():
+	game_unpaused.emit()
 
 
 # ITEM DROPS

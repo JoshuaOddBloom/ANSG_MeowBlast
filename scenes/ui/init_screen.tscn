@@ -28,7 +28,10 @@ unique_name_in_owner = true
 drop_percent = 1.0
 
 [node name="Enemy" parent="Node2D" instance=ExtResource("6_nyqts")]
-position = Vector2(-55, 0)
+position = Vector2(296, -72)
+
+[node name="Enemy2" parent="Node2D" instance=ExtResource("6_nyqts")]
+position = Vector2(288, 194)
 
 [node name="Player" parent="Node2D" instance=ExtResource("11_ennjc")]
 position = Vector2(287, 302)
@@ -44,7 +47,7 @@ layer = -1
 
 [node name="LoadingLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-layer = 5
+layer = 50
 
 [node name="ColorRect" type="ColorRect" parent="LoadingLayer"]
 unique_name_in_owner = true
@@ -53,7 +56,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.8156863)
 
 [node name="MarginContainer" type="MarginContainer" parent="LoadingLayer"]
 anchors_preset = 15
@@ -85,7 +88,6 @@ text = "LOADING"
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadingLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 clip_contents = true
 custom_minimum_size = Vector2(256, 8)
 layout_mode = 2

@@ -10,7 +10,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/MarginContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/MarginContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,6 +34,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sound_button_grab_focus"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_63k0w"]
@@ -105,10 +119,12 @@ libraries = {
 }
 autoplay = "auto"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -116,11 +132,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 color = Color(0, 0, 0, 0.176471)
 
-[node name="ControlsPanel" type="PanelContainer" parent="MarginContainer"]
+[node name="ControlsPanel" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -128,46 +144,46 @@ size_flags_vertical = 4
 theme = ExtResource("1_eu3p8")
 theme_override_styles/panel = SubResource("StyleBoxFlat_otr3d")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="ControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer"]
+[node name="ControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "CONTROLS"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="KeyboardPanelContainer" type="PanelContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer"]
+[node name="KeyboardPanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ekit")
 
-[node name="KeyboardHBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer"]
+[node name="KeyboardHBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer"]
 layout_mode = 2
 
-[node name="ControllerLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer"]
+[node name="ControllerLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "KEYBOARD"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="PauseControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="PauseControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -175,7 +191,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Pause :"
 
-[node name="PauseControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="PauseControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -183,12 +199,12 @@ theme_override_font_sizes/font_size = 16
 text = "ESC or TAB"
 vertical_alignment = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="SelectControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="SelectControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -196,7 +212,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Select :"
 
-[node name="SelectControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="SelectControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -204,12 +220,12 @@ theme_override_font_sizes/font_size = 16
 text = "J or Space or Enter"
 vertical_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(0, 0.986765, 0.80742, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="MoveControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MoveControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -217,7 +233,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Move : "
 
-[node name="MoveControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MoveControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -225,12 +241,12 @@ theme_override_font_sizes/font_size = 16
 text = "A+D or Left+Right Arrows"
 vertical_alignment = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(1, 0.41501, 0.361362, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ShootControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ShootControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -238,19 +254,19 @@ size_flags_vertical = 5
 theme_override_font_sizes/font_size = 16
 text = "Shoot : "
 
-[node name="ShootControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ShootControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "J or Space or Enter 
 [ Hold to auto-fire ]"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(1, 0.486275, 0.827451, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="PowerControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PowerControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -258,38 +274,38 @@ size_flags_vertical = 5
 theme_override_font_sizes/font_size = 16
 text = "Power : "
 
-[node name="PowerControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PowerControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/KeyboardPanelContainer/KeyboardHBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "K or Shift"
 
-[node name="ControllerPanelContainer" type="PanelContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer"]
+[node name="ControllerPanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n4uci")
 
-[node name="ControllerHBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer"]
+[node name="ControllerHBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ControllerLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer"]
+[node name="ControllerLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "JOYPAD"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="PauseControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="PauseControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -297,7 +313,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Pause :"
 
-[node name="PauseControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="PauseControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -305,12 +321,12 @@ theme_override_font_sizes/font_size = 16
 text = "Option (PlayStation) or Menu (XBOX)"
 vertical_alignment = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="SelectControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="SelectControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -318,7 +334,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Select :"
 
-[node name="SelectControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="SelectControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -326,12 +342,12 @@ theme_override_font_sizes/font_size = 16
 text = "X (Playstation) or A (XBOX)"
 vertical_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(0, 0.986765, 0.80742, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="MoveControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MoveControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -339,7 +355,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 16
 text = "Move : "
 
-[node name="MoveControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MoveControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -347,12 +363,12 @@ theme_override_font_sizes/font_size = 16
 text = "D-Pad or Either JoyStick"
 vertical_alignment = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 0.41501, 0.361362, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ShootControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ShootControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -360,7 +376,7 @@ size_flags_vertical = 5
 theme_override_font_sizes/font_size = 16
 text = "Shoot : "
 
-[node name="ShootControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="ShootControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -368,12 +384,12 @@ text = "X or R1   (PlayStation)
 A or RB  (XBOX)
 [ Hold to auto-fire ]"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 0.486275, 0.827451, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="PowerControlsLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PowerControlsLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -381,7 +397,7 @@ size_flags_vertical = 5
 theme_override_font_sizes/font_size = 16
 text = "Power : "
 
-[node name="PowerControlsLabel2" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PowerControlsLabel2" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/ControllerPanelContainer/ControllerHBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -389,15 +405,14 @@ theme_override_font_sizes/font_size = 16
 text = "[] or L1  (PlayStation)
 X or LB  (XBOX)"
 
-[node name="HowToAccessInfoLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer"]
+[node name="HowToAccessInfoLabel" type="Label" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 0.85866666, 0.47000003, 1)
+modulate = Color(0.80509853, 0.8771191, 1, 1)
 layout_mode = 2
 theme = ExtResource("2_nnn4t")
-text = "YOU CAN ALSO ACCESS THIS SCREEN FROM THE PAUSE MENU"
 horizontal_alignment = 1
 
-[node name="SoundButton" parent="MarginContainer/ControlsPanel/VBoxContainer" instance=ExtResource("3_ge8p4")]
+[node name="SoundButton" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer" instance=ExtResource("3_ge8p4")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4

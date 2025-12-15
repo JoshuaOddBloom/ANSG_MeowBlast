@@ -3,6 +3,7 @@ extends Node2D
 @export var enemy_scene: PackedScene
 @export var enemy_spawn_timer_min_wait: float = 1.5
 @export var enemy_spawn_timer_max_wait: float = 2.5
+
 @onready var entities_layer: Node2D = %EntitiesLayer
 @onready var player: Player = %Player
 @onready var enemy_spawner_timer: Timer = $EnemySpawnerTimer
@@ -43,10 +44,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if game_over:
 			return
-		if GameEvents.can_pause:
-			GameEvents.emit_game_paused('paused') # Critical for pausing
-			add_child(GameEvents.pause_menu_scene.instantiate())
-			get_tree().root.set_input_as_handled()
+		pause_game()
+		get_tree().root.set_input_as_handled()
+
+
+func pause_game():
+	if GameEvents.can_pause:
+		GameEvents.emit_game_paused('paused') # Critical for pausing
 
 
 func incremement_intensity():

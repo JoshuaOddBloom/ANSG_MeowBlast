@@ -20,8 +20,13 @@ func _ready() -> void:
 	get_window().grab_focus()
 	timer.timeout.connect(on_timer_timeout)
 	progress_bar.max_value = timer.wait_time
-	ui.init_finished.connect(func(): init_ui_finished = true; loading_layer.layer = -1; enemy.init(); player.hide())
-	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = -1)
+	ui.init_finished.connect(func(): 
+		init_ui_finished = true; 
+		#loading_layer.layer = -1; 
+		enemy.init(); 
+		player.hide()
+		)
+	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = 50)
 	ui.init()
 	player.is_init = true
 	item_drop_manager.init()
@@ -50,7 +55,10 @@ func on_timer_timeout():
 		return
 	
 	label.hide()
+	loading_layer.layer = -1
+	# Unmute the Master audio bus
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	# Create the controls screen
 	var show_controls_screen_instance = show_controls_screen.instantiate()
 	show_controls_screen_instance.closed.connect(on_sound_button_pressed)
 	add_child(show_controls_screen_instance)

@@ -66,10 +66,10 @@ tracks/0/path = NodePath("Sprites:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
+"times": PackedFloat32Array(0, 0.06),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.625), Vector2(0.5, 1.04)]
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 1.04)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,10 +90,10 @@ tracks/2/path = NodePath("Sprites/Trail1Sprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 6)]
+"values": [Vector2(0, 0), Vector2(0, 6.5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -102,10 +102,10 @@ tracks/3/path = NodePath("Sprites/Trail2Sprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.09),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 10.5)]
+"values": [Vector2(0, 0), Vector2(0, 14)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tldn6"]
@@ -129,12 +129,12 @@ autoplay = "shot"
 
 [node name="Trail1Sprite2D" type="Sprite2D" parent="Sprites"]
 modulate = Color(1, 0.701961, 0.470588, 1)
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.15, 0.18)
 texture = ExtResource("2_qvghn")
 
 [node name="Trail2Sprite2D" type="Sprite2D" parent="Sprites"]
 modulate = Color(1, 0.701961, 0.470588, 1)
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.12, 0.18)
 texture = ExtResource("2_qvghn")
 
 [node name="BGSprite2D" type="Sprite2D" parent="Sprites"]

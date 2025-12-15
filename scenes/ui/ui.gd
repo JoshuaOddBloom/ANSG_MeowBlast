@@ -13,6 +13,8 @@ signal init_finished
 @onready var ui_texture_rect_heart_container_icon = preload("res://scenes/ui/heart_container_icon.tscn")
 @onready var heart_containers_hbox: GridContainer = %HeartContainersHBox
 @onready var power_progress_bar: PanelContainer = %PowerProgressBar
+@onready var power_button: Button = %PowerButton
+@onready var power_touch_screen_button: TouchScreenButton = %PowerTouchScreenButton
 # Center UI
 @onready var enemy_health_bar: PanelContainer = %EnemyHealthBar
 # Right Side UI
@@ -26,6 +28,8 @@ signal init_finished
 @onready var fps_label: Label = %FPSLabel
 @onready var shoot_speed_label: Label = %ShootSpeedLabel
 @onready var move_speed_label: Label = %MoveSpeedLabel
+@onready var pause_button: Button = %PauseButton
+@onready var pause_touch_screen_button: TouchScreenButton = %PauseTouchScreenButton
 # PLAYER DEFEATED MENU
 @onready var player_defeated_menu = preload("res://scenes/ui/player_defeated_menu.tscn")
 
@@ -46,6 +50,9 @@ func _ready() -> void:
 	GameEvents.player_damaged.connect(on_player_damaged)
 	GameEvents.update_player_stats.connect(on_update_player_stats)
 	GameEvents.game_over.connect(on_game_over)
+	
+	power_button.pressed.connect(on_player_power_used)
+	power_touch_screen_button.pressed.connect(on_player_power_used)
 	
 	score_count_label.text = "SCORE\n0"
 	fps_timer.timeout.connect(on_fps_timer_timeout)
@@ -194,3 +201,13 @@ func on_update_player_stats(stat: String, value: float):
 			shoot_speed_label.text = str("AUTO-SHOOT SPEED :\n", value)
 		"move_speed":
 			move_speed_label.text = str("MOVE SPEED :\n", value)
+
+
+func _on_pause_touch_screen_button_pressed() -> void:
+	if GameEvents.can_pause:
+		GameEvents.emit_game_paused('paused') # Critical for pausing
+
+
+func _on_pause_button_pressed() -> void:
+	if GameEvents.can_pause:
+		GameEvents.emit_game_paused("paused")
