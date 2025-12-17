@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8swocmpm3gl5"]
+[gd_scene load_steps=31 format=3 uid="uid://c8swocmpm3gl5"]
 
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="1_8hega"]
 [ext_resource type="Script" uid="uid://b6viu7q5cjl1f" path="res://scenes/base_level/base_level.gd" id="1_k2up0"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cl5nuu87syh1m" path="res://assets/audio/bgm/meowblaster_theme_level_5b.ogg" id="3_g525y"]
 [ext_resource type="PackedScene" uid="uid://bw7votl21cark" path="res://scenes/enemy/enemy.tscn" id="3_jlp5g"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="4_4cbhi"]
+[ext_resource type="Script" uid="uid://cxoai4jlrh71b" path="res://scenes/base_level/bgm_player.gd" id="4_c2ddb"]
 [ext_resource type="Texture2D" uid="uid://cr40kg8av6puu" path="res://scenes/base_level/res_level_1_bg_gradient.tres" id="4_jnmbr"]
 [ext_resource type="AudioStream" uid="uid://cmg2fj7ueete7" path="res://assets/audio/sfx/player/player_death_1.ogg" id="5_5uif2"]
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="6_8o1ni"]
@@ -563,11 +564,20 @@ enemy_spawn_timer_max_wait = 2.25
 metadata/_edit_vertical_guides_ = [170.0, 470.0]
 metadata/_edit_horizontal_guides_ = [-27.0, -3.0]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+editor_description = "Failed : Pitch Scale = 0.42 / 0.53
+Super beautiful modification : Pitch Scale = 0.7
+Wowzers you did it : Pitch Scale = 1.46
+Final Boss : Pitch Scale = 1.23
+"
 stream = ExtResource("3_g525y")
 autoplay = true
 bus = &"BGM"
+playback_type = 1
 parameters/looping = true
+script = ExtResource("4_c2ddb")
 
 [node name="GameOverRandAudioComponent" parent="." instance=ExtResource("4_4cbhi")]
 unique_name_in_owner = true

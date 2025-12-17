@@ -4,6 +4,8 @@ extends Node2D
 @export var enemy_spawn_timer_min_wait: float = 1.5
 @export var enemy_spawn_timer_max_wait: float = 2.5
 
+@onready var bgm_player: AudioStreamPlayer = %BGMPlayer
+
 @onready var entities_layer: Node2D = %EntitiesLayer
 @onready var player: Player = %Player
 @onready var enemy_spawner_timer: Timer = $EnemySpawnerTimer
@@ -46,6 +48,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		pause_game()
 		get_tree().root.set_input_as_handled()
+	
+	if event.is_action_pressed("ui_text_backspace"):
+		if player:
+			player.take_damage(1)
 
 
 func pause_game():
@@ -104,6 +110,8 @@ func on_score_count_changed(_new_amount):
 
 
 func on_game_over():
+	bgm_player.pitch_scale = 0.42
+	bgm_player.pitch_scale_slide(0.42, .5)
 	game_over_rand_audio_component.play_random()
 	game_over = true
 
