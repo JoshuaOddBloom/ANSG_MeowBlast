@@ -19,6 +19,7 @@ height = 48.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
 script = ExtResource("1_8afob")
+acceleration = 30
 power_charge_target = 100.0
 projectile_minimum_wait_time = 0.1
 
@@ -53,12 +54,12 @@ wait_time = 0.125
 [node name="UpdatePowerBarValueTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="HealthComponent" parent="." instance=ExtResource("3_gmlin")]
+max_health = 9
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_gmlin")
-
-[node name="HealthComponent" parent="." instance=ExtResource("3_gmlin")]
-max_health = 9
 
 [node name="PowerReadyGPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true

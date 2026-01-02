@@ -91,13 +91,7 @@ func add_item_resource(new_resource):
 func add_properties():
 	if item_resource != null:
 		if item_resource.item_modulate_override_color != Color.BLACK:
-			visuals.modulate = item_resource.item_modulate_override_color
+			if visuals:
+				visuals.modulate = item_resource.item_modulate_override_color
+				sprite_2d.texture = item_resource.item_icon
 		fall_speed *= item_resource.item_fall_speed_multiplier
-		sprite_2d.texture = item_resource.item_icon
-	#var sprite: Sprite2D = get_node_or_null("Sprite")
-	#if !is_instance_valid(sprite): # Do we need to create it?
-		#sprite = Sprite2D.new()
-		#sprite.name = "%Sprite2D"
-		## set anything else you need to; position, self_modulate...
-		#add_child(sprite)
-		

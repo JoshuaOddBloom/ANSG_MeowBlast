@@ -11,21 +11,38 @@
 			"uuid": "f74b1513-6b50-43b6-895b-b0059d0584cd",
 			"title": "Todo",
 			"tasks": [
-				"bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
 				"8e9d04a4-f1de-405a-9026-57f3e2f1b71c",
-				"139a58c3-3953-4a48-a15b-f20cbe9dd70e"
+				"139a58c3-3953-4a48-a15b-f20cbe9dd70e",
+				"dd0eec06-5b4a-4c88-a07c-302d7090c0ee",
+				"466c422e-7be1-4024-ba2d-f83645bd3651",
+				"6c4a771e-1ae2-4b6d-9fec-8bb3d62bf73b"
 			]
 		},
 		{
 			"uuid": "269233df-2f6c-4020-a38c-0e039b78480e",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"4497e6be-aba2-4748-950e-0d9ecdf4ac46",
+				"924d100f-ccad-4132-8cd8-e191b3ce6186",
+				"dea18bc6-64ea-45a0-a177-6ddf101b4d42",
+				"971914dc-6f56-4a02-b033-e3c83e1de804"
+			]
 		},
 		{
 			"uuid": "48dc1195-2604-42bb-ac0d-c2a07de2cc0b",
 			"title": "Done",
 			"tasks": [
-				"179448fe-f0be-4289-aee0-09ff590a5dc9"
+				"179448fe-f0be-4289-aee0-09ff590a5dc9",
+				"b2bb9f14-e1f4-40ca-b5b7-baff9cebf362"
+			]
+		},
+		{
+			"uuid": "193a51b6-73c1-4ff0-ad4a-76a7e253b08b",
+			"title": "Important",
+			"tasks": [
+				"e5e70491-eade-4716-b012-9b40393c1700",
+				"bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
+				"cd07a355-3e9f-4846-9196-88e2b4c82e85"
 			]
 		}
 	],
@@ -85,6 +102,122 @@
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "cd07a355-3e9f-4846-9196-88e2b4c82e85",
+			"title": "Gameplay",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Unable to tap two things at once - not able to touch use power button unless I stop shooting (while using touch to shoot)",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "924d100f-ccad-4132-8cd8-e191b3ce6186",
+			"title": "UI",
+			"description": "I should just create the game_over_screen instead\n",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "fix the player defeated screen to no-longer use the press and hold method",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "dd0eec06-5b4a-4c88-a07c-302d7090c0ee",
+			"title": "Web Player",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Played at 30fps",
+					"done": false
+				},
+				{
+					"details": "Comet's colors appeared GREY?!",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "b2bb9f14-e1f4-40ca-b5b7-baff9cebf362",
+			"title": "Startup",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Need to add Comet to the loading screen so it doesn't lag",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "4497e6be-aba2-4748-950e-0d9ecdf4ac46",
+			"title": "Player",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Set projectile and enemy scale to player scale so the game can zoom out when the difficulty gets higher",
+					"done": true
+				},
+				{
+					"details": "level scale",
+					"done": false
+				},
+				{
+					"details": "add player position y anchor",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "e5e70491-eade-4716-b012-9b40393c1700",
+			"title": "Audio",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": [
+				{
+					"details": "Implement OddAudioManager",
+					"done": false
+				},
+				{
+					"details": "add Init stuff for audio manager",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "6c4a771e-1ae2-4b6d-9fec-8bb3d62bf73b",
+			"title": "Kinda want to swap the Heart container and power button and meter again",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "dea18bc6-64ea-45a0-a177-6ddf101b4d42",
+			"title": "Enemy Particles still large when scaling down",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "971914dc-6f56-4a02-b033-e3c83e1de804",
+			"title": "enemy particles still visible when they get destroyed",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "466c422e-7be1-4024-ba2d-f83645bd3651",
+			"title": "Retro Ending Screen when the game is completed",
+			"description": "Make it respect Loss vs Win\nMake it pretty\nInvolve ANSG",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
 		}
 	],
 	"layout": {
@@ -93,7 +226,8 @@
 				"f74b1513-6b50-43b6-895b-b0059d0584cd"
 			],
 			[
-				"269233df-2f6c-4020-a38c-0e039b78480e"
+				"269233df-2f6c-4020-a38c-0e039b78480e",
+				"193a51b6-73c1-4ff0-ad4a-76a7e253b08b"
 			],
 			[
 				"48dc1195-2604-42bb-ac0d-c2a07de2cc0b"

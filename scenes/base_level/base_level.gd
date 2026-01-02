@@ -1,5 +1,8 @@
 extends Node2D
 
+signal init_anim_finished
+signal init_finished
+
 @export var enemy_scene: PackedScene
 @export var enemy_spawn_timer_min_wait: float = 1.5
 @export var enemy_spawn_timer_max_wait: float = 2.5
@@ -17,6 +20,7 @@ extends Node2D
 @onready var level_transition_player: AnimationPlayer = $BG/LevelTransitionPlayer
 @onready var pattern_animation_player: AnimationPlayer = %PatternAnimationPlayer
 @onready var game_over_rand_audio_component: RandomAudioStreamPlayer = %GameOverRandAudioComponent
+@onready var comet_animation_player: AnimationPlayer = %CometAnimationPlayer
 
 
 var projectile_count : int = 0
@@ -24,6 +28,23 @@ var intensity_incremement_count: int = 0
 var intensity_incremement_target: int = 25 # Counts to 10
 var previous_score_adjustment: int = 0
 var game_over: bool = false
+
+
+func init():
+	comet_animation_player.play("comet_animation")
+	init_play_level_animations()
+	bgm_player.stop()
+	await init_anim_finished
+	init_finished.emit()
+
+
+func init_play_level_animations():
+	level_transition_player.speed_scale = 10.0
+	for i in level_transition_player.get_animation_list():
+		level_transition_player.play(i)
+		await level_transition_player.animation_finished
+	level_transition_player.speed_scale = 1.0
+	init_anim_finished.emit()
 
 
 func _ready() -> void:
@@ -131,9 +152,19 @@ func on_level_changed(new_level):
 			level_transition_player.play("level_1_start")
 			GameEvents.level_increment_target_value = 10
 		2:
+			#bgm_player.pitch_scale = 1.234
+			GameEvents.change_global_scale_target(Vector2(0.8, 0.8), 10)
 			level_transition_player.play("level_1_to_level_2")
+			#testing tweens a bit
+			await level_transition_player.animation_finished
+			print("animation finished")
+			var tween = get_tree().create_tween()
+			tween.tween_interval(2) # will this WAIT for two seconds before going?
+			tween.tween_callback(func(): print("AYYAYYYAYAYOOOOOOOOO"))
+			
 			GameEvents.level_increment_target_value = 20
 		3:
+			#bgm_player.pitch_scale = 1.345
 			enemy_spawner_timer_2.start()
 			level_transition_player.play("level_2_to_level_3")
 			GameEvents.level_increment_target_value = 30
@@ -144,5 +175,13 @@ func on_level_changed(new_level):
 			level_transition_player.play("level_4_to_level_5")
 			GameEvents.level_increment_target_value = 50
 		6:
+			GameEvents.change_global_scale_target(Vector2(0.6, 0.6), 10)
+			level_transition_player.play("level_5_to_level_6")
 			enemy_spawner_timer_3.start()
+			comet_animation_player.play("comet_animation")
+		7:
+			pass
+			#GameEvents.change_global_scale_target(Vector2(0.1, 0.1), 10)
+		8:
+			pass
 	

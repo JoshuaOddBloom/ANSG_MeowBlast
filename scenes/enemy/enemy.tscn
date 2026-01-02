@@ -169,6 +169,7 @@ radius = 24.0
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_4a83h")
+increment_progress_value = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -181,12 +182,16 @@ drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="FireTrailGPUParticles2D2" parent="." instance=ExtResource("7_nbhyu")]
+unique_name_in_owner = true
 position = Vector2(0, 11)
+lifetime = 0.15000000000000002
 fixed_fps = 12
 process_material = ExtResource("4_13gj6")
 
 [node name="FireTrailGPUParticles2D" parent="." instance=ExtResource("7_nbhyu")]
+unique_name_in_owner = true
 position = Vector2(0, 11)
+lifetime = 0.75
 fixed_fps = 12
 process_material = ExtResource("5_4efjx")
 

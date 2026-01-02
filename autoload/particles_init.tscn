@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di5tndbwdxsay"]
+[gd_scene load_steps=14 format=3 uid="uid://di5tndbwdxsay"]
 
 [ext_resource type="Script" uid="uid://wxgodqu3k8ne" path="res://autoload/particles_init.gd" id="1_d1rkr"]
 [ext_resource type="Material" uid="uid://b6f408p4ym4pg" path="res://assets/particles/clouds_particle_process_material.tres" id="2_0bl4l"]
@@ -10,7 +10,11 @@
 [ext_resource type="Material" uid="uid://dly8tweyp5s04" path="res://assets/particles/parti_fire_trail.tres" id="8_4dh5x"]
 [ext_resource type="Material" uid="uid://dsne8rx3g808s" path="res://assets/particles/player_power_ready_particle_process_material.tres" id="9_rlwi0"]
 [ext_resource type="Material" uid="uid://dg7le4df83fkj" path="res://assets/particles/pulsing_particle_process_material.tres" id="10_0bl8c"]
+[ext_resource type="Material" uid="uid://b2cqy0336ktdd" path="res://assets/particles/base_level_fire_rain_particles.tres" id="11_dxaoi"]
+[ext_resource type="Material" uid="uid://bxg6e2ex72don" path="res://assets/particles/base_level_front_rolling_clouds.tres" id="12_3467v"]
+[ext_resource type="Material" uid="uid://b1khyjefslq5h" path="res://assets/particles/base_level_middle_rolling_clouds.tres" id="13_5hxkf"]
 
 [node name="ParticlesInit" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_d1rkr")
-particle_effects = Array[ParticleProcessMaterial]([ExtResource("2_0bl4l"), ExtResource("3_2uflr"), ExtResource("4_qwvve"), ExtResource("5_dxaoi"), ExtResource("6_3467v"), ExtResource("7_5hxkf"), ExtResource("8_4dh5x"), ExtResource("9_rlwi0"), ExtResource("10_0bl8c")])
+particle_effects = Array[ParticleProcessMaterial]([ExtResource("2_0bl4l"), ExtResource("3_2uflr"), ExtResource("4_qwvve"), ExtResource("5_dxaoi"), ExtResource("6_3467v"), ExtResource("7_5hxkf"), ExtResource("8_4dh5x"), ExtResource("9_rlwi0"), ExtResource("10_0bl8c"), ExtResource("11_dxaoi"), ExtResource("12_3467v"), ExtResource("13_5hxkf")])

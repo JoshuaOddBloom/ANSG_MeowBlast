@@ -11,6 +11,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if scale != GameEvents.global_scale_target:
+		scale = GameEvents.global_scale_target
+	
 	if global_position.y <= -500:
 		defeated()
 	

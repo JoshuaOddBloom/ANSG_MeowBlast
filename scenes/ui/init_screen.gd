@@ -11,6 +11,7 @@ extends Control
 @onready var enemy: Node2D = $Node2D/Enemy
 @onready var player: Player = $Node2D/Player
 @onready var item_drop_manager: Node = %ItemDropManager
+@onready var base_level: Node2D = $Node2D/BaseLevel
 
 var init_ui_finished: bool = false
 var can_proceed: bool = false
@@ -18,16 +19,18 @@ var can_proceed: bool = false
 func _ready() -> void:
 	progress_bar.hide()
 	get_window().grab_focus()
+	
 	timer.timeout.connect(on_timer_timeout)
-	progress_bar.max_value = timer.wait_time
 	ui.init_finished.connect(func(): 
-		init_ui_finished = true; 
-		#loading_layer.layer = -1; 
+		init_ui_finished = true;
 		enemy.init(); 
-		player.hide()
+		player.hide();
 		)
 	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = 50)
+	
+	progress_bar.max_value = timer.wait_time
 	ui.init()
+	base_level.init()
 	player.is_init = true
 	item_drop_manager.init()
 	
@@ -50,10 +53,11 @@ func _process(_delta: float) -> void:
 
 
 func on_timer_timeout():
+	
 	if ! can_proceed:
 		timer.start()
 		return
-	
+	base_level.queue_free()
 	label.hide()
 	loading_layer.layer = -1
 	# Unmute the Master audio bus

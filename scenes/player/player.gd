@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@export var debuging: bool = false
+@export var y_position_anchor: Marker2D
 @export var move_speed : float = 400.0
 @export var max_move_speed: float = 550.0
 @export var acceleration: int = 5
@@ -42,7 +44,6 @@ func _ready() -> void:
 	GameEvents.player_damaged.connect(on_player_damaged)
 	GameEvents.score_count_changed.connect(on_score_count_changed)
 	GameEvents.item_drop_collected.connect(on_item_drop_collected)
-	GameEvents.global_scale_target_changed.connect(on_global_scale_target_changed)
 	#
 	health_component.defeated.connect(on_player_defeated)
 	semi_automatic_timer.timeout.connect(on_semi_automatic_timer_timeout)
@@ -60,11 +61,8 @@ func _process(delta: float) -> void:
 		return
 	## Input Monitoring
 	
-	if lerp_scale_to_global_scale_target:
-		if scale != GameEvents.global_scale_target:
-			scale = scale.lerp(GameEvents.global_scale_target, 1.0 - exp(-delta * GameEvents.global_scale_lerp_speed)) 
-		elif scale == GameEvents.global_scale_target:
-			lerp_scale_to_global_scale_target = false
+	if scale != GameEvents.global_scale_target:
+		scale = GameEvents.global_scale_target
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var global_mouse_position = get_global_mouse_position()
@@ -72,6 +70,9 @@ func _process(delta: float) -> void:
 			return
 		
 		global_position.x = global_mouse_position.x
+	
+	if y_position_anchor:
+		global_position.y = y_position_anchor.global_position.y
 	
 	# Move Left
 	if Input.is_action_pressed("ui_left"):
@@ -94,6 +95,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("use_power") or Input.is_action_just_pressed("mouse_button_right"):
 		use_power()
+	
+	if Input.is_action_just_pressed("debug_heal") and debuging:
+		health_component.heal(health_component.max_health - health_component.current_health)
+	
 	
 	move_and_slide()
 
@@ -133,17 +138,15 @@ func fire_projectile():
 	if is_using_power:
 		match current_power:
 			"base_x_10":
-				#print("BASEX10")
 				projectile_instance = projectile_base_x_10_scene.instantiate()
-		
 	else:
 		projectile_instance = base_projectile.instantiate()
 	
 	if projectile_instance == null:
-		#print("projectile.gd.fire_projectile: projectile_scene not found")
 		return
 	
 	projectile_instance.global_position = projectile_spawn_marker_2d.global_position
+	projectile_instance.scale = scale # avoids scale differences by matching the player immediately before the instance is visible
 	projectile_rand_audio_component.play_random()
 	get_parent().add_child(projectile_instance)
 
@@ -166,6 +169,7 @@ func on_player_damaged(_amount):
 
 func update_power_gauge(current_power_charge_amount, current_power_target):
 	GameEvents.emit_player_update_power_value(current_power_charge_amount, current_power_target)
+	prints(current_power_charge_amount, current_power_target)
 
 
 func on_semi_automatic_timer_timeout():
@@ -211,12 +215,6 @@ func on_score_count_changed(_score):
 	
 	update_power_gauge(power_charge_amount, power_charge_target)
 	#prints("power charge amount :", power_charge_amount)
-
-
-func on_global_scale_target_changed():
-	if scale != GameEvents.global_scale_target:
-		lerp_scale_to_global_scale_target = true
-
 
 
 func on_item_drop_collected(item_resource_name):

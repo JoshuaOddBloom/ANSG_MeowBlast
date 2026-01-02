@@ -65,7 +65,8 @@ func on_item_drop_requested(given_location):
 
 
 func create_item_instance(instance):
-	entities_layer.add_child(instance)
+	if entities_layer:
+		entities_layer.add_child(instance)
 
 
 #func on_item_drop_collected(item: DroppableItem):####

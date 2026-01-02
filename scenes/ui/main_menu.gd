@@ -1,5 +1,6 @@
 extends Control
 
+@export var show_touch_screen_options: bool = false #BUG TODO NEED TO WORK ON ADDING THIS
 @onready var controls_screen = preload("res://scenes/ui/show_controls_screen.tscn")
 @onready var options_screen = preload("res://scenes/ui/show_options_screen.tscn")
 @onready var bg: TextureRect = %BG
@@ -18,6 +19,7 @@ extends Control
 # Input Method Selection
 @onready var touch_screen_on_button: TouchScreenButton = %TouchScreenOnButton
 @onready var touch_screen_off_button: Button = %TouchScreenOffButton
+@onready var touch_screen_off_button_2: TouchScreenButton = %TouchScreenOffButton2
 @onready var wait_to_start_timer: Timer = %WaitToStartTimer
 
 
@@ -28,6 +30,7 @@ func _ready() -> void:
 	controls_sound_button.pressed.connect(on_controls_button_pressed)
 	options_sound_button.pressed.connect(on_options_button_pressed)
 	#touch_screen_start_button.pressed.connect(on_start_button_pressed)
+	#touch_screen_off_button_2.pressed.connect(on_touchscreen_button_pressed) # BUG MAY WANT TO FIX THIS TO WHERE IT USES A BOOLEAN TO SHOW TOUCH SCREEN OPTIONS
 	#continue_sound_button.pressed.connect(on_continue_sound_button_pressed)
 	
 	if GameEvents.main_menu_shown_before or GameEvents.game_played:

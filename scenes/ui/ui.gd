@@ -141,11 +141,11 @@ func on_level_incremement_changed():
 
 func on_level_changed(new_level):
 	if new_level >= GameEvents.max_level:
-		next_level_label.text = str("FINAL LEVEL")
-		level_label.text = str("")
+		next_level_label.text = str("")
+		level_label.text = str("CRITICAL THREAT")
 	else: 
 		next_level_label.text = str("LEVEL -> ", new_level + 1)
-		level_label.text = str("LEVEL ", GameEvents.current_level)
+		level_label.text = str("THREAT LEVEL ", GameEvents.current_level)
 	
 	match new_level:
 		1:
@@ -178,10 +178,6 @@ func on_player_damaged(damage_amount):
 func on_game_over():
 	var player_defeated_menu_instance = player_defeated_menu.instantiate()
 	add_child(player_defeated_menu_instance)
-
-#
-#func on_retry_button_pressed():
-	#get_tree().reload_current_scene()
 
 
 func on_start_button_pressed():

@@ -1,12 +1,14 @@
 extends Node2D
 
+const MINIMUM_SCALE_TARGET: float = 0.5
+
 # UI and Level signals
 signal score_count_changed(new_score)
 signal level_changed(new_level)
 signal level_incremement_changed
 signal projectile_count_changed(new_projectile_count)
 # Game-flow elements
-signal global_scale_target_changed
+#signal global_scale_target_changed
 signal update_player_stats(stat: String, value: float)
 signal use_power
 signal player_power_charged
@@ -50,11 +52,13 @@ var previous_pause_state
 var main_menu_shown_before: bool = false
 var game_played: bool = false
 
-var global_scale_lerp_speed: float = .1
+var global_scale_tweening: bool = false
+var global_scale_lerp_speed: float = 0.1
 var global_scale_target: Vector2 = Vector2(1.0, 1.0)
 
 
 func reset_values():
+	global_scale_target = Vector2(1.0, 1.0)
 	score_count = 0
 	projectile_count = 0
 	current_level = 1
@@ -97,13 +101,29 @@ func increment_level(amount):
 	check_level_incremement()
 
 
-func change_global_scale_target(new_target_float: float):
-	global_scale_target = Vector2(new_target_float, new_target_float)
-	emit_global_scale_target_changed()
+func change_global_scale_target(new_global_scale: Vector2, transition_speed: float):
+	
+	if new_global_scale.x < MINIMUM_SCALE_TARGET:
+		new_global_scale.x = MINIMUM_SCALE_TARGET
+	if new_global_scale.y < MINIMUM_SCALE_TARGET:
+		new_global_scale.y = MINIMUM_SCALE_TARGET
+	
+	global_scale_tweening = true
+	global_scale_lerp_speed = transition_speed
+	
+	var global_scale_target_tween = get_tree().create_tween()
+	global_scale_target_tween.tween_property(self, "global_scale_target", new_global_scale, transition_speed)
+	global_scale_target_tween.chain()
+	global_scale_target_tween.tween_callback(func(): global_scale_tweening = false)
 
 
-func emit_global_scale_target_changed():
-	global_scale_target_changed.emit()
+#func change_global_scale_target(new_target_float: float):
+	#global_scale_target = Vector2(new_target_float, new_target_float)
+	#emit_global_scale_target_changed()
+
+#
+#func emit_global_scale_target_changed():
+	#global_scale_target_changed.emit()
 
 
 func emit_score_count_changed(amount_changed):

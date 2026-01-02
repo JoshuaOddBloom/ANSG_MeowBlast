@@ -412,6 +412,7 @@ layout_mode = 2
 
 [node name="NextLevelLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -419,6 +420,17 @@ size_flags_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "LEVEL -> 2"
 autowrap_mode = 3
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.908646, 0.629312, 0.968326, 1)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 32
+text = "THREAT LEVEL 1"
+autowrap_mode = 2
 
 [node name="IncrementValueLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(47.49, 0)
@@ -454,17 +466,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("6_jcn1r")
-
-[node name="LevelLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-modulate = Color(0.908646, 0.629312, 0.968326, 1)
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 10
-theme_override_font_sizes/font_size = 32
-text = "LEVEL 1"
-autowrap_mode = 2
 
 [node name="ItemsGridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
 unique_name_in_owner = true

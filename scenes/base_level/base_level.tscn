@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8swocmpm3gl5"]
+[gd_scene load_steps=49 format=3 uid="uid://c8swocmpm3gl5"]
 
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="1_8hega"]
 [ext_resource type="Script" uid="uid://b6viu7q5cjl1f" path="res://scenes/base_level/base_level.gd" id="1_k2up0"]
@@ -13,15 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://cr40kg8av6puu" path="res://scenes/base_level/res_level_1_bg_gradient.tres" id="4_jnmbr"]
 [ext_resource type="AudioStream" uid="uid://cmg2fj7ueete7" path="res://assets/audio/sfx/player/player_death_1.ogg" id="5_5uif2"]
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="6_8o1ni"]
+[ext_resource type="Texture2D" uid="uid://t8ocdg4v6x4c" path="res://assets/textures/StarALT_128.png" id="11_qhw0v"]
 [ext_resource type="Texture2D" uid="uid://dnqf8ln7fiv8x" path="res://assets/textures/star_wave_pattern.png" id="12_c2ddb"]
-[ext_resource type="Material" uid="uid://b6f408p4ym4pg" path="res://assets/particles/clouds_particle_process_material.tres" id="16_5uif2"]
+[ext_resource type="Texture2D" uid="uid://b05mxe4btudnq" path="res://assets/textures/16x16sqr.png" id="12_g525y"]
+[ext_resource type="Texture2D" uid="uid://dxjsufhg6jxi2" path="res://assets/textures/200x200_circle.png" id="13_4cbhi"]
+[ext_resource type="Material" uid="uid://b2cqy0336ktdd" path="res://assets/particles/base_level_fire_rain_particles.tres" id="13_8diyn"]
+[ext_resource type="Material" uid="uid://b1khyjefslq5h" path="res://assets/particles/base_level_middle_rolling_clouds.tres" id="14_5uif2"]
+[ext_resource type="Material" uid="uid://bxg6e2ex72don" path="res://assets/particles/base_level_front_rolling_clouds.tres" id="16_8diyn"]
 
 [sub_resource type="Animation" id="Animation_dojjm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("BGBlueSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,50 +38,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("%WavePattern:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.553273, 0.60896, 0.685211, 1)]
+"values": [Color(0.29, 0.5385, 1, 0.490196)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("CloudParticles:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(320, 408.47)]
+"values": [Color(0.553273, 0.60896, 0.685211, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BGBlueSprite2D:modulate")
+tracks/3/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [8]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%WavePattern:modulate")
+tracks/4/path = NodePath("CateroidRainingGPUParticles2D:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.29, 0.5385, 1, 0.490196)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_g525y"]
@@ -86,7 +91,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,50 +103,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("%WavePattern:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.553273, 0.60896, 0.685211, 1)]
+"values": [Color(0.29, 0.5385, 1, 0.490196)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(320, 408.47)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/path = NodePath("CloudParticles:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.29, 0.5385, 1, 0.490196)]
+"values": [Color(0.553273, 0.60896, 0.685211, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BGBlueSprite2D:modulate")
+tracks/4/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jnmbr"]
@@ -151,7 +168,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -163,50 +180,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("BGBlueSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.553273, 0.60896, 0.685211, 1), Color(0.907752, 0.781919, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.643137)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("%WavePattern:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 404), Vector2(320, 414)]
+"values": [Color(0.29, 0.5385, 1, 0.490196), Color(0.675, 0.5, 1, 0.392157)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BGBlueSprite2D:modulate")
+tracks/3/path = NodePath("CloudParticles:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.643137)]
+"values": [Color(0.553273, 0.60896, 0.685211, 1), Color(0.907752, 0.781919, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%WavePattern:modulate")
+tracks/4/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.29, 0.5385, 1, 0.490196), Color(0.675, 0.5, 1, 0.392157)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_a8gkr"]
@@ -216,7 +245,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -228,62 +257,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.907752, 0.781919, 1, 1), Color(0.99989, 0.733597, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 414), Vector2(320, 425)]
+"values": [Color(1, 1, 1, 0.643137), Color(1, 1, 1, 0.376471)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BGPinkSprite2D:modulate")
+tracks/3/path = NodePath("%WavePattern:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.675, 0.5, 1, 0.392157), Color(0.676166, 0.33, 1, 0.698039)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BGBlueSprite2D:modulate")
+tracks/4/path = NodePath("CloudParticles:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.643137), Color(1, 1, 1, 0.376471)]
+"values": [Color(0.907752, 0.781919, 1, 1), Color(0.99989, 0.733597, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%WavePattern:modulate")
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.675, 0.5, 1, 0.392157), Color(0.676166, 0.33, 1, 0.698039)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_4cbhi"]
@@ -293,7 +322,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -305,62 +334,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.99989, 0.733597, 1, 1), Color(0.963, 0.63, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 425), Vector2(320, 430.22)]
+"values": [Color(1, 1, 1, 0.376471), Color(1, 1, 1, 0.262745)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BGPinkSprite2D:modulate")
+tracks/3/path = NodePath("%WavePattern:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.676166, 0.33, 1, 0.698039), Color(0.637333, 0.36, 1, 0.623529)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BGBlueSprite2D:modulate")
+tracks/4/path = NodePath("CloudParticles:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.376471), Color(1, 1, 1, 0.262745)]
+"values": [Color(0.99989, 0.733597, 1, 1), Color(0.963, 0.63, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%WavePattern:modulate")
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.676166, 0.33, 1, 0.698039), Color(0.637333, 0.36, 1, 0.623529)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
 }
 
 [sub_resource type="Animation" id="Animation_5uif2"]
@@ -370,7 +399,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudsGPUParticles2D:modulate")
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -382,62 +411,139 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudsGPUParticles2D:process_material:color")
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.963, 0.63, 1, 1), Color(0.963, 0.63, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudsGPUParticles2D:position")
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 430.22), Vector2(320, 430.22)]
+"values": [Color(1, 1, 1, 0.262745), Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BGPinkSprite2D:modulate")
+tracks/3/path = NodePath("%WavePattern:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.637333, 0.36, 1, 0.623529), Color(0.745, 0.55, 1, 0.305882)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BGBlueSprite2D:modulate")
+tracks/4/path = NodePath("CloudParticles:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.262745), Color(1, 1, 1, 0)]
+"values": [Color(0.963, 0.63, 1, 1), Color(0.963, 0.63, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%WavePattern:modulate")
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_inqle"]
+resource_name = "level_5_to_level_6"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.637333, 0.36, 1, 0.623529), Color(0.745, 0.55, 1, 0.305882)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.77254903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.745, 0.55, 1, 0.305882)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.963, 0.63, 1, 1), Color(0.9465254, 0.47375077, 0.9999992, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8gkr"]
@@ -447,7 +553,8 @@ _data = {
 &"level_1_to_level_2": SubResource("Animation_jnmbr"),
 &"level_2_to_level_3": SubResource("Animation_a8gkr"),
 &"level_3_to_level_4": SubResource("Animation_4cbhi"),
-&"level_4_to_level_5": SubResource("Animation_5uif2")
+&"level_4_to_level_5": SubResource("Animation_5uif2"),
+&"level_5_to_level_6": SubResource("Animation_inqle")
 }
 
 [sub_resource type="Gradient" id="Gradient_c2ddb"]
@@ -459,6 +566,209 @@ gradient = SubResource("Gradient_c2ddb")
 width = 640
 height = 360
 fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_kvgoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CometGPUParticles2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(489, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CometGPUParticles2D:process_material:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CometGPUParticles2D:lifetime")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.53]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CometGPUParticles2D/Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.085, 0.085)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CometGPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CometGPUParticles2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d75nt"]
+resource_name = "comet_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CometGPUParticles2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(489, -4), Vector2(178, 157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CometGPUParticles2D:process_material:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(3.2490087, 1.5157169, 1.1095701),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CometGPUParticles2D:lifetime")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.0000005, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.53, 1.63, 1.53]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CometGPUParticles2D/Sprite2D:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.9999995, 10),
+"transitions": PackedFloat32Array(1, 1.5157169, 1.1095701),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.08, 0.08), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CometGPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CometGPUParticles2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3ier"]
+_data = {
+&"RESET": SubResource("Animation_kvgoi"),
+&"comet_animation": SubResource("Animation_d75nt")
+}
+
+[sub_resource type="Gradient" id="Gradient_8gga3"]
+colors = PackedColorArray(1, 1, 1, 1, 0.996078, 0.0196078, 0.67451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_filrr"]
+gradient = SubResource("Gradient_8gga3")
+
+[sub_resource type="Curve" id="Curve_wruew"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6535211, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_comen"]
+curve = SubResource("Curve_wruew")
+
+[sub_resource type="Curve" id="Curve_jifvf"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 3.3102877), 0.0, 0.0, 0, 0, Vector2(0.5690141, 2.1238937), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g45w0"]
+curve = SubResource("Curve_jifvf")
+
+[sub_resource type="Curve" id="Curve_2lwbn"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.3390489), 0.0, 0.0, 0, 0, Vector2(0.5943662, 1.2959073), 0.0, 0.0, 0, 0, Vector2(0.8338028, 1.1233408), 0.0, 0.0, 0, 0, Vector2(1, 0.8429203), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_s6mns"]
+curve = SubResource("Curve_2lwbn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8diyn"]
+lifetime_randomness = 0.7
+particle_flag_disable_z = true
+angle_min = -256.6
+angle_max = 189.30002
+spread = 85.313
+initial_velocity_max = 17.15
+radial_velocity_min = -51.43002
+radial_velocity_max = 5.7099776
+gravity = Vector3(131.66, -71.13, 0)
+linear_accel_min = -100.0
+linear_accel_max = -82.86
+scale_curve = SubResource("CurveTexture_g45w0")
+scale_over_velocity_curve = SubResource("CurveTexture_s6mns")
+color_ramp = SubResource("GradientTexture1D_filrr")
+emission_curve = SubResource("CurveTexture_comen")
 
 [sub_resource type="Animation" id="Animation_qhw0v"]
 length = 0.001
@@ -567,10 +877,14 @@ metadata/_edit_horizontal_guides_ = [-27.0, -3.0]
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
-editor_description = "Failed : Pitch Scale = 0.42 / 0.53
+editor_description = "MeowBlasterTheme Pitches
+Failed : Pitch Scale = 0.42 / 0.53
 Super beautiful modification : Pitch Scale = 0.7
 Wowzers you did it : Pitch Scale = 1.46
 Final Boss : Pitch Scale = 1.23
+
+VS Leo - 1.86 (needs to have the drums removed though
+
 "
 stream = ExtResource("3_g525y")
 autoplay = true
@@ -602,11 +916,11 @@ libraries = {
 autoplay = "level_1_start"
 
 [node name="BGPinkSprite2D2" type="Sprite2D" parent="BG"]
-visible = false
 texture = SubResource("GradientTexture2D_g525y")
 centered = false
 
 [node name="BGPinkSprite2D" type="Sprite2D" parent="BG"]
+modulate = Color(1, 1, 1, 0.77254903)
 texture = ExtResource("4_jnmbr")
 centered = false
 
@@ -615,7 +929,25 @@ texture = ExtResource("3_5yg0m")
 centered = false
 
 [node name="Comet" type="Node2D" parent="BG"]
+
+[node name="CometAnimationPlayer" type="AnimationPlayer" parent="BG/Comet"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_o3ier")
+}
+
+[node name="CometGPUParticles2D" type="GPUParticles2D" parent="BG/Comet"]
 visible = false
+position = Vector2(489, -4)
+emitting = false
+amount = 260
+lifetime = 1.53
+randomness = 0.42
+process_material = SubResource("ParticleProcessMaterial_8diyn")
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Comet/CometGPUParticles2D"]
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("11_qhw0v")
 
 [node name="BGPatterns" type="Node2D" parent="BG"]
 
@@ -661,13 +993,33 @@ position = Vector2(320, 239)
 scale = Vector2(0.293, 0.293)
 texture = ExtResource("12_c2ddb")
 
-[node name="CloudsGPUParticles2D" type="GPUParticles2D" parent="BG"]
-position = Vector2(320, 408.47)
+[node name="CateroidRainingGPUParticles2D" type="GPUParticles2D" parent="BG"]
+editor_description = "Modify the velocity and the particle count as the levels progress"
+position = Vector2(345, -10)
+emitting = false
+texture = ExtResource("12_g525y")
+lifetime = 4.0
+process_material = ExtResource("13_8diyn")
+
+[node name="CloudParticles" type="Node2D" parent="BG"]
+modulate = Color(0.553273, 0.60896, 0.685211, 1)
+
+[node name="MiddleCloudsGPUParticles2D" type="GPUParticles2D" parent="BG/CloudParticles"]
+modulate = Color(0.9474667, 0.874, 0.95, 1)
+position = Vector2(320, 385)
+amount = 64
+texture = ExtResource("13_4cbhi")
+lifetime = 5.0
+preprocess = 2.5
+process_material = ExtResource("14_5uif2")
+
+[node name="FrontCloudsGPUParticles2D" type="GPUParticles2D" parent="BG/CloudParticles"]
+position = Vector2(320, 413)
 amount = 48
 texture = ExtResource("3_8eac3")
 lifetime = 5.0
 preprocess = 2.5
-process_material = ExtResource("16_5uif2")
+process_material = ExtResource("16_8diyn")
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -716,11 +1068,28 @@ shape = SubResource("RectangleShape2D_jlp5g")
 [node name="EntitiesLayer" type="Node2D" parent="." groups=["entities_layer"]]
 unique_name_in_owner = true
 
-[node name="Player" parent="EntitiesLayer" instance=ExtResource("1_8hega")]
+[node name="PlayerYPositionMarker2D" type="Marker2D" parent="EntitiesLayer"]
+position = Vector2(700, 331)
+
+[node name="Label" type="Label" parent="EntitiesLayer/PlayerYPositionMarker2D"]
+offset_right = 65.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 8
+text = "player y position Marker2D"
+vertical_alignment = 1
+
+[node name="Player" parent="EntitiesLayer" node_paths=PackedStringArray("y_position_anchor") instance=ExtResource("1_8hega")]
 unique_name_in_owner = true
 position = Vector2(320, 331)
+y_position_anchor = NodePath("../PlayerYPositionMarker2D")
 
 [node name="Enemy" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
+position = Vector2(320, -60)
+
+[node name="Enemy2" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
+position = Vector2(320, -60)
+
+[node name="Enemy3" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
 position = Vector2(320, -60)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["level_enemy_bounds"]]
