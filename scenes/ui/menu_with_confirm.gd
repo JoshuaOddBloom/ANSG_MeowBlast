@@ -7,6 +7,7 @@ extends CanvasLayer
 @export var confirmation_timer_base_waittime: float
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+
 @onready var choices: VBoxContainer = %Choices
 @onready var restore_margin_container: MarginContainer = %RestoreMarginContainer
 @onready var resume_button: SoundButton = %ResumeButton
@@ -101,8 +102,7 @@ func _on_button_pressed(button: SoundButton):
 	#Get the button's name
 	option_chosen = button
 	
-	if button.enable_confirm_selection:
-		ask_to_confirm_selection()
+	ask_to_confirm_selection()
 	#Resume does not need a confimation 
 	#if confirmation_timer.is_stopped():
 			#confirmation_timer.start()

@@ -4,6 +4,11 @@
 			"uuid": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"title": "Task",
 			"color": "ff6ee0"
+		},
+		{
+			"uuid": "32c68ff9-8b01-47ee-814e-9d41b05e055a",
+			"title": "BUG",
+			"color": "f11111"
 		}
 	],
 	"stages": [
@@ -24,7 +29,6 @@
 			"tasks": [
 				"4497e6be-aba2-4748-950e-0d9ecdf4ac46",
 				"924d100f-ccad-4132-8cd8-e191b3ce6186",
-				"dea18bc6-64ea-45a0-a177-6ddf101b4d42",
 				"971914dc-6f56-4a02-b033-e3c83e1de804"
 			]
 		},
@@ -33,7 +37,9 @@
 			"title": "Done",
 			"tasks": [
 				"179448fe-f0be-4289-aee0-09ff590a5dc9",
-				"b2bb9f14-e1f4-40ca-b5b7-baff9cebf362"
+				"b2bb9f14-e1f4-40ca-b5b7-baff9cebf362",
+				"dea18bc6-64ea-45a0-a177-6ddf101b4d42",
+				"06e17eee-294c-4990-aed7-4ea17867d44c"
 			]
 		},
 		{
@@ -123,6 +129,10 @@
 			"steps": [
 				{
 					"details": "fix the player defeated screen to no-longer use the press and hold method",
+					"done": false
+				},
+				{
+					"details": "Fix the system which controls menus in the first place",
 					"done": false
 				}
 			]
@@ -217,6 +227,13 @@
 			"title": "Retro Ending Screen when the game is completed",
 			"description": "Make it respect Loss vs Win\nMake it pretty\nInvolve ANSG",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "06e17eee-294c-4990-aed7-4ea17867d44c",
+			"title": "GPU PARTICLES STILL SCALE WRONG",
+			"description": "",
+			"category": "32c68ff9-8b01-47ee-814e-9d41b05e055a",
 			"steps": []
 		}
 	],

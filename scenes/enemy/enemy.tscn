@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw7votl21cark"]
+[gd_scene load_steps=16 format=3 uid="uid://bw7votl21cark"]
 
 [ext_resource type="Script" uid="uid://bmve0wce3e23t" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="PackedScene" uid="uid://dhd4f3glgvj4h" path="res://scenes/components/health_component.tscn" id="2_a3pup"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://ytptb75gvo1r" path="res://assets/particles/fire_trail_back_particle_process_material.tres" id="4_13gj6"]
 [ext_resource type="Material" uid="uid://b352dqe5vtsyn" path="res://assets/particles/fire_trail_front_particle_process_material.tres" id="5_4efjx"]
 [ext_resource type="PackedScene" uid="uid://dw7f8wl5cgno8" path="res://scenes/ui/off_screen_marker/target_reticles.tscn" id="5_gl05p"]
+[ext_resource type="Script" uid="uid://mmtdtbgat87y" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.gd" id="5_hvxgb"]
 [ext_resource type="PackedScene" uid="uid://cvrho56xhok43" path="res://scenes/components/item_drop_component.tscn" id="6_cwlon"]
 [ext_resource type="PackedScene" uid="uid://bstco5w5lxv1u" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.tscn" id="7_nbhyu"]
 
@@ -187,6 +188,8 @@ position = Vector2(0, 11)
 lifetime = 0.15000000000000002
 fixed_fps = 12
 process_material = ExtResource("4_13gj6")
+script = ExtResource("5_hvxgb")
+particle_number = 1
 
 [node name="FireTrailGPUParticles2D" parent="." instance=ExtResource("7_nbhyu")]
 unique_name_in_owner = true
@@ -194,6 +197,7 @@ position = Vector2(0, 11)
 lifetime = 0.75
 fixed_fps = 12
 process_material = ExtResource("5_4efjx")
+script = ExtResource("5_hvxgb")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_a3pup")]
 
@@ -230,3 +234,8 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_40wdo")
 debug_color = Color(0.43636, 0, 0.172997, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fall_speed = "

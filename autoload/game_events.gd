@@ -55,6 +55,15 @@ var game_played: bool = false
 var global_scale_tweening: bool = false
 var global_scale_lerp_speed: float = 0.1
 var global_scale_target: Vector2 = Vector2(1.0, 1.0)
+## Fire Particle Scale Helpers
+var given_initial_fire_trail_values: bool = false
+var initial_fire_trail_particle_lifetime: float = 0.0
+var initial_fire_trail_process_material_scale_min: float = 0.0
+var initial_fire_trail_process_material_scale_max: float = 0.0
+var given_initial_fire_trail_2_values: bool = false
+var initial_fire_trail_particle_2_lifetime: float = 0.0
+var initial_fire_trail_process_material_2_scale_min: float = 0.0
+var initial_fire_trail_process_material_2_scale_max: float = 0.0
 
 
 func reset_values():

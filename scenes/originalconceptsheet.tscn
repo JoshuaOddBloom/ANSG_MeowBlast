@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7riddmnlhxba" path="res://scenes/ui/progress_bar.tscn" id="4_6l226"]
 
 [node name="ORIGINALCONCEPTSHEET" type="Node2D"]
+metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

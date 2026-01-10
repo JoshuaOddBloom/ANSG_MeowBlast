@@ -4,6 +4,7 @@ class_name SoundButton
 
 signal sound_finished
 
+@export var enable_confirm_selection: bool = false
 @onready var icon_toggleable: Sprite2D = $IconToggleable
 
 var icon_toggleable_idle_color = Color(0.0, 0.0, 0.0, 0.5)
@@ -38,7 +39,6 @@ func _on_focus_exited() -> void:
 
 func _on_mouse_exited() -> void:
 	pass
-	#icon_toggleable.modulate = icon_toggleable_idle_color
 
 
 func on_pressed():
