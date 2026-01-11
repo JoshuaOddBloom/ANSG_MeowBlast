@@ -1,7 +1,7 @@
 extends Control
 
-@onready var main_menu = preload("res://scenes/ui/main_menu.tscn")
-@onready var show_controls_screen = preload("res://scenes/ui/show_controls_screen.tscn")
+@export var intro_sequencer: PackedScene # = preload("res://scenes/ui/main_menu.tscn")
+#@onready var show_controls_screen = preload("res://scenes/ui/show_controls_screen.tscn")
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var label: Label = %Label
@@ -73,4 +73,4 @@ func on_timer_timeout():
 
 
 func on_sound_button_pressed():
-	get_tree().change_scene_to_packed(main_menu)
+	get_tree().change_scene_to_packed(intro_sequencer)

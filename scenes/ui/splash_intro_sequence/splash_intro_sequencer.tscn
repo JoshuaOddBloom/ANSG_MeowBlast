@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://biluupw1ocump"]
+
+[ext_resource type="Script" uid="uid://pwjovimk84jb" path="res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.gd" id="1_nnu4w"]
+[ext_resource type="PackedScene" uid="uid://b3ps8370uruvn" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_segment.tscn" id="2_4d0je"]
+[ext_resource type="PackedScene" uid="uid://deitr7ypebg0a" path="res://scenes/ui/menus/oldmain_menu.tscn" id="3_tcjmu"]
+
+[node name="SplashIntroSequencer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnu4w")
+splash_intro_segments = Array[PackedScene]([ExtResource("2_4d0je"), ExtResource("2_4d0je"), ExtResource("2_4d0je")])
+main_menu = ExtResource("3_tcjmu")
+
+[node name="TimeBetweenSegmentsTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+autostart = true

@@ -46,7 +46,9 @@ folder_colors={
 "res://scenes/enemy/": "pink",
 "res://scenes/managers/": "purple",
 "res://scenes/player/": "blue",
-"res://scenes/projectile/": "green"
+"res://scenes/projectile/": "green",
+"res://scenes/ui/menus/": "blue",
+"res://scenes/ui/splash_intro_sequence/": "orange"
 }
 
 [global_group]

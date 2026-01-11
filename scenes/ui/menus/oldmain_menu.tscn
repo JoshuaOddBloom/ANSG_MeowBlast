@@ -1,17 +1,17 @@
 [gd_scene load_steps=25 format=3 uid="uid://deitr7ypebg0a"]
 
-[ext_resource type="Script" uid="uid://ccq8kacuicqus" path="res://scenes/ui/main_menu.gd" id="1_m1kxf"]
-[ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_x2yvf"]
-[ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_8g5eo"]
-[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="3_q85j6"]
-[ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_wb0q5"]
-[ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/show_controls_screen.tscn" id="6_otr3d"]
-[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_uhagc"]
-[ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/show_options_screen.tscn" id="7_8ekit"]
-[ext_resource type="Script" uid="uid://g8usbsvp8uwt" path="res://scenes/ui/oddbloom_logo.gd" id="8_7suek"]
-[ext_resource type="Texture2D" uid="uid://lyayh1mbv0oa" path="res://assets/ui/all_nighter_survival_guide_title.png" id="9_7suek"]
-[ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/White LINES 3 Eye.png" id="9_otr3d"]
-[ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/White LINES 3 Petals.png" id="10_8ekit"]
+[ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_pdhwb"]
+[ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_wc88o"]
+[ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_kbxqq"]
+[ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_vbody"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="5_wgf77"]
+[ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/menus/show_controls_screen.tscn" id="6_ghfky"]
+[ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/menus/show_options_screen.tscn" id="7_tesed"]
+[ext_resource type="Texture2D" uid="uid://lyayh1mbv0oa" path="res://assets/ui/all_nighter_survival_guide_title.png" id="8_brw2x"]
+[ext_resource type="Script" uid="uid://g8usbsvp8uwt" path="res://scenes/ui/splash_intro_sequence/oddbloom_logo.gd" id="9_lhnr4"]
+[ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/White LINES 3 Eye.png" id="10_elf4i"]
+[ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/White LINES 3 Petals.png" id="11_bbn2q"]
+[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="12_t37y7"]
 
 [sub_resource type="Animation" id="Animation_uhagc"]
 length = 0.001
@@ -636,14 +636,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btxxm"]
 size = Vector2(128, 32)
 
-[node name="MainMenu" type="Control"]
+[node name="OLDMainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m1kxf")
+script = ExtResource("1_pdhwb")
 
 [node name="WaitToStartTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -668,7 +668,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
-texture = ExtResource("2_x2yvf")
+texture = ExtResource("2_wc88o")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="MainMenuBG/BG"]
@@ -680,7 +680,7 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 179.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_8g5eo")
+theme_override_fonts/font = ExtResource("3_kbxqq")
 theme_override_font_sizes/font_size = 16
 text = "Artwork by @JoshuaOddBloom"
 horizontal_alignment = 1
@@ -694,7 +694,7 @@ offset_top = 3.0
 offset_right = 411.19
 offset_bottom = 16.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_8g5eo")
+theme_override_fonts/font = ExtResource("3_kbxqq")
 theme_override_font_sizes/font_size = 16
 text = "Visuals and Audio Not Final"
 horizontal_alignment = 1
@@ -728,7 +728,7 @@ unique_name_in_owner = true
 modulate = Color(0.921569, 0.952941, 1, 1)
 layout_mode = 2
 size_flags_vertical = 10
-theme = ExtResource("4_wb0q5")
+theme = ExtResource("4_vbody")
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 64
 text = "ANSG : MEOW BLAST!"
@@ -736,7 +736,7 @@ horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="MainMenuBG/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_wb0q5")
+theme = ExtResource("4_vbody")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
@@ -758,29 +758,29 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StartButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("3_q85j6")]
+[node name="StartButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_wgf77")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "START"
 
-[node name="ControlsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("3_q85j6")]
+[node name="ControlsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_wgf77")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "CONTROLS"
 spawn_menu = true
-menu_to_spawn = ExtResource("6_otr3d")
+menu_to_spawn = ExtResource("6_ghfky")
 
-[node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("3_q85j6")]
+[node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_wgf77")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "OPTIONS"
 spawn_menu = true
-menu_to_spawn = ExtResource("7_8ekit")
+menu_to_spawn = ExtResource("7_tesed")
 
-[node name="QuitButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("3_q85j6")]
+[node name="QuitButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_wgf77")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
@@ -817,7 +817,7 @@ visible = false
 
 [node name="ANSGSprite2D" type="Sprite2D" parent="Branding/ANSGMarker2D"]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("9_7suek")
+texture = ExtResource("8_brw2x")
 
 [node name="Marker2D" type="Marker2D" parent="Branding"]
 scale = Vector2(0.05, 0.05)
@@ -825,7 +825,7 @@ scale = Vector2(0.05, 0.05)
 [node name="OddbloomLogo" type="Node2D" parent="Branding/Marker2D"]
 unique_name_in_owner = true
 scale = Vector2(1, 1e-05)
-script = ExtResource("8_7suek")
+script = ExtResource("9_lhnr4")
 choosen_type = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Branding/Marker2D/OddbloomLogo"]
@@ -840,10 +840,10 @@ libraries = {
 unique_name_in_owner = true
 
 [node name="Eye" type="Sprite2D" parent="Branding/Marker2D/OddbloomLogo/White"]
-texture = ExtResource("9_otr3d")
+texture = ExtResource("10_elf4i")
 
 [node name="Petals" type="Sprite2D" parent="Branding/Marker2D/OddbloomLogo/White"]
-texture = ExtResource("10_8ekit")
+texture = ExtResource("11_bbn2q")
 
 [node name="MarginContainer" type="MarginContainer" parent="Branding"]
 visible = false
@@ -869,7 +869,7 @@ alignment = 2
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_fonts/font = ExtResource("12_t37y7")
 theme_override_font_sizes/font_size = 24
 text = "OddBloom Studios"
 horizontal_alignment = 1
@@ -882,7 +882,7 @@ theme_override_constants/separation = 16
 [node name="ProducedByLabel" type="Label" parent="Branding/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_fonts/font = ExtResource("12_t37y7")
 theme_override_font_sizes/font_size = 18
 text = "Produced by
 Joshua OddBloom"
@@ -912,7 +912,7 @@ alignment = 2
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_fonts/font = ExtResource("12_t37y7")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
@@ -924,7 +924,7 @@ theme_override_constants/separation = 16
 [node name="ProducedByLabel" type="Label" parent="Branding/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("6_uhagc")
+theme_override_fonts/font = ExtResource("12_t37y7")
 theme_override_font_sizes/font_size = 18
 text = "Created and Produced by
 MinTheDeadDM"
