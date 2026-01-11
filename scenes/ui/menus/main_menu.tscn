@@ -1,0 +1,316 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqhfswfgaqj1"]
+
+[ext_resource type="Script" uid="uid://jsekjhdw2cxq" path="res://scenes/ui/menus/main_menu_with_confirm.gd" id="1_y4aia"]
+[ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_jk7nv"]
+[ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_dhmlp"]
+[ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_ykpw6"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="5_h4dpu"]
+[ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/menus/show_controls_screen.tscn" id="6_nmbxx"]
+[ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/menus/show_options_screen.tscn" id="7_bl8wb"]
+
+[sub_resource type="Animation" id="Animation_c8e1o"]
+resource_name = "auto"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"_buttons_disabled_toggle"
+}, {
+"args": [],
+"method": &"focus_first_available_choice"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e7y46"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhagc"]
+_data = {
+&"RESET": SubResource("Animation_e7y46"),
+&"auto": SubResource("Animation_c8e1o")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb0q5"]
+size = Vector2(193.02, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btxxm"]
+size = Vector2(128, 32)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4aia")
+
+[node name="BGColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="WaitToStartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uhagc")
+}
+autoplay = "auto"
+
+[node name="MainMenuBG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="MainMenuBG"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("2_jk7nv")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuBG/BG"]
+custom_minimum_size = Vector2(193.19, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 179.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_dhmlp")
+theme_override_font_sizes/font_size = 16
+text = "Artwork by @JoshuaOddBloom"
+horizontal_alignment = 1
+
+[node name="VisualsAndAudioNotFinalLabel" type="Label" parent="MainMenuBG/BG"]
+modulate = Color(1, 0.809552, 0.27686, 1)
+custom_minimum_size = Vector2(193.19, 0)
+layout_mode = 0
+offset_left = 218.0
+offset_top = 3.0
+offset_right = 411.19
+offset_bottom = 16.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_dhmlp")
+theme_override_font_sizes/font_size = 16
+text = "Visuals and Audio Not Final"
+horizontal_alignment = 1
+
+[node name="Title" type="TextureRect" parent="MainMenuBG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuBG/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MainMenuBG/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.921569, 0.952941, 1, 1)
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("4_ykpw6")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "ANSG : MEOW BLAST!"
+horizontal_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="MainMenuBG/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_ykpw6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 32
+text = "[ Prototype Build - ver 0.4.7 ]"
+horizontal_alignment = 1
+
+[node name="OptionsVBoxContainer" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuOptions" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StartButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "START"
+
+[node name="ControlsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "CONTROLS"
+spawn_menu = true
+menu_to_spawn = ExtResource("6_nmbxx")
+
+[node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "OPTIONS"
+spawn_menu = true
+menu_to_spawn = ExtResource("7_bl8wb")
+
+[node name="QuitButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+disabled = true
+text = "QUIT"
+require_selection_confirmation = true
+
+[node name="TouchScreenStartButton" type="TouchScreenButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(96.63, 23.88)
+shape = SubResource("RectangleShape2D_wb0q5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "MAIN MENU
+"
+
+[node name="InputMethod" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputMethod"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -35.0
+offset_right = 130.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="InputMethod/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Use Touch Controls?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputMethod/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="InputMethod/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenOnButton" type="TouchScreenButton" parent="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+position = Vector2(64, 16)
+shape = SubResource("RectangleShape2D_btxxm")
+
+[node name="Label" type="Label" parent="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "YES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchScreenOffButton" type="Button" parent="InputMethod/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "No"
+
+[node name="TouchScreenOffButton2" type="TouchScreenButton" parent="InputMethod/VBoxContainer/HBoxContainer/TouchScreenOffButton"]
+unique_name_in_owner = true
+position = Vector2(65, 16)
+shape = SubResource("RectangleShape2D_btxxm")
+
+[connection signal="pressed" from="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/TouchScreenStartButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="InputMethod/VBoxContainer/HBoxContainer/PanelContainer2/TouchScreenOnButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="InputMethod/VBoxContainer/HBoxContainer/TouchScreenOffButton" to="." method="_on_keyboard_and_mouse_button_pressed"]

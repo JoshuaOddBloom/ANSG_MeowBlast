@@ -31,13 +31,10 @@ signal item_drop_send(item_drop_type : String, item_drop_data : Resource)
 
 @export var player_defeated_menu: PackedScene
 @export var pause_menu_scene: PackedScene
+@export var splash_intro_sequencer: PackedScene
 
 @onready var debug: bool = false
-#@onready var enemy_sprite_attack1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_attack1.png")
-#@onready var enemy_sprite_defeated1 = preload("res://scenes/enemy/CateroidChaosEnemies_defeated1.png")
-#@onready var enemy_sprite_hurt1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_hurt1.png")
-#@onready var enemy_sprite_hurt2 = preload("res://scenes/enemy/CateroidChaosEnemies_hurt2.png")
-#@onready var enemy_sprite_idle1 = preload("res://scenes/enemy/CateroidChaosEnemies_idle1.png")
+
 
 var player_can_restore: bool = false
 var player_at_max_health: bool = false

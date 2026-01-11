@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy65wp85ncwbs"
-path="res://.godot/imported/White LINES 3 Petals.png-d799e417a4c982fd48f8d1d5d6900589.ctex"
+uid="uid://citalxxo7s6oq"
+path="res://.godot/imported/White LINES 3 Eye.png-c2bc95c3f930151e0ec3a1f5f84e871f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/White LINES 3 Petals.png"
-dest_files=["res://.godot/imported/White LINES 3 Petals.png-d799e417a4c982fd48f8d1d5d6900589.ctex"]
+source_file="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Eye.png"
+dest_files=["res://.godot/imported/White LINES 3 Eye.png-c2bc95c3f930151e0ec3a1f5f84e871f.ctex"]
 
 [params]
 

@@ -1,22 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://biluupw1ocump"]
+[gd_scene load_steps=5 format=3 uid="uid://biluupw1ocump"]
 
 [ext_resource type="Script" uid="uid://pwjovimk84jb" path="res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.gd" id="1_nnu4w"]
-[ext_resource type="PackedScene" uid="uid://b3ps8370uruvn" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_segment.tscn" id="2_4d0je"]
-[ext_resource type="PackedScene" uid="uid://deitr7ypebg0a" path="res://scenes/ui/menus/oldmain_menu.tscn" id="3_tcjmu"]
+[ext_resource type="PackedScene" uid="uid://b3ps8370uruvn" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/odd_bloom_splash_intro_segment.tscn" id="2_4d0je"]
+[ext_resource type="PackedScene" uid="uid://dqhfswfgaqj1" path="res://scenes/ui/menus/main_menu.tscn" id="2_tcjmu"]
+[ext_resource type="PackedScene" uid="uid://dqmfvs27k245m" path="res://scenes/ui/splash_intro_sequence/ansg_splash_intro_sequence/ansg_splash_intro_segment.tscn" id="3_4d0je"]
 
-[node name="SplashIntroSequencer" type="Control"]
-layout_mode = 3
+[node name="SplashIntroSequencer" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnu4w")
-splash_intro_segments = Array[PackedScene]([ExtResource("2_4d0je"), ExtResource("2_4d0je"), ExtResource("2_4d0je")])
-main_menu = ExtResource("3_tcjmu")
+main_menu = ExtResource("2_tcjmu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="TimeBetweenSegmentsTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
-autostart = true
+
+[node name="SegmentContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OddBloomSplashIntroSegment" parent="SegmentContainer" instance=ExtResource("2_4d0je")]
+layout_mode = 1
+
+[node name="ANSGSplashIntroSegment" parent="SegmentContainer" instance=ExtResource("3_4d0je")]
+layout_mode = 1

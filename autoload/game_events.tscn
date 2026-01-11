@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://yso7ajq0ligw"]
+[gd_scene load_steps=5 format=3 uid="uid://yso7ajq0ligw"]
 
 [ext_resource type="Script" uid="uid://cv7ljaxahqkoe" path="res://autoload/game_events.gd" id="1_r3yq3"]
 [ext_resource type="PackedScene" uid="uid://utrq6b3c0prv" path="res://scenes/ui/menus/new_player_defeated_menu_with_confirm.tscn" id="2_ed8p2"]
 [ext_resource type="PackedScene" uid="uid://dckpmijob2sj2" path="res://scenes/ui/menus/pause_menu_with_confirm.tscn" id="2_rnc14"]
+[ext_resource type="PackedScene" uid="uid://biluupw1ocump" path="res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.tscn" id="4_jhetm"]
 
 [node name="GameEvents" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_r3yq3")
 player_defeated_menu = ExtResource("2_ed8p2")
 pause_menu_scene = ExtResource("2_rnc14")
+splash_intro_sequencer = ExtResource("4_jhetm")

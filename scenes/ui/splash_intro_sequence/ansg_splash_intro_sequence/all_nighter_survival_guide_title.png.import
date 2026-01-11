@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lyayh1mbv0oa"
-path="res://.godot/imported/all_nighter_survival_guide_title.png-184f9bd74123120a4fbf7072e57bfaa0.ctex"
+path="res://.godot/imported/all_nighter_survival_guide_title.png-3151e9b6d353739b829daa5106ee9005.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/all_nighter_survival_guide_title.png"
-dest_files=["res://.godot/imported/all_nighter_survival_guide_title.png-184f9bd74123120a4fbf7072e57bfaa0.ctex"]
+source_file="res://scenes/ui/splash_intro_sequence/ansg_splash_intro_sequence/all_nighter_survival_guide_title.png"
+dest_files=["res://.godot/imported/all_nighter_survival_guide_title.png-3151e9b6d353739b829daa5106ee9005.ctex"]
 
 [params]
 

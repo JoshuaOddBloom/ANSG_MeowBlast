@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://e3pbo1bvvs31"]
+[gd_scene load_steps=14 format=3 uid="uid://b3ps8370uruvn"]
 
-[ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_6tkl5"]
-[ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Eye.png" id="4_6m6bq"]
-[ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Petals.png" id="5_uyycu"]
-[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_6qe6c"]
+[ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_ly8k6"]
+[ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Eye.png" id="4_6t5ql"]
+[ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Petals.png" id="5_owtpl"]
+[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_lsl8d"]
 
 [sub_resource type="Animation" id="Animation_uhagc"]
 length = 0.001
@@ -370,14 +370,14 @@ _data = {
 &"out": SubResource("Animation_f84ix")
 }
 
-[node name="SplashIntroSegment" type="Control"]
+[node name="OddBloomSplashIntroSegment" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6tkl5")
+script = ExtResource("1_ly8k6")
 
 [node name="SequenceAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -432,7 +432,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_6qe6c")
+theme_override_fonts/font = ExtResource("6_lsl8d")
 theme_override_font_sizes/font_size = 24
 text = "OddBloom Studios"
 horizontal_alignment = 1
@@ -446,7 +446,7 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("6_6qe6c")
+theme_override_fonts/font = ExtResource("6_lsl8d")
 theme_override_font_sizes/font_size = 18
 text = "Produced by
 Joshua OddBloom"
@@ -475,10 +475,10 @@ blend_times = [&"auto", &"out", 0.5]
 unique_name_in_owner = true
 
 [node name="Eye" type="Sprite2D" parent="Branding/BrandingMarker2D/Logo/LogoElements"]
-texture = ExtResource("4_6m6bq")
+texture = ExtResource("4_6t5ql")
 
 [node name="Petals" type="Sprite2D" parent="Branding/BrandingMarker2D/Logo/LogoElements"]
-texture = ExtResource("5_uyycu")
+texture = ExtResource("5_owtpl")
 
 [node name="DebugLabel" type="Label" parent="."]
 unique_name_in_owner = true

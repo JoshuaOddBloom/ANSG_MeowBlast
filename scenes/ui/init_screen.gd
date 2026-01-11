@@ -1,7 +1,7 @@
 extends Control
 
-@export var intro_sequencer: PackedScene # = preload("res://scenes/ui/main_menu.tscn")
-#@onready var show_controls_screen = preload("res://scenes/ui/show_controls_screen.tscn")
+#@export var intro_sequencer: PackedScene # = preload("res://scenes/ui/main_menu.tscn")
+@onready var show_controls_screen = preload("res://scenes/ui/menus/show_controls_screen.tscn")
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var label: Label = %Label
@@ -15,6 +15,7 @@ extends Control
 
 var init_ui_finished: bool = false
 var can_proceed: bool = false
+
 
 func _ready() -> void:
 	progress_bar.hide()
@@ -56,7 +57,6 @@ func _process(_delta: float) -> void:
 
 
 func on_timer_timeout():
-	
 	if ! can_proceed:
 		timer.start()
 		return
@@ -73,4 +73,4 @@ func on_timer_timeout():
 
 
 func on_sound_button_pressed():
-	get_tree().change_scene_to_packed(intro_sequencer)
+	get_tree().change_scene_to_packed(GameEvents.splash_intro_sequencer)
