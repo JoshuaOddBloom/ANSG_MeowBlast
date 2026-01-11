@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxj36xfgltjre"]
+
+[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_ujys5"]
+[ext_resource type="Script" uid="uid://bisrg6h7db5ep" path="res://scenes/ui/confirm_selection_menu.gd" id="1_w22a0"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="2_w22a0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37tmq"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.11, 0.11, 0.11, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ConfirmSelectionMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_w22a0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.19251, 0.15660001, 0.27, 0.6509804)
+
+[node name="ConfirmSelectionPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ujys5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_37tmq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmSelectionPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ConfirmSelectionPanel/VBoxContainer"]
+layout_mode = 2
+text = "ARE YOU SURE?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmSelectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ConfirmSelectionNoOddButton" parent="ConfirmSelectionPanel/VBoxContainer/HBoxContainer" instance=ExtResource("2_w22a0")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../ConfirmSelectionYesOddButton")
+focus_next = NodePath("../ConfirmSelectionYesOddButton")
+focus_previous = NodePath("../ConfirmSelectionYesOddButton")
+text = "NO"
+
+[node name="ConfirmSelectionYesOddButton" parent="ConfirmSelectionPanel/VBoxContainer/HBoxContainer" instance=ExtResource("2_w22a0")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../ConfirmSelectionNoOddButton")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath("../ConfirmSelectionNoOddButton")
+focus_previous = NodePath("../ConfirmSelectionNoOddButton")
+text = "YES"

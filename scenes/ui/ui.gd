@@ -31,7 +31,7 @@ signal init_finished
 @onready var pause_button: Button = %PauseButton
 @onready var pause_touch_screen_button: TouchScreenButton = %PauseTouchScreenButton
 # PLAYER DEFEATED MENU
-@onready var player_defeated_menu = preload("res://scenes/ui/player_defeated_menu.tscn")
+
 
 
 var active_hearts = []
@@ -49,7 +49,8 @@ func _ready() -> void:
 	GameEvents.player_health_changed.connect(on_player_health_changed)
 	GameEvents.player_damaged.connect(on_player_damaged)
 	GameEvents.update_player_stats.connect(on_update_player_stats)
-	GameEvents.game_over.connect(on_game_over)
+	GameEvents.game_paused.connect(_on_game_paused)
+	GameEvents.game_ended.connect(on_game_over)
 	
 	power_button.pressed.connect(on_player_power_used)
 	power_touch_screen_button.pressed.connect(on_player_power_used)
@@ -175,8 +176,12 @@ func on_player_damaged(damage_amount):
 		deplete_ui_heart_container_icon()
 
 
+func _on_game_paused():
+	add_child(GameEvents.pause_menu_scene.instantiate())
+
+
 func on_game_over():
-	var player_defeated_menu_instance = player_defeated_menu.instantiate()
+	var player_defeated_menu_instance = GameEvents.player_defeated_menu.instantiate()
 	add_child(player_defeated_menu_instance)
 
 

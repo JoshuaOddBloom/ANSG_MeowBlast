@@ -23,6 +23,7 @@ func _ready() -> void:
 	timer.timeout.connect(on_timer_timeout)
 	ui.init_finished.connect(func(): 
 		init_ui_finished = true;
+		ParticlesInit.init();
 		enemy.init(); 
 		player.hide();
 		)
@@ -38,6 +39,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if GameEvents.can_pause:
+		GameEvents.can_pause = false
 	if progress_bar.value < progress_bar.max_value * 0.25:
 		label.text = "LOADING"
 	if progress_bar.value > progress_bar.max_value * 0.25:
@@ -66,7 +69,7 @@ func on_timer_timeout():
 	var show_controls_screen_instance = show_controls_screen.instantiate()
 	show_controls_screen_instance.closed.connect(on_sound_button_pressed)
 	add_child(show_controls_screen_instance)
-	show_controls_screen_instance.sound_button.text = "CONTINUE"
+	show_controls_screen_instance.back_button.text = "CONTINUE"
 
 
 func on_sound_button_pressed():

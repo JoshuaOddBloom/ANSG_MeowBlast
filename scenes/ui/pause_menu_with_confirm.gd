@@ -2,23 +2,23 @@ extends CanvasLayer
 
 #TODO STILL NEEDS TRANSITIONS FOR CONFIRMATIONS
 
-@export var show_controls_screen: PackedScene
-@export var show_options_screen: PackedScene
+#@export var show_controls_screen: PackedScene
+#@export var show_options_screen: PackedScene
 @export var confirmation_timer_base_waittime: float
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var choices: VBoxContainer = %Choices
 @onready var restore_margin_container: MarginContainer = %RestoreMarginContainer
-@onready var resume_button: SoundButton = %ResumeButton
-@onready var controls_button: SoundButton = %ControlsButton
-@onready var options_button: SoundButton = %OptionsButton
-@onready var restore_button: Button = %RestoreButton
-@onready var restart_button: Button = %RestartButton
-@onready var leave_button: Button = %LeaveButton 
+@onready var resume_button: OddButton = %ResumeButton
+@onready var controls_button: OddButton = %ControlsButton
+@onready var options_button: OddButton = %OptionsButton
+@onready var restore_button: OddButton = %RestoreButton
+@onready var restart_button: OddButton = %RestartButton
+@onready var leave_button: OddButton = %LeaveButton 
 
 @onready var confirm_selection_menu: MarginContainer = %ConfirmSelectionMenu
-@onready var confirm_selection_no_sound_button: SoundButton = %ConfirmSelectionNoSoundButton
-@onready var confirm_selection_yes_sound_button: SoundButton = %ConfirmSelectionYesSoundButton
+@onready var confirm_selection_no_sound_button: OddButton = %ConfirmSelectionNoOddButton
+@onready var confirm_selection_yes_sound_button: OddButton = %ConfirmSelectionYesOddButton
 
 
 var is_closing: bool = false
@@ -63,7 +63,7 @@ func focus_first_available_choice():
 		resume_button.grab_focus()
 
 
-func _on_button_pressed(button: SoundButton):
+func _on_button_pressed(button: OddButton):
 	if button == null:
 		return
 	
@@ -73,40 +73,25 @@ func _on_button_pressed(button: SoundButton):
 	Input.start_joy_vibration(0,.1, 0.1, 0.1) # Vibration
 	
 	# buttons that spawn menus
-	if button == controls_button:
+	if button.spawn_menu:
 		#controls button pressed
 		# show controls menu
-		var controls_screen_instance = show_controls_screen.instantiate()
-		controls_screen_instance.closed.connect(func(): controls_button.grab_focus())
-		self.add_child(controls_screen_instance)
-		return
-		
-	elif button == options_button:
-		#controls button pressed
-		# show options menu
-		var options_screen_instance = show_options_screen.instantiate()
-		options_screen_instance.closed.connect(func(): options_button.grab_focus())
-		self.add_child(options_screen_instance)
+		var button_menu_instance = button.menu_to_spawn.instantiate()
+		button_menu_instance.closed.connect(func(): button.grab_focus())
+		self.add_child(button_menu_instance)
 		return
 	
 	elif button == resume_button:
-		# skip confirmation
-		#print("CONFIRMED : ", "ResumeButton")
 		animation_player.play("out")
 		await animation_player.animation_finished
-		
 		on_resume_pressed()
 		pass
 	
 	#Get the button's name
 	option_chosen = button
 	
-	if button.enable_confirm_selection:
+	if button.require_selection_confirmation:
 		ask_to_confirm_selection()
-	#Resume does not need a confimation 
-	#if confirmation_timer.is_stopped():
-			#confirmation_timer.start()
-	
 
 
 func ask_to_confirm_selection():
@@ -117,7 +102,7 @@ func ask_to_confirm_selection():
 	pass
 
 
-func _on_confirmation(button: SoundButton):
+func _on_confirmation(button: OddButton):
 	match button:
 		confirm_selection_no_sound_button:
 			var tween_confimation_screen = create_tween()

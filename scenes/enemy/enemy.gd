@@ -72,6 +72,8 @@ func set_spawn_type():
 		"sleepy":
 			spawn_texture_chosen = GameEvents.enemy_sprite_defeated1
 			fall_speed *= 0.6
+			if fall_speed > MAX_FALL_SPEED * 0.9:
+				fall_speed = MAX_FALL_SPEED * 0.9
 			
 		"angry":
 			spawn_texture_chosen = GameEvents.enemy_sprite_attack1

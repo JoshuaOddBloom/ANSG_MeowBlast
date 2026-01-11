@@ -60,6 +60,10 @@ func _process(delta: float) -> void:
 	if is_init:
 		return
 	## Input Monitoring
+	if Input.is_action_pressed("pause"):
+		if GameEvents.game_over:
+			return
+		GameEvents.emit_game_paused("paused")
 	
 	if scale != GameEvents.global_scale_target:
 		scale = GameEvents.global_scale_target
@@ -73,6 +77,8 @@ func _process(delta: float) -> void:
 	
 	if y_position_anchor:
 		global_position.y = y_position_anchor.global_position.y
+	
+	
 	
 	# Move Left
 	if Input.is_action_pressed("ui_left"):

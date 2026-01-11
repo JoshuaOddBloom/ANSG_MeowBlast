@@ -5,7 +5,7 @@ signal closed
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var how_to_access_info_label: Label = %HowToAccessInfoLabel
-@onready var sound_button: SoundButton = %SoundButton
+@onready var back_button: OddButton = %BackButton
 @onready var bgm_check_button: CheckButton = %BGMCheckButton
 @onready var sfx_check_button: CheckButton = %SFXCheckButton
 
@@ -13,15 +13,15 @@ signal closed
 func _ready() -> void:
 	button_pressed_values()
 	
-	sound_button.pressed.connect(on_sound_button_pressed)
+	back_button.pressed.connect(on_back_button_pressed)
 	bgm_check_button.toggled.connect(on_bgm_check_button_toggled)
 	sfx_check_button.toggled.connect(on_sfx_check_button_toggled)
-	sound_button.grab_focus()
+	back_button.grab_focus()
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		on_sound_button_pressed()
+		on_back_button_pressed()
 
 
 func button_pressed_values():
@@ -47,8 +47,8 @@ func on_sfx_check_button_toggled(toggled_on):
 	mute_audio_bus(toggled_on, "SFX")
 
 
-func on_sound_button_pressed():
-	sound_button.disabled = true
+func on_back_button_pressed():
+	back_button.disabled = true
 	animation_player.play_backwards("auto")
 	await animation_player.animation_finished
 	closed.emit()

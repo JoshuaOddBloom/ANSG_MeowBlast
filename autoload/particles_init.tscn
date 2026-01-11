@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://b1khyjefslq5h" path="res://assets/particles/base_level_middle_rolling_clouds.tres" id="13_5hxkf"]
 
 [node name="ParticlesInit" type="Node2D"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_d1rkr")
 particle_effects = Array[ParticleProcessMaterial]([ExtResource("2_0bl4l"), ExtResource("3_2uflr"), ExtResource("4_qwvve"), ExtResource("5_dxaoi"), ExtResource("6_3467v"), ExtResource("7_5hxkf"), ExtResource("8_4dh5x"), ExtResource("9_rlwi0"), ExtResource("10_0bl8c"), ExtResource("11_dxaoi"), ExtResource("12_3467v"), ExtResource("13_5hxkf")])

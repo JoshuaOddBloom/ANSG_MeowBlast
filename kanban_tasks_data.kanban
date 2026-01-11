@@ -129,10 +129,14 @@
 			"steps": [
 				{
 					"details": "fix the player defeated screen to no-longer use the press and hold method",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Fix the system which controls menus in the first place",
+					"done": true
+				},
+				{
+					"details": "making changes to the main menu",
 					"done": false
 				}
 			]

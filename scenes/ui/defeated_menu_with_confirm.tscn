@@ -1,19 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://dckpmijob2sj2"]
+[gd_scene load_steps=19 format=3 uid="uid://b7xake16l4oi6"]
 
-[ext_resource type="Script" uid="uid://dhj5xa5aw5u7e" path="res://scenes/ui/menu_with_confirm.gd" id="1_808v6"]
-[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="4_naved"]
-[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="5_rgoli"]
-[ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/show_controls_screen.tscn" id="6_37tmq"]
-[ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="6_g8vkw"]
-[ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/show_options_screen.tscn" id="7_uvvyv"]
-[ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="7_xcfjs"]
+[ext_resource type="Script" uid="uid://dhj5xa5aw5u7e" path="res://scenes/ui/menu_with_confirm.gd" id="1_74csd"]
+[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_lqjak"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="3_48kp7"]
+[ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="4_yooxo"]
+[ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="5_j0c6a"]
+[ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/show_controls_screen.tscn" id="6_ene0j"]
+[ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/show_options_screen.tscn" id="7_jfcxr"]
 
 [sub_resource type="Animation" id="Animation_fu5m3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer:theme_override_constants/margin_top")
+tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer:theme_override_constants/margin_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer:theme_override_constants/margin_bottom")
+tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer:theme_override_constants/margin_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -128,7 +128,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer:theme_override_constants/margin_top")
+tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer:theme_override_constants/margin_top")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -140,7 +140,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer:theme_override_constants/margin_bottom")
+tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer:theme_override_constants/margin_bottom")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -207,11 +207,26 @@ _data = {
 &"restorebuttonshimmer": SubResource("Animation_moutl")
 }
 
-[node name="PauseOddMenuWithConfirm" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37tmq"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.11, 0.11, 0.11, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OddMenuWithConfirm" type="CanvasLayer"]
 process_mode = 3
 layer = 5
-script = ExtResource("1_808v6")
-pause_game_on_ready = true
+script = ExtResource("1_74csd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -250,7 +265,7 @@ size_flags_vertical = 4
 process_mode = 3
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme = ExtResource("4_naved")
+theme = ExtResource("2_lqjak")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer"]
 process_mode = 3
@@ -271,16 +286,16 @@ process_mode = 3
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "PAUSED"
+text = "MENU"
 horizontal_alignment = 1
 
-[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
+[node name="MenuChoices" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RestoreMarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions"]
+[node name="RestoreMarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices"]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
@@ -289,7 +304,7 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="RestoreAnimationPlayer" type="AnimationPlayer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer"]
+[node name="RestoreAnimationPlayer" type="AnimationPlayer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
@@ -297,20 +312,20 @@ libraries = {
 }
 autoplay = "restorebuttonshimmer"
 
-[node name="RestoreButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer" instance=ExtResource("5_rgoli")]
+[node name="RestoreButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 visible = false
 self_modulate = Color(0.568627, 0.647059, 0.858824, 1)
 layout_mode = 2
 text = "REVIVE"
 
-[node name="Node2D" type="Node2D" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer/RestoreButton"]
+[node name="Node2D" type="Node2D" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer/RestoreButton"]
 position = Vector2(-25.78, 16.17)
 
-[node name="ContinueParticles" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer/RestoreButton/Node2D" instance=ExtResource("6_g8vkw")]
-process_material = ExtResource("7_xcfjs")
+[node name="ContinueParticles" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices/RestoreMarginContainer/RestoreButton/Node2D" instance=ExtResource("4_yooxo")]
+process_material = ExtResource("5_j0c6a")
 
-[node name="ResumeButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("5_rgoli")]
+[node name="ResumeButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -318,25 +333,25 @@ theme_override_font_sizes/font_size = 32
 text = "RESUME"
 is_back_button = true
 
-[node name="ControlsButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("5_rgoli")]
+[node name="ControlsButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "CONTROLS"
 spawn_menu = true
-menu_to_spawn = ExtResource("6_37tmq")
+menu_to_spawn = ExtResource("6_ene0j")
 
-[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("5_rgoli")]
+[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "OPTIONS"
 spawn_menu = true
-menu_to_spawn = ExtResource("7_uvvyv")
+menu_to_spawn = ExtResource("7_jfcxr")
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("5_rgoli")]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
@@ -344,10 +359,62 @@ theme_override_font_sizes/font_size = 32
 text = "RETRY"
 require_selection_confirmation = true
 
-[node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("5_rgoli")]
+[node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuChoices" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 require_selection_confirmation = true
+
+[node name="ConfirmSelectionMenu" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ConfirmSelectionMenu"]
+layout_mode = 2
+color = Color(0.19251, 0.15660001, 0.27, 0.6509804)
+
+[node name="ConfirmSelectionPanel" type="PanelContainer" parent="MarginContainer/ConfirmSelectionMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_lqjak")
+theme_override_styles/panel = SubResource("StyleBoxFlat_37tmq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ConfirmSelectionMenu/ConfirmSelectionPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/ConfirmSelectionMenu/ConfirmSelectionPanel/VBoxContainer"]
+layout_mode = 2
+text = "ARE YOU SURE?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ConfirmSelectionMenu/ConfirmSelectionPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ConfirmSelectionNoOddButton" parent="MarginContainer/ConfirmSelectionMenu/ConfirmSelectionPanel/VBoxContainer/HBoxContainer" instance=ExtResource("3_48kp7")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "NO"
+
+[node name="ConfirmSelectionYesOddButton" parent="MarginContainer/ConfirmSelectionMenu/ConfirmSelectionPanel/VBoxContainer/HBoxContainer" instance=ExtResource("3_48kp7")]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../ConfirmSelectionNoSoundButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "YES"

@@ -11,7 +11,7 @@ func _ready():
 	GameEvents.game_paused.connect(on_game_paused)
 	GameEvents.game_unpaused.connect(on_game_unpaused)
 	GameEvents.player_defeated.connect(on_player_defeated)
-	GameEvents.game_over.connect(on_game_over)
+	GameEvents.game_ended.connect(on_game_over)
 	timer.timeout.connect(on_timer_timeout)
 
 func _process(_delta):

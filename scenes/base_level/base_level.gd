@@ -50,7 +50,7 @@ func init_play_level_animations():
 func _ready() -> void:
 	GameEvents.reset_values()
 	GameEvents.score_count_changed.connect(on_score_count_changed)
-	GameEvents.game_over.connect(on_game_over)
+	GameEvents.game_ended.connect(on_game_over)
 	enemy_spawner_timer.timeout.connect(on_enemy_spawner_timer_timeout)
 	enemy_spawner_timer_2.timeout.connect(on_enemy_spawner_timer_2_timeout)
 	enemy_spawner_timer_3.timeout.connect(on_enemy_spawner_timer_3_timeout)
@@ -61,23 +61,13 @@ func _ready() -> void:
 	projectile_bounds.area_entered.connect(on_projectile_bounds_entered)
 	hurt_box.area_entered.connect(on_hurt_box_entered)
 	GameEvents.game_played = true
+	GameEvents.can_pause = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if game_over:
-			return
-		pause_game()
-		get_tree().root.set_input_as_handled()
-	
 	if event.is_action_pressed("ui_text_backspace"):
 		if player:
 			player.take_damage(1)
-
-
-func pause_game():
-	if GameEvents.can_pause:
-		GameEvents.emit_game_paused('paused') # Critical for pausing
 
 
 func incremement_intensity():

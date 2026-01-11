@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kmgctrilcs05" path="res://scenes/ui/show_options_screen.gd" id="1_ypa5q"]
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_ilq0o"]
 [ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="3_a585k"]
-[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/sound_button.tscn" id="4_d00r5"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="4_d00r5"]
 
 [sub_resource type="Animation" id="Animation_ycltl"]
 length = 0.001
@@ -169,7 +169,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../BGMCheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../../../../../SoundButton")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 theme_override_font_sizes/font_size = 16
@@ -182,14 +181,15 @@ layout_mode = 2
 theme = ExtResource("3_a585k")
 horizontal_alignment = 1
 
-[node name="SoundButton" parent="MarginContainer/ControlsPanel/VBoxContainer" instance=ExtResource("4_d00r5")]
+[node name="BackButton" parent="MarginContainer/ControlsPanel/VBoxContainer" instance=ExtResource("4_d00r5")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../HBoxContainer/AudioPanelContainer/VBoxContainer/Audio/VBoxContainer/SFXCheckButton")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 text = "BACK"
+is_back_button = true

@@ -63,7 +63,7 @@ func focus_first_available_choice():
 		restart_button.grab_focus()
 
 
-func stop_confirmation(button: SoundButton):
+func stop_confirmation(button: OddButton):
 	## called when the button is released too soon
 	if ! option_confirmed:
 		for i in get_tree().get_processed_tweens():
@@ -91,7 +91,7 @@ func stop_confirmation(button: SoundButton):
 	option_chosen = ""
 
 
-func _on_button_pressed(button: SoundButton):
+func _on_button_pressed(button: OddButton):
 	if option_confirmed:
 		return
 	

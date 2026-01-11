@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://vf1lp3clm4lo"]
+[gd_scene load_steps=16 format=3 uid="uid://utrq6b3c0prv"]
 
-[ext_resource type="Script" uid="uid://bujpb377tigde" path="res://scenes/ui/player_defeated_menu.gd" id="1_ijkb4"]
-[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_fu5m3"]
-[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="3_7k7h4"]
-[ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="4_fu5m3"]
+[ext_resource type="Script" uid="uid://dhj5xa5aw5u7e" path="res://scenes/ui/menu_with_confirm.gd" id="1_yrdmw"]
+[ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_3berf"]
+[ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="3_fkguo"]
+[ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="4_jfep1"]
+[ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="5_nti18"]
 
 [sub_resource type="Animation" id="Animation_fu5m3"]
 length = 0.001
@@ -58,7 +59,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ijkb4"]
 resource_name = "auto"
-step = 0.25
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +67,7 @@ tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer:modulat
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.2, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -78,7 +79,7 @@ tracks/1/path = NodePath("MarginContainer:modulate")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -90,7 +91,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -103,7 +104,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_buwwf"]
 resource_name = "out"
-length = 1.25
+length = 0.5
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -112,7 +113,7 @@ tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer:modulat
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -155,7 +156,9 @@ _data = {
 &"restore": SubResource("Animation_7k7h4")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7k7h4"]
+[sub_resource type="Theme" id="Theme_808v6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f748d"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
@@ -202,58 +205,52 @@ _data = {
 &"restorebuttonshimmer": SubResource("Animation_moutl")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijkb4"]
-bg_color = Color(0.3, 0.3, 0.3, 0.435294)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu5m3"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fu5m3"]
-
-[node name="PlayerDefeatedMenu" type="CanvasLayer"]
+[node name="DefeatedMenu" type="CanvasLayer"]
+process_mode = 3
 layer = 5
-script = ExtResource("1_ijkb4")
-confirmation_timer_base_waittime = 2.0
+script = ExtResource("1_yrdmw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_buwwf")
 }
 autoplay = "auto"
 
-[node name="ConfirmationTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 99.0
-one_shot = true
-ignore_time_scale = true
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
+theme = SubResource("Theme_808v6")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+process_mode = 3
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7k7h4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f748d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+process_mode = 3
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme = ExtResource("2_fu5m3")
+theme = ExtResource("2_3berf")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -261,22 +258,29 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="Menu" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
+[node name="MenuLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
+unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
-theme_override_constants/outline_size = 14
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
 text = "DEFEATED"
 horizontal_alignment = 1
 
 [node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="RestoreMarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions"]
 unique_name_in_owner = true
+process_mode = 3
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 0
@@ -290,8 +294,9 @@ libraries = {
 }
 autoplay = "restorebuttonshimmer"
 
-[node name="RestoreButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer" instance=ExtResource("3_7k7h4")]
+[node name="RestoreButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer" instance=ExtResource("3_fkguo")]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(0.568627, 0.647059, 0.858824, 1)
 layout_mode = 2
 text = "REVIVE"
@@ -299,54 +304,22 @@ text = "REVIVE"
 [node name="Node2D" type="Node2D" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer/RestoreButton"]
 position = Vector2(-25.78, 16.17)
 
-[node name="ContinueParticles" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer/RestoreButton/Node2D" instance=ExtResource("4_fu5m3")]
+[node name="ContinueParticles" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions/RestoreMarginContainer/RestoreButton/Node2D" instance=ExtResource("4_jfep1")]
+process_material = ExtResource("5_nti18")
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_7k7h4")]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_fkguo")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
+focus_next = NodePath("../LeaveButton")
+theme_override_font_sizes/font_size = 32
 text = "RETRY"
 
-[node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_7k7h4")]
+[node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_fkguo")]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
+focus_next = NodePath("../RestartButton")
+theme_override_font_sizes/font_size = 32
 text = "QUIT"
-
-[node name="ConfirmProgressBar" type="ProgressBar" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_ijkb4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fu5m3")
-show_percentage = false
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/ConfirmProgressBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/ConfirmProgressBar/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="ProgressNotch1" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/ConfirmProgressBar/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_fu5m3")
-custom_minimum_size = Vector2(8, 12)
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="ProgressNotch2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/ConfirmProgressBar/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(8, 12)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="ProgressNotch3" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/ConfirmProgressBar/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(8, 12)
-layout_mode = 2
-size_flags_horizontal = 10
+require_selection_confirmation = true

@@ -3,7 +3,7 @@ extends Node2D
 @export var particle_effects: Array[ParticleProcessMaterial]
 
 
-func _ready() -> void:
+func init() -> void:
 	load_cache()
 
 

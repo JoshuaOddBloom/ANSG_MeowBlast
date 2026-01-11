@@ -20,7 +20,7 @@ signal player_health_changed(new_player_health_amount)
 signal player_damaged(amount)
 signal player_defeated
 signal player_restored
-signal game_over
+signal game_ended
 # Pausing
 signal game_paused(occassion)
 signal game_unpaused
@@ -29,7 +29,8 @@ signal item_drop_collected(item_resource_name: String)
 signal item_drop_requested(location)
 signal item_drop_send(item_drop_type : String, item_drop_data : Resource)
 
-
+@export var player_defeated_menu: PackedScene
+@export var pause_menu_scene: PackedScene
 @onready var enemy_sprite_attack1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_attack1.png")
 @onready var enemy_sprite_defeated1 = preload("res://scenes/enemy/CateroidChaosEnemies_defeated1.png")
 @onready var enemy_sprite_hurt1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_hurt1.png")
@@ -46,11 +47,12 @@ var level_increment_target_value: int = 10
 var score_count: int = 0
 var projectile_count: int = 0
 # pausing
-var can_pause: bool = true
-var pause_menu_scene = preload("res://scenes/ui/pause_menu_with_confirm.tscn")
+var can_pause: bool = false
 var previous_pause_state
 var main_menu_shown_before: bool = false
 var game_played: bool = false
+
+var game_over: bool = false
 
 var global_scale_tweening: bool = false
 var global_scale_lerp_speed: float = 0.1
@@ -111,7 +113,6 @@ func increment_level(amount):
 
 
 func change_global_scale_target(new_global_scale: Vector2, transition_speed: float):
-	
 	if new_global_scale.x < MINIMUM_SCALE_TARGET:
 		new_global_scale.x = MINIMUM_SCALE_TARGET
 	if new_global_scale.y < MINIMUM_SCALE_TARGET:
@@ -124,15 +125,6 @@ func change_global_scale_target(new_global_scale: Vector2, transition_speed: flo
 	global_scale_target_tween.tween_property(self, "global_scale_target", new_global_scale, transition_speed)
 	global_scale_target_tween.chain()
 	global_scale_target_tween.tween_callback(func(): global_scale_tweening = false)
-
-
-#func change_global_scale_target(new_target_float: float):
-	#global_scale_target = Vector2(new_target_float, new_target_float)
-	#emit_global_scale_target_changed()
-
-#
-#func emit_global_scale_target_changed():
-	#global_scale_target_changed.emit()
 
 
 func emit_score_count_changed(amount_changed):
@@ -196,7 +188,8 @@ func emit_player_restored():
 
 
 func emit_game_over():
-	game_over.emit()
+	game_over = true
+	game_ended.emit()
 
 
 func emit_game_paused(occassion): #good for adding animations to static elements while the game is paused
@@ -204,8 +197,7 @@ func emit_game_paused(occassion): #good for adding animations to static elements
 	match occassion:
 		"paused":
 			if can_pause:
-				add_child(GameEvents.pause_menu_scene.instantiate())
-				game_paused.emit(occassion)
+				game_paused.emit()
 		"done":
 			pass
 

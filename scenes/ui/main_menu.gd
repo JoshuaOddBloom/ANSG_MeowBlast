@@ -11,24 +11,29 @@ extends Control
 @onready var ansg_marker_2d: Marker2D = $Branding/ANSGMarker2D
 @onready var ansg_sprite_2d: Sprite2D = $Branding/ANSGMarker2D/ANSGSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var start_sound_button: SoundButton = %StartSoundButton
+@onready var start_button: OddButton = %StartButton
 #@onready var touch_screen_start_button: TouchScreenButton = %TouchScreenStartButton
-@onready var controls_sound_button: SoundButton = %ControlsSoundButton
-@onready var options_sound_button: SoundButton = %OptionsSoundButton
-#@onready var continue_sound_button: SoundButton = %ContinueSoundButton
+@onready var controls_button: OddButton = %ControlsButton
+@onready var options_button: OddButton = %OptionsButton
+#@onready var continue_sound_button: OddButton = %ContinueOddButton
 # Input Method Selection
 @onready var touch_screen_on_button: TouchScreenButton = %TouchScreenOnButton
 @onready var touch_screen_off_button: Button = %TouchScreenOffButton
 @onready var touch_screen_off_button_2: TouchScreenButton = %TouchScreenOffButton2
 @onready var wait_to_start_timer: Timer = %WaitToStartTimer
+@onready var menu_options: VBoxContainer = %MenuOptions
 
 
 func _ready() -> void:
 	wait_to_start_timer.timeout.connect(on_wait_to_start_timer_timeout)
-	start_sound_button.pressed.connect(on_start_sound_button_pressed)
+	
+	#for button in menu_options.get_children():
+		#button.pressed.connect(on_start_button_pressed.bind(button))
+	
+	start_button.pressed.connect(on_start_button_pressed)
 	#start_button.pressed.connect(on_start_button_pressed)
-	controls_sound_button.pressed.connect(on_controls_button_pressed)
-	options_sound_button.pressed.connect(on_options_button_pressed)
+	controls_button.pressed.connect(on_controls_button_pressed)
+	options_button.pressed.connect(on_options_button_pressed)
 	#touch_screen_start_button.pressed.connect(on_start_button_pressed)
 	#touch_screen_off_button_2.pressed.connect(on_touchscreen_button_pressed) # BUG MAY WANT TO FIX THIS TO WHERE IT USES A BOOLEAN TO SHOW TOUCH SCREEN OPTIONS
 	#continue_sound_button.pressed.connect(on_continue_sound_button_pressed)
@@ -61,10 +66,13 @@ func oddbloom_logo_queue_free():
 
 
 func focus_start_button():
-	start_sound_button.disabled = false
-	start_sound_button.grab_focus()
-	controls_sound_button.disabled = false
-	options_sound_button.disabled = false
+	start_button.disabled = false
+	start_button.grab_focus()
+	controls_button.disabled = false
+	options_button.disabled = false
+
+
+
 
 
 #func focus_continue_sound_button():
@@ -73,16 +81,16 @@ func focus_start_button():
 
 
 func on_controls_button_pressed():
-	controls_sound_button.disabled = true
+	controls_button.disabled = true
 
 	var controls_screen_instance = controls_screen.instantiate()
 	controls_screen_instance.closed.connect(on_controls_screen_closed)
 	add_child(controls_screen_instance)
-	controls_screen_instance.sound_button.text = "BACK"
+	controls_screen_instance.back_button.text = "BACK"
 
 
 func on_options_button_pressed():
-	options_sound_button.disabled = true
+	options_button.disabled = true
 
 	var options_screen_instance = options_screen.instantiate()
 	options_screen_instance.closed.connect(on_options_screen_closed)
@@ -91,17 +99,17 @@ func on_options_button_pressed():
 
 
 func on_controls_screen_closed():
-	controls_sound_button.disabled = false
-	controls_sound_button.grab_focus()
+	controls_button.disabled = false
+	controls_button.grab_focus()
 
 
 func on_options_screen_closed():
-	options_sound_button.disabled = false
-	options_sound_button.grab_focus()
+	options_button.disabled = false
+	options_button.grab_focus()
 
 
-func on_start_sound_button_pressed():
-	start_sound_button.disabled = true
+func on_start_button_pressed():
+	start_button.disabled = true
 	ScreenTransition.transition_to_scene("res://scenes/base_level/base_level.tscn")
 	await ScreenTransition.transition_finished
 	queue_free.call_deferred()

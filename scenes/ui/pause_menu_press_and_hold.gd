@@ -11,9 +11,9 @@ extends CanvasLayer
 
 @onready var choices: VBoxContainer = %Choices
 @onready var restore_margin_container: MarginContainer = %RestoreMarginContainer
-@onready var resume_button: SoundButton = %ResumeButton
-@onready var controls_button: SoundButton = %ControlsButton
-@onready var options_button: SoundButton = %OptionsButton
+@onready var resume_button: OddButton = %ResumeButton
+@onready var controls_button: OddButton = %ControlsButton
+@onready var options_button: OddButton = %OptionsButton
 @onready var restore_button: Button = %RestoreButton
 @onready var restart_button: Button = %RestartButton
 @onready var leave_button: Button = %LeaveButton
@@ -81,7 +81,7 @@ func focus_first_available_choice():
 		resume_button.grab_focus()
 
 
-func stop_confirmation(button: SoundButton):
+func stop_confirmation(button: OddButton):
 	## called when the button is released too soon
 	if ! button_held_until_confirmed:
 		for i in get_tree().get_processed_tweens():
@@ -109,7 +109,7 @@ func stop_confirmation(button: SoundButton):
 	option_chosen = ""
 
 
-func _on_button_pressed(button: SoundButton):
+func _on_button_pressed(button: OddButton):
 	if button_held_until_confirmed:
 		return
 	
@@ -153,7 +153,7 @@ func _on_button_pressed(button: SoundButton):
 			confirmation_timer.start()
 	
 
-func _original_on_button_pressed(button: SoundButton):
+func _original_on_button_pressed(button: OddButton):
 	if button_held_until_confirmed:
 		return
 	

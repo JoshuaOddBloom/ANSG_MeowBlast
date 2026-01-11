@@ -170,7 +170,6 @@ radius = 24.0
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_4a83h")
-increment_progress_value = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -236,6 +235,7 @@ shape = SubResource("CircleShape2D_40wdo")
 debug_color = Color(0.43636, 0, 0.172997, 0.42)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "fall_speed = "
