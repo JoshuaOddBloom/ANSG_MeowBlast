@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdginpfmm1g7l"]
+
+[ext_resource type="Script" uid="uid://cvubur75ttf8t" path="res://addons/odd_audio_manager/odd_audio_manager.gd" id="1_djttl"]
+[ext_resource type="PackedScene" uid="uid://by1b8e813kurb" path="res://addons/odd_audio_manager/resources/audio_effect_racks/custom_audio_effect_rack.tscn" id="2_mt23q"]
+[ext_resource type="AudioEffectReverb" uid="uid://c2bdn15fgkxh4" path="res://addons/odd_audio_manager/resources/audio_effects/reverb_sfx_paused.tres" id="3_ol75t"]
+[ext_resource type="AudioEffectEQ21" uid="uid://c1ungogqwjrao" path="res://addons/odd_audio_manager/resources/audio_effects/eq_21_sfx_paused.tres" id="4_4v3gf"]
+[ext_resource type="AudioEffectReverb" uid="uid://brfcnnryc6olj" path="res://addons/odd_audio_manager/resources/audio_effects/reverb_sfx_upgrading.tres" id="5_v1oku"]
+[ext_resource type="AudioEffectEQ21" uid="uid://d3wapicl7iivh" path="res://addons/odd_audio_manager/resources/audio_effects/eq_21_sfx_upgrading.tres" id="6_x5qcn"]
+
+[node name="OddAudioManager" type="AudioStreamPlayer"]
+process_mode = 3
+editor_description = "meowblaster theme really nice at : 0.589"
+script = ExtResource("1_djttl")
+debug = true
+reset_volume_and_pitch_on_play = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="RestartImpact" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -80.0
+
+[node name="DeathBGM" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="EffectsRacks" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="EmptyAudioEffectRack" parent="EffectsRacks" instance=ExtResource("2_mt23q")]
+unique_name_in_owner = true
+
+[node name="StopReverbAudioEffectRack" parent="EffectsRacks" instance=ExtResource("2_mt23q")]
+unique_name_in_owner = true
+
+[node name="PauseAudioEffectRack" parent="EffectsRacks" instance=ExtResource("2_mt23q")]
+unique_name_in_owner = true
+slot1 = ExtResource("3_ol75t")
+slot2 = ExtResource("4_4v3gf")
+
+[node name="UpgradingAudioEffectRack" parent="EffectsRacks" instance=ExtResource("2_mt23q")]
+unique_name_in_owner = true
+slot1 = ExtResource("5_v1oku")
+slot2 = ExtResource("6_x5qcn")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqmfvs27k245m"]
+[gd_scene load_steps=14 format=3 uid="uid://dgx25en1udwtp"]
 
-[ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_xgkek"]
-[ext_resource type="Texture2D" uid="uid://lyayh1mbv0oa" path="res://scenes/ui/splash_intro_sequence/ansg_splash_intro_sequence/all_nighter_survival_guide_title.png" id="2_3j7h8"]
-[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_g6nps"]
+[ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_ly8k6"]
+[ext_resource type="Script" uid="uid://g8usbsvp8uwt" path="res://scenes/ui/splash_intro_sequence/oddbloom_logo.gd" id="3_ac3ya"]
+[ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/White LINES 3 Eye.png" id="4_6t5ql"]
+[ext_resource type="Texture2D" uid="uid://dy65wp85ncwbs" path="res://scenes/ui/White LINES 3 Petals.png" id="5_owtpl"]
+[ext_resource type="FontFile" uid="uid://b8vrg0cduw16e" path="res://assets/fonts/Jura-Medium.ttf" id="6_lsl8d"]
 
 [sub_resource type="Animation" id="Animation_uhagc"]
 length = 0.001
@@ -69,177 +71,188 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_btxxm"]
 resource_name = "cold_open"
-length = 4.0
+length = 10.0
 step = 0.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Branding/BGColorRect:modulate")
+tracks/0/path = NodePath("Branding/BrandingMarker2D/Logo")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Branding/MarginContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.4, 4),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"logo_play_auto_animation"
+"method": &"play_auto_animation"
 }, {
 "args": [],
-"method": &"play_out_animations"
+"method": &"play_out_animation"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Branding:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Branding/MarginContainer:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_hie5v"]
-resource_name = "out"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Branding/MarginContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Branding/BGColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.13333, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_wb0q5"]
-resource_name = "quick_open"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Branding/BGColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Branding/MarginContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.675),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("Branding/MarginContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"logo_play_auto_animation"
-}, {
-"args": [],
-"method": &"play_out_animations"
-}]
+"times": PackedFloat32Array(0.4, 1.4, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Branding/BrandingMarker2D:modulate")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(10),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [{
+"args": [],
+"method": &"focus_start_button"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Branding/MarginContainer:visible")
+tracks/4/path = NodePath("Branding:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Branding/MarginContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
+
+[sub_resource type="Animation" id="Animation_wb0q5"]
+resource_name = "quick_open"
+length = 7.4
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Branding/BrandingMarker2D/Logo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_auto_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Branding/BGColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.3, 7.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Branding/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.675, 2.50833, 3.50833),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.6, 7.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"oddbloom_logo_queue_free"
+}, {
+"args": [],
+"method": &"focus_start_button"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Branding/BrandingMarker2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Branding:visible")
+tracks/5/path = NodePath("Branding/MarginContainer:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Branding:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uhagc"]
 _data = {
 &"RESET": SubResource("Animation_uhagc"),
 &"cold_open": SubResource("Animation_btxxm"),
-&"out": SubResource("Animation_hie5v"),
 &"quick_open": SubResource("Animation_wb0q5")
 }
 
@@ -248,22 +261,34 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("LogoElements/Petals:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1e-05)]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -272,28 +297,40 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_sqt1x"]
 resource_name = "auto"
-length = 3.0
+length = 4.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("LogoElements/Petals:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1.3660382, 0.7320418, 0.32987738),
+"times": PackedFloat32Array(0, 0.566667, 1.4, 1.7, 2, 2.3, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.23114, 1, 1.23114),
 "update": 0,
-"values": [Vector2(0, 0.735), Vector2(0.105, 0.735), Vector2(0.8, 0.735), Vector2(0.735, 0.735)]
+"values": [-2.09963, 0.13439, -0.0436332, 0.0174533, -0.0122173, 0.00174533, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 0.933033, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1.05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -304,10 +341,34 @@ resource_name = "out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("LogoElements/Petals:rotation")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -321,14 +382,19 @@ _data = {
 &"out": SubResource("Animation_f84ix")
 }
 
-[node name="ANSGSplashIntroSegment" type="Control"]
+[node name="OddBloomSplashIntroSegment" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xgkek")
+script = ExtResource("1_ly8k6")
+logo_color_override = null
+
+[node name="WaitToStartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [node name="SequenceAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -346,7 +412,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BGColorRect" type="ColorRect" parent="Branding"]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -362,8 +427,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -379,12 +442,10 @@ mouse_filter = 2
 alignment = 2
 
 [node name="TitleLabel" type="Label" parent="Branding/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_g6nps")
+theme_override_fonts/font = ExtResource("6_lsl8d")
 theme_override_font_sizes/font_size = 24
 text = "OddBloom Studios"
 horizontal_alignment = 1
@@ -395,23 +456,24 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 16
 
 [node name="ProducedByLabel" type="Label" parent="Branding/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("6_g6nps")
+theme_override_fonts/font = ExtResource("6_lsl8d")
 theme_override_font_sizes/font_size = 18
 text = "Produced by
-Min the Dead DM"
+Joshua OddBloom"
 horizontal_alignment = 1
 
 [node name="BrandingMarker2D" type="Marker2D" parent="Branding"]
 unique_name_in_owner = true
 editor_description = "The Script will Automatically center this node when the game starts"
 position = Vector2(305.99997, 170.99998)
+scale = Vector2(0.05, 0.05)
 
 [node name="Logo" type="Node2D" parent="Branding/BrandingMarker2D"]
 unique_name_in_owner = true
 scale = Vector2(1, 1e-05)
+script = ExtResource("3_ac3ya")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Branding/BrandingMarker2D/Logo"]
 
@@ -420,13 +482,15 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_f84ix")
 }
-blend_times = [&"auto", &"out", 0.5]
 
 [node name="LogoElements" type="Node2D" parent="Branding/BrandingMarker2D/Logo"]
 unique_name_in_owner = true
 
-[node name="ANSGSprite2D" type="Sprite2D" parent="Branding/BrandingMarker2D/Logo/LogoElements"]
-texture = ExtResource("2_3j7h8")
+[node name="Eye" type="Sprite2D" parent="Branding/BrandingMarker2D/Logo/LogoElements"]
+texture = ExtResource("4_6t5ql")
+
+[node name="Petals" type="Sprite2D" parent="Branding/BrandingMarker2D/Logo/LogoElements"]
+texture = ExtResource("5_owtpl")
 
 [node name="DebugLabel" type="Label" parent="."]
 unique_name_in_owner = true

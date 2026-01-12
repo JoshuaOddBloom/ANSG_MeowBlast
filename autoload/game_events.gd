@@ -46,6 +46,7 @@ var level_increment_target_value: int = 10
 var score_count: int = 0
 var projectile_count: int = 0
 # pausing
+var game_started: bool = false
 var can_pause: bool = false
 var previous_pause_state
 var main_menu_shown_before: bool = false
@@ -191,14 +192,9 @@ func emit_game_over():
 	game_ended.emit()
 
 
-func emit_game_paused(occassion): #good for adding animations to static elements while the game is paused
-	## NOTE: EVERY EMIT SHOULD HAVE AN OCCASSION : "done" for when the game is resuming
-	match occassion:
-		"paused":
-			if can_pause:
-				game_paused.emit()
-		"done":
-			pass
+func emit_game_paused():
+	if can_pause:
+		game_paused.emit()
 
 
 func emit_game_unpaused():

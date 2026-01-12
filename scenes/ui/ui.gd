@@ -206,9 +206,9 @@ func on_update_player_stats(stat: String, value: float):
 
 func _on_pause_touch_screen_button_pressed() -> void:
 	if GameEvents.can_pause:
-		GameEvents.emit_game_paused('paused') # Critical for pausing
+		GameEvents.emit_game_paused() # Critical for pausing
 
 
 func _on_pause_button_pressed() -> void:
 	if GameEvents.can_pause:
-		GameEvents.emit_game_paused("paused")
+		GameEvents.emit_game_paused()

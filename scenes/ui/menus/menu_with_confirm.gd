@@ -8,7 +8,7 @@ class_name OddMenu
 #@export var show_options_screen: PackedScene
 #@export var confirmation_timer_base_waittime: float
 @export var pause_game_on_ready: bool = false
-@onready var confirmation_screen := load("res://scenes/ui/confirm_selection_menu.tscn")
+@onready var confirmation_screen := load("res://scenes/ui/menus/confirm_selection_menu.tscn")
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var menu_label: Label = %MenuLabel
@@ -136,8 +136,7 @@ func run_button_code():
 		leave_button:
 			animation_player.play("out")
 			await animation_player.animation_finished
-			
-			ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+			ScreenTransition.transition_to_scene("res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.tscn")
 			await ScreenTransition.transition_finished
 			queue_free()
 
@@ -156,9 +155,9 @@ func close():
 	
 	
 	if GameEvents.previous_pause_state != null:
-		var return_to_this_pause_state = GameEvents.previous_pause_state
+		#var return_to_this_pause_state = GameEvents.previous_pause_state
 		GameEvents.previous_pause_state = null #safey
-		GameEvents.emit_game_paused(return_to_this_pause_state)
+		GameEvents.emit_game_paused()
 	else:
 		GameEvents.emit_game_unpaused()
 		get_tree().paused = false

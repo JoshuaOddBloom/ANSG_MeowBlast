@@ -1,0 +1,9 @@
+[gd_resource type="AudioEffectReverb" format=3 uid="uid://dkpyav4gaxcmc"]
+
+[resource]
+predelay_msec = 332.0
+room_size = 1.0
+damping = 0.73
+hipass = 0.19
+dry = 0.59
+wet = 0.58

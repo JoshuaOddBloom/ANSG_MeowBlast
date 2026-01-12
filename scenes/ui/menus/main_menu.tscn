@@ -1,12 +1,27 @@
 [gd_scene load_steps=13 format=3 uid="uid://dqhfswfgaqj1"]
 
-[ext_resource type="Script" uid="uid://jsekjhdw2cxq" path="res://scenes/ui/menus/main_menu_with_confirm.gd" id="1_y4aia"]
+[ext_resource type="Script" uid="uid://jsekjhdw2cxq" path="res://scenes/ui/menus/main_menu.gd" id="1_y4aia"]
 [ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_jk7nv"]
 [ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_dhmlp"]
 [ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_ykpw6"]
 [ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="5_h4dpu"]
 [ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/menus/show_controls_screen.tscn" id="6_nmbxx"]
 [ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/menus/show_options_screen.tscn" id="7_bl8wb"]
+
+[sub_resource type="Animation" id="Animation_e7y46"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_c8e1o"]
 resource_name = "auto"
@@ -39,21 +54,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"focus_first_available_choice"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_e7y46"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenuBG:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uhagc"]
@@ -172,9 +172,9 @@ modulate = Color(0.921569, 0.952941, 1, 1)
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("4_ykpw6")
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 64
-text = "ANSG : MEOW BLAST!"
+theme_override_font_sizes/font_size = 48
+text = "ALL NIGHTER SURVIVAL GUIDE 
+MEOW BLAST!"
 horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="MainMenuBG/MarginContainer2/VBoxContainer"]

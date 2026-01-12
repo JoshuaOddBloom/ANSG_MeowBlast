@@ -18,6 +18,7 @@ var can_proceed: bool = false
 
 
 func _ready() -> void:
+	GameEvents.can_pause = false
 	progress_bar.hide()
 	get_window().grab_focus()
 	
@@ -25,8 +26,12 @@ func _ready() -> void:
 	ui.init_finished.connect(func(): 
 		init_ui_finished = true;
 		ParticlesInit.init();
-		enemy.init(); 
-		player.hide();
+		if enemy:
+			enemy.init(); 
+		if player:
+			player.hide();
+		if ui:
+			ui.queue_free() # This will free the pause menu
 		)
 	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = 50)
 	
@@ -50,6 +55,7 @@ func _process(_delta: float) -> void:
 		label.text = "LOADING.."
 	if progress_bar.value > progress_bar.max_value * 0.75:
 		label.text = "LOADING..."
+	OddAudioManager.stop()
 	progress_bar.value = timer.wait_time - timer.time_left
 	
 	if init_ui_finished:

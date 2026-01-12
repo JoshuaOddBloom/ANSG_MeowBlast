@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqmfvs27k245m" path="res://scenes/ui/splash_intro_sequence/ansg_splash_intro_sequence/ansg_splash_intro_segment.tscn" id="3_4d0je"]
 
 [node name="SplashIntroSequencer" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -32,11 +32,8 @@ func get_elapsed_time():
 	return timer.wait_time - timer.time_left
 
 
-func on_game_paused(occassion):
-	if occassion == "upgrading":
-		animation_player.play("paused_test")
-	elif occassion == "paused":
-		animation_player.play("paused")
+func on_game_paused():
+	animation_player.play("paused")
 
 
 func on_game_unpaused():

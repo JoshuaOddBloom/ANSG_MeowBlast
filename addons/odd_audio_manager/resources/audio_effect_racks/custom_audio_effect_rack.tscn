@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://by1b8e813kurb"]
+
+[ext_resource type="Script" uid="uid://b7rf538ymwbb4" path="res://addons/odd_audio_manager/resources/audio_effect_racks/custom_audio_effect_rack.gd" id="1_735ip"]
+
+[node name="CustomAudioEffectRack" type="Node"]
+script = ExtResource("1_735ip")

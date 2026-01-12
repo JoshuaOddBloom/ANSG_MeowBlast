@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("pause"):
 		if GameEvents.game_over:
 			return
-		GameEvents.emit_game_paused("paused")
+		GameEvents.emit_game_paused()
 	
 	if scale != GameEvents.global_scale_target:
 		scale = GameEvents.global_scale_target

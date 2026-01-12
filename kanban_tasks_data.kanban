@@ -31,7 +31,8 @@
 			"title": "Doing",
 			"tasks": [
 				"924d100f-ccad-4132-8cd8-e191b3ce6186",
-				"f54927b3-bad4-46f2-bff1-1d4686a0d2be"
+				"f54927b3-bad4-46f2-bff1-1d4686a0d2be",
+				"97a67f49-a158-42bc-ac0a-15ca36cc3c2e"
 			]
 		},
 		{
@@ -276,6 +277,13 @@
 		{
 			"uuid": "33634fa4-2b20-4dce-9046-6b8ec639b4c1",
 			"title": "re-engineer the main menu to use the oddbutton system",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "97a67f49-a158-42bc-ac0a-15ca36cc3c2e",
+			"title": "fix pausing",
 			"description": "",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"steps": []

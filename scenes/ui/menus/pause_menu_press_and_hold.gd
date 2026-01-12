@@ -293,9 +293,9 @@ func close():
 	if GameEvents.previous_pause_state != null:
 		var return_to_this_pause_state = GameEvents.previous_pause_state
 		GameEvents.previous_pause_state = null #safey
-		GameEvents.emit_game_paused(return_to_this_pause_state)
+		GameEvents.emit_game_paused()
 	else:
-		GameEvents.emit_game_paused("done")
+		GameEvents.emit_game_paused()
 		get_tree().paused = false
 	
 	is_closing = false

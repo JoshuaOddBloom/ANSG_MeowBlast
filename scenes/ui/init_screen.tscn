@@ -25,6 +25,7 @@ script = ExtResource("1_6bgux")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BaseLevel" parent="Node2D" instance=ExtResource("5_lpv2m")]
+init_version = true
 
 [node name="ItemDropManager" parent="Node2D" instance=ExtResource("2_q7rr7")]
 unique_name_in_owner = true

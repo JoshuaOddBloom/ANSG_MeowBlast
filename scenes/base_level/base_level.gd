@@ -3,11 +3,11 @@ extends Node2D
 signal init_anim_finished
 signal init_finished
 
+@export var init_version: bool = false
+@export var bgm_options: Array[AudioStream]
 @export var enemy_scene: PackedScene
 @export var enemy_spawn_timer_min_wait: float = 1.5
 @export var enemy_spawn_timer_max_wait: float = 2.5
-
-@onready var bgm_player: AudioStreamPlayer = %BGMPlayer
 
 @onready var entities_layer: Node2D = %EntitiesLayer
 @onready var player: Player = %Player
@@ -33,7 +33,6 @@ var game_over: bool = false
 func init():
 	comet_animation_player.play("comet_animation")
 	init_play_level_animations()
-	bgm_player.stop()
 	await init_anim_finished
 	init_finished.emit()
 
@@ -50,7 +49,7 @@ func init_play_level_animations():
 func _ready() -> void:
 	GameEvents.reset_values()
 	GameEvents.score_count_changed.connect(on_score_count_changed)
-	GameEvents.game_ended.connect(on_game_over)
+	GameEvents.game_ended.connect(on_game_ended)
 	enemy_spawner_timer.timeout.connect(on_enemy_spawner_timer_timeout)
 	enemy_spawner_timer_2.timeout.connect(on_enemy_spawner_timer_2_timeout)
 	enemy_spawner_timer_3.timeout.connect(on_enemy_spawner_timer_3_timeout)
@@ -61,7 +60,9 @@ func _ready() -> void:
 	projectile_bounds.area_entered.connect(on_projectile_bounds_entered)
 	hurt_box.area_entered.connect(on_hurt_box_entered)
 	GameEvents.game_played = true
-	GameEvents.can_pause = true
+	GameEvents.can_pause = ! init_version
+	OddAudioManager.add_to_bgm_streams(bgm_options)
+	OddAudioManager.play_next_stream()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -120,9 +121,7 @@ func on_score_count_changed(_new_amount):
 	intensity_incremement_count += 1
 
 
-func on_game_over():
-	bgm_player.pitch_scale = 0.42
-	bgm_player.pitch_scale_slide(0.42, .5)
+func on_game_ended():
 	game_over_rand_audio_component.play_random()
 	game_over = true
 
@@ -142,7 +141,6 @@ func on_level_changed(new_level):
 			level_transition_player.play("level_1_start")
 			GameEvents.level_increment_target_value = 10
 		2:
-			#bgm_player.pitch_scale = 1.234
 			GameEvents.change_global_scale_target(Vector2(0.8, 0.8), 10)
 			level_transition_player.play("level_1_to_level_2")
 			#testing tweens a bit
@@ -154,7 +152,6 @@ func on_level_changed(new_level):
 			
 			GameEvents.level_increment_target_value = 20
 		3:
-			#bgm_player.pitch_scale = 1.345
 			enemy_spawner_timer_2.start()
 			level_transition_player.play("level_2_to_level_3")
 			GameEvents.level_increment_target_value = 30
