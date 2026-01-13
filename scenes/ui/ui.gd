@@ -28,6 +28,7 @@ signal init_finished
 @onready var fps_label: Label = %FPSLabel
 @onready var shoot_speed_label: Label = %ShootSpeedLabel
 @onready var move_speed_label: Label = %MoveSpeedLabel
+@onready var projectile_size_label: Label = %ProjectileSizeLabel
 @onready var pause_button: Button = %PauseButton
 @onready var pause_touch_screen_button: TouchScreenButton = %PauseTouchScreenButton
 # PLAYER DEFEATED MENU
@@ -202,6 +203,8 @@ func on_update_player_stats(stat: String, value: float):
 			shoot_speed_label.text = str("AUTO-SHOOT SPEED :\n", value)
 		"move_speed":
 			move_speed_label.text = str("MOVE SPEED :\n", value)
+		"projectile_size":
+			projectile_size_label.text = str("PROJECTILE SIZE:\n", value)
 
 
 func _on_pause_touch_screen_button_pressed() -> void:

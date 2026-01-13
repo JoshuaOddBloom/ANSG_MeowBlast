@@ -8,6 +8,7 @@ var current_segment_index: int = 0
 
 
 func _ready() -> void:
+	MousePointer.disable_mouse_control()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 	OddAudioManager.stop_playing_pitch_down(0.3)
 	time_between_segments_timer.timeout.connect(on_time_between_segments_timer_timeout)

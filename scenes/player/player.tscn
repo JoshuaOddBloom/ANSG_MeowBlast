@@ -69,11 +69,13 @@ preprocess = 0.5
 process_material = ExtResource("7_5gtgg")
 
 [node name="TrailsLSprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-23, 34.84)
 scale = Vector2(0.49, 1.15)
 texture = ExtResource("3_lvxji")
 
 [node name="TrailsRSprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(23, 34.84)
 scale = Vector2(0.49, 1.15)
 texture = ExtResource("3_lvxji")

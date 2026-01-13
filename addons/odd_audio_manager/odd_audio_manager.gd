@@ -59,7 +59,7 @@ var pitch_tween: Tween
 
 
 func _ready():
-	load_save_data()
+	#load_save_data()
 	GameEvents.game_ended.connect(on_game_over)
 	#TODO NEED TO MAKE THESE INDEPENDANT
 	
@@ -80,25 +80,28 @@ func _ready():
 	request_player_death_stream.emit()
 	#request_streams()
 	play_next_stream()
+	Options.audio_bus_toggled_on.connect(on_options_audio_bus_toggled_on)
 
-
-func load_save_data():
-	
-	for i in AudioServer.bus_count:
-		#var audio_bus_channels = AudioServer.get_bus_channels(i)
-		print("AudioManager : Bus Found : ", AudioServer.get_bus_name(i))
-	
-	#AudioServer.set_bus_mute("BGM", Options.save_data["audio_data"]["bgm_toggled_on"])
-	
-	#TODO NEED TO MAKE THESE INDEPENDANT
+#
+#func load_save_data():
+	#
+	#for i in AudioServer.bus_count:
+		##var audio_bus_channels = AudioServer.get_bus_channels(i)
+		#print("AudioManager : Bus Found : ", AudioServer.get_bus_name(i))
+	#
+	##AudioServer.set_bus_mute("BGM", Options.save_data["audio_data"]["bgm_toggled_on"])
+	#
+	##TODO NEED TO MAKE THESE INDEPENDANT
 	#set_bus_mute(Options.save_data["audio_data"]["bgm_toggled_on"], "BGM")
 	#set_bus_mute(Options.save_data["audio_data"]["sfx_toggled_on"], "SFX")
-	#
-	#set_bus_volume("BGM", Options.save_data["audio_data"]["bgm_slider_amount"])
-	#set_bus_volume("SFX", Options.save_data["audio_data"]["sfx_slider_amount"])
-	#
-	#print("AudioManager : BGM value : ", Options.save_data["audio_data"]["bgm_slider_amount"])
-	#print("AudioManager : SFX value : ", Options.save_data["audio_data"]["sfx_slider_amount"])
+	##set_bus_mute("BGM", Options.save_data["audio_data"]["bgm_toggled_on"])
+	##set_bus_mute("SFX", Options.save_data["audio_data"]["sfx_toggled_on"])
+	##
+	##set_bus_volume("BGM", Options.save_data["audio_data"]["bgm_slider_amount"])
+	##set_bus_volume("SFX", Options.save_data["audio_data"]["sfx_slider_amount"])
+	##
+	##print("AudioManager : BGM value : ", Options.save_data["audio_data"]["bgm_slider_amount"])
+	##print("AudioManager : SFX value : ", Options.save_data["audio_data"]["sfx_slider_amount"])
 
 
 func on_options_audio_bus_toggled_on(toggled_on, bus_name):
@@ -113,12 +116,12 @@ func on_game_over():
 	if pitch_tween:
 		pitch_tween.kill()
 	pitch_tween = get_tree().create_tween()
-	pitch_tween.tween_property(self, "pitch_scale", 0.42, 0.4)
+	pitch_tween.tween_property(self, "pitch_scale", 0.42, 0.6)
 
 
-func set_bus_mute(bus_name, mute): ## Passes the bus name and mute boolean to the Audio Server
+func set_bus_mute(toggled_on, bus_name): ## Passes the bus name and mute boolean to the Audio Server
 	var bus_index = AudioServer.get_bus_index(bus_name)
-	AudioServer.set_bus_mute(bus_index, mute)
+	AudioServer.set_bus_mute(bus_index, !toggled_on)
 
 
 func set_bus_volume(bus_name, value):

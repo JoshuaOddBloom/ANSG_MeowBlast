@@ -20,9 +20,10 @@ func _ready() -> void:
 func init():
 	for i in droppable_items:
 		var item_instance = item_base.instantiate()
-		self.add_child(item_instance)
+		item_instance.scale *= GameEvents.global_scale_target
 		item_instance.global_position = GameEvents.get_player_position()
 		item_instance.add_item_resource(i)
+		self.add_child(item_instance)
 
 
 func add_droppable_items_to_item_pool():

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DroppableItem" load_steps=3 format=3 uid="uid://de60n7b5g71sw"]
+
+[ext_resource type="Texture2D" uid="uid://b2bfxiwuhwjru" path="res://assets/textures/item_icon_grey_star_64x64.png" id="1_x1g8o"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="2_lwrjb"]
+
+[resource]
+script = ExtResource("2_lwrjb")
+item_name = "projectile_size_up"
+item_icon = ExtResource("1_x1g8o")
+item_modulate_override_color = Color(1, 0.36106026, 0.31116885, 1)
+item_weight = 8
+add_icon_to_ui = false
+metadata/_custom_type_script = "uid://df24bvw55uwn1"

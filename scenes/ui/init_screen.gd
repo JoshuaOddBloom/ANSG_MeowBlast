@@ -18,10 +18,11 @@ var can_proceed: bool = false
 
 
 func _ready() -> void:
+	AudioServer.set_bus_mute(0, true)
+	player.is_init = true
 	GameEvents.can_pause = false
 	progress_bar.hide()
 	get_window().grab_focus()
-	
 	timer.timeout.connect(on_timer_timeout)
 	ui.init_finished.connect(func(): 
 		init_ui_finished = true;
@@ -34,14 +35,10 @@ func _ready() -> void:
 			ui.queue_free() # This will free the pause menu
 		)
 	enemy.init_finished.connect(func(): enemy.hide(); loading_layer.layer = 50)
-	
 	progress_bar.max_value = timer.wait_time
 	ui.init()
 	base_level.init()
-	player.is_init = true
 	item_drop_manager.init()
-	
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 
 
 func _process(_delta: float) -> void:
@@ -63,18 +60,18 @@ func _process(_delta: float) -> void:
 
 
 func on_timer_timeout():
+	if MousePointer.show_mouse_pointer != false:
+		MousePointer.disable_mouse_control()
 	if ! can_proceed:
 		timer.start()
 		return
 	base_level.queue_free()
 	label.hide()
 	loading_layer.layer = -1
-	# Unmute the Master audio bus
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
-	# Create the controls screen
 	var show_controls_screen_instance = show_controls_screen.instantiate()
 	show_controls_screen_instance.closed.connect(on_sound_button_pressed)
 	add_child(show_controls_screen_instance)
+	AudioServer.set_bus_mute(0, false)
 	show_controls_screen_instance.back_button.text = "CONTINUE"
 
 

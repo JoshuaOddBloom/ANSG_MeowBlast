@@ -1,10 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
+const MIN_X_POS: int = 170
+const MAX_X_POS: int = 470
+
+@export var is_init: bool = false
 @export var debuging: bool = false
 @export var y_position_anchor: Marker2D
 @export var move_speed : float = 400.0
-@export var max_move_speed: float = 550.0
+@export var max_move_speed: float = 450.0
 @export var acceleration: int = 5
 @export var power_charge_target: float = 50.0
 # Systems
@@ -26,7 +30,6 @@ class_name Player
 
 
 #var current_projectile_selected
-var is_init: bool = false
 var can_shoot: bool = true
 var power_charge_amount: float = 0.0
 var power_previous_charge_amount: float = 0.0
@@ -34,6 +37,9 @@ var can_use_power: bool = false
 var is_using_power: bool = false
 var current_power: String = "base_x_10"
 var lerp_scale_to_global_scale_target: bool = false
+var using_mouse: bool = false
+var projectile_scale_multiplier: float = 1.0
+var projectile_scale_max: float = 2.0
 
 
 func _ready() -> void:
@@ -54,6 +60,15 @@ func _ready() -> void:
 	power_ready_gpu_particles_2d.emitting = false
 	semi_automatic_timer.wait_time = projectile_base_wait_time
 	update_player_stats()
+#
+# This had some weird behavior where the mouse was registering as still having some _mouse_movement above 0.0,0.0 even when it was still... Hmm.
+#func _unhandled_input(event: InputEvent) -> void:
+	#var is_mouse_motion := (event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED) # When the cursor disapears into the game window
+	#if is_mouse_motion:
+		#_mouse_movement = event.screen_relative * _mouse_sensitivity # get the mouse sensitivity and multiply it by the mouse's relative screen position
+		#prints("_mouse_movement", _mouse_movement)
+	#else:
+		#_mouse_movement = Vector2.ZERO
 
 
 func _process(delta: float) -> void:
@@ -68,33 +83,48 @@ func _process(delta: float) -> void:
 	if scale != GameEvents.global_scale_target:
 		scale = GameEvents.global_scale_target
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if using_mouse:
+		if MousePointer.show_mouse_pointer != true:
+			MousePointer.show_mouse_pointer = true
 		var global_mouse_position = get_global_mouse_position()
-		if global_mouse_position.x <= 170 or global_mouse_position.x >= 470:
-			return
-		
-		global_position.x = global_mouse_position.x
+		# Apply Mouse position
+		if global_mouse_position.x > MIN_X_POS and global_mouse_position.x < MAX_X_POS:
+			global_position.x = global_mouse_position.x
 	
 	if y_position_anchor:
 		global_position.y = y_position_anchor.global_position.y
 	
-	
-	
 	# Move Left
 	if Input.is_action_pressed("ui_left"):
+		if using_mouse:
+			using_mouse = false
 		global_position.x -= move_speed * delta
 	# Move Right
 	elif Input.is_action_pressed("ui_right"):
+		if using_mouse:
+			using_mouse = false
 		global_position.x += move_speed * delta
 	
 	# Fire Projectile
-	if Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("mouse_button_left"):
+	if Input.is_action_just_pressed("shoot"):
 		if ! can_shoot:
 			# Cannot shoot, break out of loop
 			return
 		fire_projectile()
 		
 		semi_automatic_timer.start()
+		# Fire Projectile
+	if Input.is_action_just_pressed("mouse_button_left"):
+		if ! using_mouse:
+			using_mouse = true
+		
+		if ! can_shoot:
+			# Cannot shoot, break out of loop
+			return
+		fire_projectile()
+		
+		semi_automatic_timer.start()
+	
 		
 	elif Input.is_action_just_released("shoot") or Input.is_action_just_released("mouse_button_left"):
 		semi_automatic_timer.stop()
@@ -105,6 +135,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_heal") and debuging:
 		health_component.heal(health_component.max_health - health_component.current_health)
 	
+	if global_position.x > MAX_X_POS:
+		global_position.x = MAX_X_POS
+	if global_position.x < MIN_X_POS:
+		global_position.x = MIN_X_POS
 	
 	move_and_slide()
 
@@ -123,6 +157,7 @@ func update_player_stats():
 	#print("UPDATE PLAYER STATS")
 	GameEvents.emit_update_player_stats("move_speed", move_speed)
 	GameEvents.emit_update_player_stats("shooting_speed", semi_automatic_timer.wait_time)
+	GameEvents.emit_update_player_stats("projectile_size", projectile_scale_multiplier)
 	GameEvents.player_update_power_value.emit(power_charge_amount, power_charge_target)
 
 
@@ -152,7 +187,8 @@ func fire_projectile():
 		return
 	
 	projectile_instance.global_position = projectile_spawn_marker_2d.global_position
-	projectile_instance.scale = scale # avoids scale differences by matching the player immediately before the instance is visible
+	projectile_instance.scale = (scale * projectile_scale_multiplier) # avoids scale differences by matching the player immediately before the instance is visible
+	projectile_instance.projectile_scale_multiplier = projectile_scale_multiplier
 	projectile_rand_audio_component.play_random()
 	get_parent().add_child(projectile_instance)
 
@@ -206,6 +242,7 @@ func on_get_player_health():
 
 
 func on_player_defeated():
+	MousePointer.disable_mouse_control()
 	GameEvents.emit_game_over()
 	queue_free()
 
@@ -253,8 +290,15 @@ func on_item_drop_collected(item_resource_name):
 				move_speed *= 1.1
 			GameEvents.emit_update_player_stats("move_speed", move_speed)
 			
-		"shooting_speed_up":
+		"projectile_size_up":
+			if projectile_scale_multiplier >= projectile_scale_max:
+				GameEvents.emit_score_count_changed(500)
+				projectile_scale_multiplier = projectile_scale_max
+			else:
+				projectile_scale_multiplier += 0.2
+			GameEvents.emit_update_player_stats("projectile_size", projectile_scale_multiplier)
 			
+		"shooting_speed_up":
 			if semi_automatic_timer.wait_time == projectile_minimum_wait_time or projectile_base_wait_time == projectile_minimum_wait_time:
 				GameEvents.emit_score_count_changed(500)
 				return

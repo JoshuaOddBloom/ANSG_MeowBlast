@@ -11,7 +11,8 @@ signal closed
 
 
 func _ready() -> void:
-	button_pressed_values()
+	load_from_options()
+	#button_pressed_values()
 	
 	back_button.pressed.connect(on_back_button_pressed)
 	bgm_check_button.toggled.connect(on_bgm_check_button_toggled)
@@ -24,11 +25,18 @@ func _process(_delta: float) -> void:
 		on_back_button_pressed()
 
 
-func button_pressed_values():
-	var bgm_index = AudioServer.get_bus_index("BGM")
-	var sfx_index = AudioServer.get_bus_index("SFX")
-	bgm_check_button.button_pressed = ! AudioServer.is_bus_mute(bgm_index)
-	sfx_check_button.button_pressed = ! AudioServer.is_bus_mute(sfx_index)
+func load_from_options():
+	bgm_check_button.button_pressed = Options.save_data["audio_data"]["bgm_toggled_on"]
+	#music_slider.value = get_bus_volume_percent("BGM")
+	sfx_check_button.button_pressed = Options.save_data["audio_data"]["sfx_toggled_on"]
+	#sfx_slider.value = get_bus_volume_percent("SFX")
+
+#
+#func button_pressed_values():
+	#var bgm_index = AudioServer.get_bus_index("BGM")
+	#var sfx_index = AudioServer.get_bus_index("SFX")
+	#bgm_check_button.button_pressed = ! AudioServer.is_bus_mute(bgm_index)
+	#sfx_check_button.button_pressed = ! AudioServer.is_bus_mute(sfx_index)
 
 
 func mute_audio_bus(toggled_on, bus_name):
@@ -38,13 +46,12 @@ func mute_audio_bus(toggled_on, bus_name):
 	#print(bus_name, " Audio Muted")
 
 
-
 func on_bgm_check_button_toggled(toggled_on):
-	mute_audio_bus(toggled_on, "BGM")
+	OddAudioManager.set_bus_mute(toggled_on, "BGM")
 
 
 func on_sfx_check_button_toggled(toggled_on):
-	mute_audio_bus(toggled_on, "SFX")
+	OddAudioManager.set_bus_mute(toggled_on, "SFX")
 
 
 func on_back_button_pressed():

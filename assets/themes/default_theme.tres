@@ -16,7 +16,7 @@ border_color = Color(0, 0, 0, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as718"]
-bg_color = Color(1, 1, 1, 0.784314)
+bg_color = Color(1, 1, 1, 1)
 draw_center = false
 border_width_left = 4
 border_width_top = 4
@@ -29,7 +29,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0q5"]
-bg_color = Color(0.403922, 0.403922, 0.403922, 0.713726)
+bg_color = Color(0.3254902, 0.2627451, 0.45490196, 1)
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4

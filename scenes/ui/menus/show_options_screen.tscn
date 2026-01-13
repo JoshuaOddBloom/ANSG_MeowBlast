@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kmgctrilcs05" path="res://scenes/ui/menus/show_options_screen.gd" id="1_ypa5q"]
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_ilq0o"]
 [ext_resource type="Theme" uid="uid://cjpmhdv1xll3w" path="res://assets/themes/default_theme_small_font_no_outline.tres" id="3_a585k"]
+[ext_resource type="StyleBox" uid="uid://ipg74bsnpxc1" path="res://assets/themes/odd_menu_panel.tres" id="3_cyofl"]
 [ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="4_d00r5"]
 
 [sub_resource type="Animation" id="Animation_ycltl"]
@@ -41,22 +42,6 @@ _data = {
 &"RESET": SubResource("Animation_ycltl"),
 &"auto": SubResource("Animation_ge8p4")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otr3d"]
-bg_color = Color(0.1564, 0.1196, 0.23, 0.870588)
-border_width_left = 1
-border_width_top = 4
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.393123, 0.322212, 0.542962, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-expand_margin_left = 8.0
-expand_margin_top = 4.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ekit"]
 bg_color = Color(0.1292, 0.0988, 0.19, 1)
@@ -110,7 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_ilq0o")
-theme_override_styles/panel = SubResource("StyleBoxFlat_otr3d")
+theme_override_styles/panel = ExtResource("3_cyofl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ControlsPanel"]
 layout_mode = 2
@@ -163,6 +148,10 @@ theme_override_font_sizes/font_size = 16
 button_pressed = true
 text = "BGM"
 
+[node name="HSlider" type="HSlider" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/AudioPanelContainer/VBoxContainer/Audio/VBoxContainer"]
+visible = false
+layout_mode = 2
+
 [node name="SFXCheckButton" type="CheckButton" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/AudioPanelContainer/VBoxContainer/Audio/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -174,6 +163,10 @@ focus_previous = NodePath(".")
 theme_override_font_sizes/font_size = 16
 button_pressed = true
 text = "SFX"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/AudioPanelContainer/VBoxContainer/Audio/VBoxContainer"]
+visible = false
+layout_mode = 2
 
 [node name="HowToAccessInfoLabel" type="Label" parent="MarginContainer/ControlsPanel/VBoxContainer"]
 unique_name_in_owner = true

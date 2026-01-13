@@ -31,6 +31,7 @@ debug_color = Color(0, 0.595, 0.7, 0.0901961)
 
 [node name="Visuals" type="Node2D" parent="."]
 modulate = Color(0.17, 0.502, 1, 1)
+scale = Vector2(0.8, 0.8)
 
 [node name="RingSprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true

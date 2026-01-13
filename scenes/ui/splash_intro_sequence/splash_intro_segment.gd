@@ -21,8 +21,8 @@ func _process(_delta: float) -> void:
 	var viewport_size = get_viewport_rect().size # THANK YOU STUDIOBOX GAMES (YT)
 	if branding_marker_2d.position.x != viewport_size.x / 2:
 		branding_marker_2d.position.x = viewport_size.x / 2
-	if branding_marker_2d.position.y != viewport_size.y / 3:
-		branding_marker_2d.position.y = viewport_size.y / 3
+	if branding_marker_2d.position.y != viewport_size.y / 2:
+		branding_marker_2d.position.y = viewport_size.y / 2
 
 
 func start():

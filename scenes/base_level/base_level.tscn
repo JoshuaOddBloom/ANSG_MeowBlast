@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c8swocmpm3gl5"]
+[gd_scene load_steps=58 format=3 uid="uid://c8swocmpm3gl5"]
 
 [ext_resource type="PackedScene" uid="uid://cojgne2mgqepd" path="res://scenes/player/player.tscn" id="1_8hega"]
 [ext_resource type="Script" uid="uid://b6viu7q5cjl1f" path="res://scenes/base_level/base_level.gd" id="1_k2up0"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cr40kg8av6puu" path="res://scenes/base_level/res_level_1_bg_gradient.tres" id="4_jnmbr"]
 [ext_resource type="AudioStream" uid="uid://cmg2fj7ueete7" path="res://assets/audio/sfx/player/player_death_1.ogg" id="5_5uif2"]
 [ext_resource type="PackedScene" uid="uid://0d7fsdntcf5u" path="res://scenes/ui/ui.tscn" id="6_8o1ni"]
+[ext_resource type="Script" uid="uid://df24bvw55uwn1" path="res://resources/items/res_droppable_item.gd" id="8_kvgoi"]
+[ext_resource type="Resource" uid="uid://c223l7gta8v5g" path="res://resources/items/item_health_up.tres" id="9_o3ier"]
+[ext_resource type="Resource" uid="uid://csb43hrg77037" path="res://resources/items/item_shooting_speed_up.tres" id="10_8gga3"]
+[ext_resource type="Resource" uid="uid://de60n7b5g71sw" path="res://resources/items/item_projectile_size_up.tres" id="11_filrr"]
 [ext_resource type="Texture2D" uid="uid://t8ocdg4v6x4c" path="res://assets/textures/StarALT_128.png" id="11_qhw0v"]
 [ext_resource type="Texture2D" uid="uid://dnqf8ln7fiv8x" path="res://assets/textures/star_wave_pattern.png" id="12_c2ddb"]
 [ext_resource type="Texture2D" uid="uid://b05mxe4btudnq" path="res://assets/textures/16x16sqr.png" id="12_g525y"]
@@ -81,6 +85,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BGPinkSprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_g525y"]
@@ -239,7 +267,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_a8gkr"]
 resource_name = "level_2_to_level_3"
-length = 2.5
+length = 4.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -260,10 +288,10 @@ tracks/1/path = NodePath("BGPinkSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -503,10 +531,10 @@ tracks/2/path = NodePath("BGBlueSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -515,10 +543,10 @@ tracks/3/path = NodePath("%WavePattern:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.745, 0.55, 1, 0.305882)]
+"values": [Color(0.745, 0.55, 1, 0.305882), Color(0.745, 0.55, 1, 0.305882)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -544,6 +572,374 @@ tracks/5/keys = {
 "update": 1,
 "values": [32]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o3ier"]
+resource_name = "level_6_to_level_7"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.77254903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.745, 0.55, 1, 0.305882)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9465254, 0.47375077, 0.9999992, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.21568628)]
+}
+
+[sub_resource type="Animation" id="Animation_8gga3"]
+resource_name = "level_7_to_level_8"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.77254903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.23529412)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.745, 0.55, 1, 0.305882)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9465254, 0.47375077, 0.9999992, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.21568628), Color(1, 1, 1, 0.627451)]
+}
+
+[sub_resource type="Animation" id="Animation_filrr"]
+resource_name = "level_8_to_level_9"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.77254903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.23529412)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.745, 0.55, 1, 0.305882)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9465254, 0.47375077, 0.9999992, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.627451), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wruew"]
+resource_name = "level_9_to_level_10"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloudParticles/FrontCloudsGPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BGPinkSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.77254903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BGBlueSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.23529412), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%WavePattern:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.745, 0.55, 1, 0.305882)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9465254, 0.47375077, 0.9999992, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CateroidRainingGPUParticles2D:amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BGPinkSprite2D3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8gkr"]
 _data = {
@@ -553,7 +949,11 @@ _data = {
 &"level_2_to_level_3": SubResource("Animation_a8gkr"),
 &"level_3_to_level_4": SubResource("Animation_4cbhi"),
 &"level_4_to_level_5": SubResource("Animation_5uif2"),
-&"level_5_to_level_6": SubResource("Animation_inqle")
+&"level_5_to_level_6": SubResource("Animation_inqle"),
+&"level_6_to_level_7": SubResource("Animation_o3ier"),
+&"level_7_to_level_8": SubResource("Animation_8gga3"),
+&"level_8_to_level_9": SubResource("Animation_filrr"),
+&"level_9_to_level_10": SubResource("Animation_wruew")
 }
 
 [sub_resource type="Gradient" id="Gradient_c2ddb"]
@@ -562,6 +962,16 @@ colors = PackedColorArray(1, 0.486275, 0.827451, 1, 0.6975, 0.3, 0.75, 1, 0.3098
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g525y"]
 gradient = SubResource("Gradient_c2ddb")
+width = 640
+height = 360
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_comen"]
+offsets = PackedFloat32Array(0, 0.5360577, 0.859375, 1)
+colors = PackedColorArray(0.7340547, 1.1166334e-05, 0.5002473, 1, 0.42948475, 0.03733117, 0.38878226, 1, 0.33734825, 0.00015072145, 0.37104636, 1, 0.14889, 0.000294777, 0.299999, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jifvf"]
+gradient = SubResource("Gradient_comen")
 width = 640
 height = 360
 fill_to = Vector2(0, 1)
@@ -887,6 +1297,7 @@ max_pitch = 1.2
 [node name="ItemDropManager" parent="." instance=ExtResource("3_dojjm")]
 unique_name_in_owner = true
 drop_percent = 0.1
+droppable_items = Array[ExtResource("8_kvgoi")]([ExtResource("9_o3ier"), ExtResource("10_8gga3"), ExtResource("11_filrr")])
 
 [node name="BG" type="Node2D" parent="."]
 
@@ -901,8 +1312,13 @@ texture = SubResource("GradientTexture2D_g525y")
 centered = false
 
 [node name="BGPinkSprite2D" type="Sprite2D" parent="BG"]
-modulate = Color(1, 1, 1, 0.77254903)
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("4_jnmbr")
+centered = false
+
+[node name="BGPinkSprite2D3" type="Sprite2D" parent="BG"]
+modulate = Color(1, 1, 1, 0)
+texture = SubResource("GradientTexture2D_jifvf")
 centered = false
 
 [node name="BGBlueSprite2D" type="Sprite2D" parent="BG"]
@@ -1063,15 +1479,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 position = Vector2(320, 331)
 y_position_anchor = NodePath("../PlayerYPositionMarker2D")
-
-[node name="Enemy" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(320, 203)
-
-[node name="Enemy2" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(320, 203)
-
-[node name="Enemy3" parent="EntitiesLayer" instance=ExtResource("3_jlp5g")]
-position = Vector2(320, 203)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["level_enemy_bounds"]]
 unique_name_in_owner = true

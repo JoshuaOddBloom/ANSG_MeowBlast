@@ -3,6 +3,7 @@ class_name ProjectileScene
 
 @export var projectile_move_speed: int = 800
 @export var hurt_damage: int = 1
+@onready var projectile_scale_multiplier: float = 1.0
 
 
 func _ready() -> void:
@@ -11,8 +12,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if scale != GameEvents.global_scale_target:
-		scale = GameEvents.global_scale_target
+	#if scale != (GameEvents.global_scale_target * projectile_scale_multiplier):
+		#scale = (GameEvents.global_scale_target * projectile_scale_multiplier)
 	
 	if global_position.y <= -500:
 		defeated()

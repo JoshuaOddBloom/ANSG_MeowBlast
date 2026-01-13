@@ -39,6 +39,7 @@ position = Vector2(288, 194)
 
 [node name="Player" parent="Node2D" instance=ExtResource("11_ennjc")]
 position = Vector2(287, 302)
+is_init = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -68,6 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 theme = ExtResource("2_sx5u0")
 
 [node name="TextureRect" type="TextureRect" parent="LoadingLayer/MarginContainer"]

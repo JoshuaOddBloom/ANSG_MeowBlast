@@ -20,6 +20,8 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	if scale !=  GameEvents.global_scale_target:
+		scale = GameEvents.global_scale_target
 	global_position.y += fall_speed * delta
 
 

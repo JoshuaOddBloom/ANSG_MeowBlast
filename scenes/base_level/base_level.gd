@@ -47,7 +47,6 @@ func init_play_level_animations():
 
 
 func _ready() -> void:
-	GameEvents.reset_values()
 	GameEvents.score_count_changed.connect(on_score_count_changed)
 	GameEvents.game_ended.connect(on_game_ended)
 	enemy_spawner_timer.timeout.connect(on_enemy_spawner_timer_timeout)
@@ -63,6 +62,7 @@ func _ready() -> void:
 	GameEvents.can_pause = ! init_version
 	OddAudioManager.add_to_bgm_streams(bgm_options)
 	OddAudioManager.play_next_stream()
+	OddAudioManager.start_playing_with_fade_in(0.1)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -141,14 +141,10 @@ func on_level_changed(new_level):
 			level_transition_player.play("level_1_start")
 			GameEvents.level_increment_target_value = 10
 		2:
-			GameEvents.change_global_scale_target(Vector2(0.8, 0.8), 10)
 			level_transition_player.play("level_1_to_level_2")
 			#testing tweens a bit
 			await level_transition_player.animation_finished
 			print("animation finished")
-			var tween = get_tree().create_tween()
-			tween.tween_interval(2) # will this WAIT for two seconds before going?
-			tween.tween_callback(func(): print("AYYAYYYAYAYOOOOOOOOO"))
 			
 			GameEvents.level_increment_target_value = 20
 		3:
@@ -156,19 +152,24 @@ func on_level_changed(new_level):
 			level_transition_player.play("level_2_to_level_3")
 			GameEvents.level_increment_target_value = 30
 		4:
+			GameEvents.change_global_scale_target(Vector2(0.8, 0.8), 10)
 			level_transition_player.play("level_3_to_level_4")
 			GameEvents.level_increment_target_value = 40
 		5:
 			level_transition_player.play("level_4_to_level_5")
 			GameEvents.level_increment_target_value = 50
 		6:
-			GameEvents.change_global_scale_target(Vector2(0.6, 0.6), 10)
 			level_transition_player.play("level_5_to_level_6")
 			enemy_spawner_timer_3.start()
 			comet_animation_player.play("comet_animation")
 		7:
-			pass
-			#GameEvents.change_global_scale_target(Vector2(0.1, 0.1), 10)
+			GameEvents.change_global_scale_target(Vector2(0.75, 0.75), 10)
+			level_transition_player.play("level_6_to_level_7")
 		8:
-			pass
+			level_transition_player.play("level_7_to_level_8")
+		9:
+			level_transition_player.play("level_8_to_level_9")
+		10:
+			GameEvents.change_global_scale_target(Vector2(0.6, 0.6), 10)
+			level_transition_player.play("level_9_to_level_10")
 	

@@ -344,7 +344,6 @@ process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "RETRY"
-require_selection_confirmation = true
 
 [node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true

@@ -10,6 +10,7 @@
 [node name="OddAudioManager" type="AudioStreamPlayer"]
 process_mode = 3
 editor_description = "meowblaster theme really nice at : 0.589"
+bus = &"BGM"
 script = ExtResource("1_djttl")
 debug = true
 reset_volume_and_pitch_on_play = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfww1x2y6wvks"]
+
+[ext_resource type="Script" uid="uid://b5op3il3fk5in" path="res://autoload/mouse_pointer.gd" id="1_7gyt6"]
+[ext_resource type="Texture2D" uid="uid://baptjn8u2hx3v" path="res://assets/textures/TriParticleOutline.png" id="2_fvilw"]
+
+[node name="MousePointer" type="Node2D"]
+z_index = 2000
+script = ExtResource("1_7gyt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 0.3019608)
+scale = Vector2(0.19, 0.33)
+texture = ExtResource("2_fvilw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 0, 0, 0.3019608)
+scale = Vector2(0.19, 0.33)
+texture = ExtResource("2_fvilw")

@@ -69,6 +69,7 @@ var initial_fire_trail_process_material_2_scale_max: float = 0.0
 
 
 func reset_values():
+	game_over = false
 	global_scale_target = Vector2(1.0, 1.0)
 	score_count = 0
 	projectile_count = 0
