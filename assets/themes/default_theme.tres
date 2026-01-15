@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ch4ic0feakt4r"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://ch4ic0feakt4r"]
 
 [ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="1_sx0q5"]
+[ext_resource type="StyleBox" uid="uid://872jrbf00g17" path="res://scenes/ui/menus/controls_screen_tab_selected.tres" id="2_5sm08"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeamd"]
 bg_color = Color(1, 1, 1, 1)
@@ -42,6 +43,10 @@ bg_color = Color(1, 0.00392157, 0.694118, 1)
 border_width_right = 2
 border_color = Color(1, 0.486275, 0.827451, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqye0"]
+bg_color = Color(0.1292, 0.0988, 0.19, 1)
+border_color = Color(0, 0, 0, 1)
+
 [resource]
 default_font = ExtResource("1_sx0q5")
 Button/font_sizes/font_size = 32
@@ -58,3 +63,6 @@ ProgressBar/font_sizes/font_size = 8
 ProgressBar/fonts/font = ExtResource("1_sx0q5")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_sx0q5")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_5sm08")
+TabContainer/constants/outline_size = 4
+TabContainer/styles/tab_selected = ExtResource("2_5sm08")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_qqye0")

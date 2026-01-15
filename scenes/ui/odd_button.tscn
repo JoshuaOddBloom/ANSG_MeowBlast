@@ -9,9 +9,9 @@
 
 [node name="OddButton" type="Button"]
 custom_minimum_size = Vector2(154, 0)
-offset_right = 6.0
-offset_bottom = 6.0
-size_flags_horizontal = 4
+offset_right = 166.0
+offset_bottom = 34.0
+size_flags_horizontal = 6
 theme = ExtResource("1_e4k56")
 text = "Sound Button"
 icon = ExtResource("2_d6vg0")
@@ -25,6 +25,7 @@ min_pitch = 2.0
 max_pitch = 3.0
 
 [node name="IconToggleable" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.498039)
 position = Vector2(12, 17)
 rotation = -1.5708

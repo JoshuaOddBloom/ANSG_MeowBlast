@@ -192,22 +192,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
-custom_minimum_size = Vector2(128, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MenuOptions" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer"]
+[node name="MenuOptions" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StartButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+[node name="StartButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "START"
 
-[node name="ControlsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+[node name="ControlsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
@@ -215,7 +210,7 @@ text = "CONTROLS"
 spawn_menu = true
 menu_to_spawn = ExtResource("6_nmbxx")
 
-[node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+[node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
@@ -223,13 +218,19 @@ text = "OPTIONS"
 spawn_menu = true
 menu_to_spawn = ExtResource("7_bl8wb")
 
-[node name="QuitButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
+[node name="QuitButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 disabled = true
 text = "QUIT"
 require_selection_confirmation = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TouchScreenStartButton" type="TouchScreenButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/PanelContainer"]
 unique_name_in_owner = true
@@ -238,6 +239,7 @@ position = Vector2(96.63, 23.88)
 shape = SubResource("RectangleShape2D_wb0q5")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

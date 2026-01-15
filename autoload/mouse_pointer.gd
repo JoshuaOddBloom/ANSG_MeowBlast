@@ -13,8 +13,9 @@ func _process(_delta: float) -> void:
 	if show_mouse_pointer:
 		if ! sprite_2d.visible:
 			sprite_2d.show()
-		if Input.mouse_mode != Input.MOUSE_MODE_CONFINED_HIDDEN:
-			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+		
+		if Input.mouse_mode != Input.MOUSE_MODE_HIDDEN:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		
 		sprite_2d.global_position = get_global_mouse_position()
 		
@@ -33,7 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func activate_mouse_controls():
 	show_mouse_pointer = true
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func disable_mouse_control():

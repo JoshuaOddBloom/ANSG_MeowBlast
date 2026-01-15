@@ -68,11 +68,13 @@ func on_timer_timeout():
 	base_level.queue_free()
 	label.hide()
 	loading_layer.layer = -1
-	var show_controls_screen_instance = show_controls_screen.instantiate()
-	show_controls_screen_instance.closed.connect(on_sound_button_pressed)
-	add_child(show_controls_screen_instance)
-	AudioServer.set_bus_mute(0, false)
-	show_controls_screen_instance.back_button.text = "CONTINUE"
+	get_tree().change_scene_to_packed(GameEvents.splash_intro_sequencer)
+	#return
+	#var show_controls_screen_instance = show_controls_screen.instantiate()
+	#show_controls_screen_instance.closed.connect(on_sound_button_pressed)
+	#add_child(show_controls_screen_instance)
+	#AudioServer.set_bus_mute(0, false)
+	#show_controls_screen_instance.back_button.text = "CONTINUE"
 
 
 func on_sound_button_pressed():

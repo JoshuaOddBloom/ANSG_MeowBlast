@@ -28,7 +28,7 @@
 			"title": "Doing",
 			"tasks": [
 				"cd07a355-3e9f-4846-9196-88e2b4c82e85",
-				"774fbce0-c0e8-47c1-bbd6-3d1790d583bd"
+				"688fa071-aa24-450d-bc93-5de195abf303"
 			]
 		},
 		{
@@ -45,6 +45,7 @@
 				"33634fa4-2b20-4dce-9046-6b8ec639b4c1",
 				"f54927b3-bad4-46f2-bff1-1d4686a0d2be",
 				"97a67f49-a158-42bc-ac0a-15ca36cc3c2e",
+				"774fbce0-c0e8-47c1-bbd6-3d1790d583bd",
 				"924d100f-ccad-4132-8cd8-e191b3ce6186",
 				"dd0eec06-5b4a-4c88-a07c-302d7090c0ee",
 				"4497e6be-aba2-4748-950e-0d9ecdf4ac46",
@@ -56,7 +57,8 @@
 			"title": "Important",
 			"tasks": [
 				"bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
-				"495d178f-2d96-47cb-a6df-902a362e0d74"
+				"495d178f-2d96-47cb-a6df-902a362e0d74",
+				"b38e1549-37b3-4847-b149-1aaf29a52f80"
 			]
 		}
 	],
@@ -308,6 +310,20 @@
 		{
 			"uuid": "d990d0ec-9b4c-4334-8fd5-3a2fda2409c8",
 			"title": "fix power-bar going yellow.",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "b38e1549-37b3-4847-b149-1aaf29a52f80",
+			"title": "pressing the pause button on a touch screen causes the ship to fire, and it keeps firing after you press resume",
+			"description": "",
+			"category": "32c68ff9-8b01-47ee-814e-9d41b05e055a",
+			"steps": []
+		},
+		{
+			"uuid": "688fa071-aa24-450d-bc93-5de195abf303",
+			"title": "I want to implement multitouch into the player script to appropriately manage when the player is using touch. I should treat it as secondary to a mouse, though.",
 			"description": "",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"steps": []

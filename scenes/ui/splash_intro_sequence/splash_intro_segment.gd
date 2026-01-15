@@ -34,7 +34,17 @@ func start():
 
 
 func logo_play_auto_animation():
-	logo_animation_player.play("auto")
+	if logo_animation_player.has_animation("auto"):
+		logo_animation_player.play("auto")
+		await logo_animation_player.animation_finished
+
+
+func logo_play_quick_animation():
+	if logo_animation_player.has_animation("quick"):
+		logo_animation_player.play("quick")
+	elif logo_animation_player.has_animation("auto"):
+		logo_animation_player.play("auto")
+	
 	await logo_animation_player.animation_finished
 
 
@@ -48,3 +58,7 @@ func play_out_animations():
 	self.hide()
 	splash_segment_finished.emit()
 	#node will be freed from the sequencer
+
+
+func stop_playing_audio():
+	OddAudioManager.stop_playing_pitch_down(0.4)

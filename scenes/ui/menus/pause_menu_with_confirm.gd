@@ -27,6 +27,10 @@ var button_was_confirmed: bool = false
 var almost_transparent: Color = Color(1.0, 1.0, 1.0, 0.25, )
 
 func _ready() -> void:
+	# Free the mouse immediately
+	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	get_tree().paused = true
 	restore_margin_container.visible = GameEvents.player_can_restore
 	
@@ -44,6 +48,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_down"):
 		pass
+	if Input.is_action_just_pressed("pause"):
+		on_resume_pressed()
 	#NEEDS TO BE CHECKING THE BUTTON BEING PRESSED TO AVOID CONFLICT OF INPUT METHODS
 
 

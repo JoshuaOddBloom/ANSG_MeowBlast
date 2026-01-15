@@ -58,7 +58,6 @@ func _ready() -> void:
 	player.update_player_stats()
 	projectile_bounds.area_entered.connect(on_projectile_bounds_entered)
 	hurt_box.area_entered.connect(on_hurt_box_entered)
-	GameEvents.game_played = true
 	GameEvents.can_pause = ! init_version
 	OddAudioManager.add_to_bgm_streams(bgm_options)
 	OddAudioManager.play_next_stream()

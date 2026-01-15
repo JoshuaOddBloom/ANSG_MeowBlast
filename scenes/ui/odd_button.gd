@@ -9,6 +9,7 @@ class_name OddButton
 @export var spawn_menu: bool = false
 @export var menu_to_spawn: PackedScene
 @export_category("Visuals")
+@export var show_icon: bool = true
 @export var button_icon: Texture2D
 @onready var icon_toggleable: Sprite2D = $IconToggleable
 @export var icon_toggleable_idle_color = Color(0.0, 0.0, 0.0, 0.5)
@@ -23,6 +24,11 @@ class_name OddButton
 #var previously_focused_item
 
 func _ready():
+	icon_toggleable.visible = show_icon
+	# Free the mouse immediately
+	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	#icon_toggleable.modulate = icon_toggleable_idle_colo
 	pressed.connect(on_pressed)
 
@@ -38,8 +44,9 @@ func _on_mouse_entered() -> void:
 		#print("OddButton disabled")
 		return
 	#previously_focused_item = self
-	self.grab_focus()
-	icon_toggleable.modulate = icon_toggleable_focused_color
+	self.is_hovered()
+	#self.grab_focus()
+	#icon_toggleable.modulate = icon_toggleable_focused_color
 
 
 ## Unfocus Action

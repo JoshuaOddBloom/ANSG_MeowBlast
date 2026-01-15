@@ -71,6 +71,22 @@ func _ready() -> void:
 		#_mouse_movement = Vector2.ZERO
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenDrag:
+		var drag_index = event.index
+		if drag_index > 0:
+			use_power()
+		else:
+			using_mouse = true
+	if event is InputEventScreenTouch:
+		var i = event.index
+		if i > 1:
+			damaged_random_audio_player_component.play()
+		if i <= 1:
+			projectile_rand_audio_component.play()
+		using_mouse = false
+
+
 func _process(delta: float) -> void:
 	if is_init:
 		return
@@ -173,7 +189,6 @@ func set_power_parameters():
 
 
 func fire_projectile():
-	
 	var projectile_instance
 	
 	if is_using_power:

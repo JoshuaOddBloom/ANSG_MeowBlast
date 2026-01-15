@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3ps8370uruvn"]
+[gd_scene load_steps=15 format=3 uid="uid://b3ps8370uruvn"]
 
 [ext_resource type="Script" uid="uid://bqms0yuewj36e" path="res://scenes/ui/splash_intro_sequence/splash_intro_segment.gd" id="1_ly8k6"]
 [ext_resource type="Texture2D" uid="uid://citalxxo7s6oq" path="res://scenes/ui/splash_intro_sequence/odd_bloom_splash_intro_sequence/White LINES 3 Eye.png" id="4_6t5ql"]
@@ -193,7 +193,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"logo_play_auto_animation"
+"method": &"logo_play_quick_animation"
 }, {
 "args": [],
 "method": &"play_out_animations"
@@ -363,11 +363,67 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_rrr5x"]
+resource_name = "quick"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoElements/Petals:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6999999, 1, 1.3, 1.5999999, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1.23114, 1, 1.23114),
+"update": 0,
+"values": [-3.7908551353316837, 0.13439, -0.0436332, 0.0174533, -0.0122173, 0.00174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 0.933033, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1.05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%BrandingMarker2D/../..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_playing_audio"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f84ix"]
 _data = {
 &"RESET": SubResource("Animation_ffil2"),
 &"auto": SubResource("Animation_sqt1x"),
-&"out": SubResource("Animation_f84ix")
+&"out": SubResource("Animation_f84ix"),
+&"quick": SubResource("Animation_rrr5x")
 }
 
 [node name="OddBloomSplashIntroSegment" type="Control"]

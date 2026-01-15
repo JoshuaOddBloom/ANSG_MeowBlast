@@ -134,6 +134,7 @@ func run_button_code():
 			queue_free()
 		
 		leave_button:
+			GameEvents.game_played = true
 			animation_player.play("out")
 			await animation_player.animation_finished
 			ScreenTransition.transition_to_scene("res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.tscn")

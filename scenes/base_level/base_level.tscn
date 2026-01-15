@@ -1411,6 +1411,7 @@ preprocess = 2.5
 process_material = ExtResource("14_5uif2")
 
 [node name="FrontCloudsGPUParticles2D" type="GPUParticles2D" parent="BG/CloudParticles"]
+modulate = Color(0.804027, 0.7568, 0.88, 1)
 position = Vector2(320, 413)
 amount = 48
 texture = ExtResource("3_8eac3")
