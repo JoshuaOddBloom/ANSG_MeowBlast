@@ -13,6 +13,8 @@ class_name OddMainMenu
 @onready var controls_button: OddButton = %ControlsButton
 @onready var options_button: OddButton = %OptionsButton
 @onready var quit_button: OddButton = %QuitButton
+@onready var bgm_check_button: CheckButton = %BGMCheckButton
+@onready var sfx_check_button: CheckButton = %SFXCheckButton
 
 var is_closing: bool = false
 var option_chosen: Button
@@ -24,6 +26,12 @@ func focus_first_available_choice():
 
 
 func _ready() -> void:
+	bgm_check_button.toggled.connect(on_bgm_check_button_toggled)
+	bgm_check_button.button_pressed = ! AudioServer.is_bus_mute(AudioServer.get_bus_index("BGM"))
+	sfx_check_button.toggled.connect(on_sfx_check_button_toggled)
+	sfx_check_button.button_pressed = ! AudioServer.is_bus_mute(AudioServer.get_bus_index("SFX"))
+	
+	
 	for odd_button in menu_options.get_children():
 		if odd_button is OddButton:
 			odd_button.pressed.connect(_on_button_pressed.bind(odd_button))
@@ -154,3 +162,11 @@ func _buttons_disabled_toggle(switch: bool):
 		if button is Button:
 			button.release_focus()
 			button.disabled = switch
+
+
+func on_bgm_check_button_toggled(toggled_on):
+	OddAudioManager.set_bus_mute(toggled_on, "BGM")
+
+
+func on_sfx_check_button_toggled(toggled_on):
+	OddAudioManager.set_bus_mute(toggled_on, "SFX")

@@ -17,16 +17,16 @@ const MAX_ANGRY_FALL_SPEED: float = 135.0
 # VISUAL
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
-@onready var enemy_sprite_attack1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_attack1.png")
-@onready var enemy_sprite_defeated1 = preload("res://scenes/enemy/CateroidChaosEnemies_defeated1.png")
-@onready var enemy_sprite_hurt1: Texture = preload("res://scenes/enemy/CateroidChaosEnemies_hurt1.png")
-@onready var enemy_sprite_hurt2 = preload("res://scenes/enemy/CateroidChaosEnemies_hurt2.png")
-@onready var enemy_sprite_idle1 = preload("res://scenes/enemy/CateroidChaosEnemies_idle1.png")
+@onready var enemy_sprite_attack_1: Texture = preload("res://scenes/enemy/cateroid_angry_1.png")
+@onready var enemy_sprite_defeated_1: Texture = preload("res://scenes/enemy/cateroid_defeated_1.png")
+@onready var enemy_sprite_hurt_1: Texture = preload("res://scenes/enemy/cateroid_hurt_1.png")
+@onready var enemy_sprite_hurt_2: Texture = preload("res://scenes/enemy/cateroid_hurt_2.png")
+@onready var enemy_sprite_idle_1: Texture = preload("res://scenes/enemy/cateroid_idle_1.png")
 
 
 
 var spawn_type: String = ""
-var spawn_texture_chosen: Texture = enemy_sprite_idle1
+var spawn_texture_chosen: Texture = enemy_sprite_idle_1
 var just_hit: bool = false
 var defeated_without_projectile: bool = false
 var defeated: bool = false
@@ -72,16 +72,16 @@ func set_spawn_type():
 			#fall_speed is unchanged, but still needs to be capped
 			if fall_speed > MAX_FALL_SPEED:
 				fall_speed = MAX_FALL_SPEED
-			spawn_texture_chosen = enemy_sprite_idle1
+			spawn_texture_chosen = enemy_sprite_idle_1
 			
 		"sleepy":
-			spawn_texture_chosen = enemy_sprite_defeated1
+			spawn_texture_chosen = enemy_sprite_defeated_1
 			fall_speed *= 0.6
 			if fall_speed > MAX_FALL_SPEED * 0.9:
 				fall_speed = MAX_FALL_SPEED * 0.9
 			
 		"angry":
-			spawn_texture_chosen = enemy_sprite_attack1
+			spawn_texture_chosen = enemy_sprite_attack_1
 			fall_speed *= 1.1
 			if fall_speed > MAX_ANGRY_FALL_SPEED:
 				fall_speed = MAX_ANGRY_FALL_SPEED
@@ -107,13 +107,13 @@ func take_damage(amount):
 
 
 func sprite_change_to_hurt():
-	var hurt_sprite = [enemy_sprite_hurt1, enemy_sprite_hurt2].pick_random()
+	var hurt_sprite = [enemy_sprite_hurt_1, enemy_sprite_hurt_2].pick_random()
 	sprite_2d.texture = hurt_sprite
 	hurt_sprite_timer.start()
 
 
 func sprite_change_to_defeated():
-	sprite_2d.texture = enemy_sprite_defeated1
+	sprite_2d.texture = enemy_sprite_defeated_1
 
 
 func sprite_change_to_idle():

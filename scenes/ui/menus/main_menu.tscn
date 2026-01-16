@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqhfswfgaqj1"]
+[gd_scene load_steps=14 format=3 uid="uid://dqhfswfgaqj1"]
 
 [ext_resource type="Script" uid="uid://jsekjhdw2cxq" path="res://scenes/ui/menus/main_menu.gd" id="1_y4aia"]
 [ext_resource type="Texture2D" uid="uid://cpx42japqrkdb" path="res://assets/ui/main_menu_bg.png" id="2_jk7nv"]
 [ext_resource type="FontFile" uid="uid://cqtqaw2dxqn4q" path="res://assets/fonts/Habbo.ttf" id="3_dhmlp"]
 [ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="4_ykpw6"]
 [ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="5_h4dpu"]
+[ext_resource type="Theme" uid="uid://c0b4wwadsywt2" path="res://assets/themes/default_theme_large_font.tres" id="5_jk7nv"]
 [ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/menus/show_controls_screen.tscn" id="6_nmbxx"]
 [ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/menus/show_options_screen.tscn" id="7_bl8wb"]
 
@@ -183,13 +184,14 @@ theme = ExtResource("4_ykpw6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
-text = "[ Prototype Build - ver 0.4.8 ]"
+text = "[ Prototype Build - ver 0.4.9 ]"
 horizontal_alignment = 1
 
 [node name="OptionsVBoxContainer" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
+theme = ExtResource("5_jk7nv")
 alignment = 1
 
 [node name="MenuOptions" type="VBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
@@ -212,6 +214,7 @@ menu_to_spawn = ExtResource("6_nmbxx")
 
 [node name="OptionsButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions" instance=ExtResource("5_h4dpu")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 disabled = true
 text = "OPTIONS"
@@ -225,6 +228,36 @@ layout_mode = 2
 disabled = true
 text = "QUIT"
 require_selection_confirmation = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions"]
+layout_mode = 2
+theme = ExtResource("5_jk7nv")
+alignment = 1
+
+[node name="BGMCheckButton" type="CheckButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../SFXCheckButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 16
+button_pressed = true
+text = "MUSIC"
+
+[node name="SFXCheckButton" type="CheckButton" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer/MenuOptions/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../BGMCheckButton")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 16
+button_pressed = true
+text = "SOUNDS"
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenuBG/MarginContainer2/VBoxContainer/OptionsVBoxContainer"]
 visible = false

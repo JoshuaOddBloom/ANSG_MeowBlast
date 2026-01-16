@@ -26,9 +26,9 @@ func _process(_delta: float) -> void:
 
 
 func load_from_options():
-	bgm_check_button.button_pressed = Options.save_data["audio_data"]["bgm_toggled_on"]
+	bgm_check_button.button_pressed = ! AudioServer.is_bus_mute(AudioServer.get_bus_index("BGM"))
 	#music_slider.value = get_bus_volume_percent("BGM")
-	sfx_check_button.button_pressed = Options.save_data["audio_data"]["sfx_toggled_on"]
+	sfx_check_button.button_pressed = ! AudioServer.is_bus_mute(AudioServer.get_bus_index("SFX"))
 	#sfx_slider.value = get_bus_volume_percent("SFX")
 
 #

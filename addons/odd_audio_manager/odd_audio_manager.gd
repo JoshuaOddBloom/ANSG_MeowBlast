@@ -81,6 +81,7 @@ func _ready():
 	#request_streams()
 	play_next_stream()
 	Options.audio_bus_toggled_on.connect(on_options_audio_bus_toggled_on)
+	
 
 #
 #func load_save_data():

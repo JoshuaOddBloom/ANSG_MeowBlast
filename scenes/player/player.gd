@@ -70,21 +70,21 @@ func _ready() -> void:
 	#else:
 		#_mouse_movement = Vector2.ZERO
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventScreenDrag:
-		var drag_index = event.index
-		if drag_index > 0:
-			use_power()
-		else:
-			using_mouse = true
-	if event is InputEventScreenTouch:
-		var i = event.index
-		if i > 1:
-			damaged_random_audio_player_component.play()
-		if i <= 1:
-			projectile_rand_audio_component.play()
-		using_mouse = false
+#TESTING For multi-touch on iPad and iPhone. NOT WORKING
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventScreenDrag:
+		#var drag_index = event.index
+		#if drag_index > 0:
+			#use_power()
+		#else:
+			#using_mouse = true
+	#if event is InputEventScreenTouch:
+		#var i = event.index
+		#if i > 1:
+			#damaged_random_audio_player_component.play()
+		#if i <= 1:
+			#projectile_rand_audio_component.play()
+		#using_mouse = false
 
 
 func _process(delta: float) -> void:
