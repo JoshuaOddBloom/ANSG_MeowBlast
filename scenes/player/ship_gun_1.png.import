@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dojdheomghihl"
-path="res://.godot/imported/CateroidChaosEnemies_attack1.png-164b360ac0e48cc281e9efbb12045c79.ctex"
+uid="uid://cnd1wjntj4n74"
+path="res://.godot/imported/ship_gun_1.png-1adbc26e6477d7c0e146fdfa1e339767.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/old/CateroidChaosEnemies_attack1.png"
-dest_files=["res://.godot/imported/CateroidChaosEnemies_attack1.png-164b360ac0e48cc281e9efbb12045c79.ctex"]
+source_file="res://scenes/player/ship_gun_1.png"
+dest_files=["res://.godot/imported/ship_gun_1.png-1adbc26e6477d7c0e146fdfa1e339767.ctex"]
 
 [params]
 
@@ -34,7 +34,7 @@ process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/hdr_as_srgb=false
+process/hdr_as_srgb=true
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1

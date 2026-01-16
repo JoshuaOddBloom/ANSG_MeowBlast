@@ -3,6 +3,8 @@ extends Node2D
 signal init_anim_finished
 signal init_finished
 
+@export var spawn_enemies: bool = true
+
 @export var init_version: bool = false
 @export var bgm_options: Array[AudioStream]
 @export var enemy_scene: PackedScene
@@ -11,7 +13,8 @@ signal init_finished
 
 @onready var entities_layer: Node2D = %EntitiesLayer
 @onready var player: Player = %Player
-@onready var enemy_spawner_timer: Timer = $EnemySpawnerTimer
+@onready var enemy_spawn_timers: Node = %EnemySpawnTimers
+@onready var enemy_spawner_timer: Timer = %EnemySpawnerTimer
 @onready var enemy_spawner_timer_2: Timer = %EnemySpawnerTimer2
 @onready var enemy_spawner_timer_3: Timer = %EnemySpawnerTimer3
 @onready var projectile_bounds: Area2D = %ProjectileBounds
@@ -62,6 +65,11 @@ func _ready() -> void:
 	OddAudioManager.add_to_bgm_streams(bgm_options)
 	OddAudioManager.play_next_stream()
 	OddAudioManager.start_playing_with_fade_in(0.1)
+	
+	for timer in enemy_spawn_timers.get_children():
+		if timer is Timer:
+			timer.stop()
+	
 
 
 func _unhandled_input(event: InputEvent) -> void:

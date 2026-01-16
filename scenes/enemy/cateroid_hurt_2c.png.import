@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xg1jriu08qm6"
-path="res://.godot/imported/cateroid_hurt_2.png-b72f6c7b6cc201eeb6eddafb4ea019a9.ctex"
+uid="uid://bgmuc1ccoe5uc"
+path="res://.godot/imported/cateroid_hurt_2c.png-d81d52e4dbec96c9085c764d98f15232.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/cateroid_hurt_2.png"
-dest_files=["res://.godot/imported/cateroid_hurt_2.png-b72f6c7b6cc201eeb6eddafb4ea019a9.ctex"]
+source_file="res://scenes/enemy/cateroid_hurt_2c.png"
+dest_files=["res://.godot/imported/cateroid_hurt_2c.png-d81d52e4dbec96c9085c764d98f15232.ctex"]
 
 [params]
 

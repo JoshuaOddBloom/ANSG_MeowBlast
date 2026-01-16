@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvs0ptsi1jt6l"
-path="res://.godot/imported/CateroidChaosEnemies_defeated1.png-9406f7ad1411d879f048f059ca59e3aa.ctex"
+uid="uid://by1ip2tib0eod"
+path="res://.godot/imported/cateroid_idle_1b.png-fc8e85b8d46dc92e80c58a156e6a2d3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/CateroidChaosEnemies_defeated1.png"
-dest_files=["res://.godot/imported/CateroidChaosEnemies_defeated1.png-9406f7ad1411d879f048f059ca59e3aa.ctex"]
+source_file="res://scenes/enemy/cateroid_idle_1b.png"
+dest_files=["res://.godot/imported/cateroid_idle_1b.png-fc8e85b8d46dc92e80c58a156e6a2d3f.ctex"]
 
 [params]
 
@@ -34,7 +34,7 @@ process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/hdr_as_srgb=false
+process/hdr_as_srgb=true
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1

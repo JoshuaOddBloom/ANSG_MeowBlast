@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cynq3ykwdx2ix"
-path="res://.godot/imported/cateroid_angry_1.png-01fdbfceceb9121e0e4e76a6cac5f8c3.ctex"
+uid="uid://sjavkrgqvexo"
+path="res://.godot/imported/ship_body_1.png-59f09f881258c3502c2293007c72f6f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/cateroid_angry_1.png"
-dest_files=["res://.godot/imported/cateroid_angry_1.png-01fdbfceceb9121e0e4e76a6cac5f8c3.ctex"]
+source_file="res://scenes/player/ship_body_1.png"
+dest_files=["res://.godot/imported/ship_body_1.png-59f09f881258c3502c2293007c72f6f5.ctex"]
 
 [params]
 

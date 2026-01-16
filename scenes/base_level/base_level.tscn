@@ -1277,6 +1277,7 @@ size = Vector2(698, 103)
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_k2up0")
+spawn_enemies = false
 bgm_options = Array[AudioStream]([ExtResource("3_g525y")])
 enemy_scene = ExtResource("3_jlp5g")
 enemy_spawn_timer_min_wait = 1.0
@@ -1419,18 +1420,21 @@ lifetime = 5.0
 preprocess = 2.5
 process_material = ExtResource("16_8diyn")
 
-[node name="EnemySpawnerTimer" type="Timer" parent="."]
+[node name="EnemySpawnTimers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawnerTimer" type="Timer" parent="EnemySpawnTimers"]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="EnemySpawnerTimer2" type="Timer" parent="."]
+[node name="EnemySpawnerTimer2" type="Timer" parent="EnemySpawnTimers"]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="EnemySpawnerTimer3" type="Timer" parent="."]
+[node name="EnemySpawnerTimer3" type="Timer" parent="EnemySpawnTimers"]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true

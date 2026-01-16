@@ -17,11 +17,11 @@ const MAX_ANGRY_FALL_SPEED: float = 135.0
 # VISUAL
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
-@onready var enemy_sprite_attack_1: Texture = preload("res://scenes/enemy/cateroid_angry_1.png")
-@onready var enemy_sprite_defeated_1: Texture = preload("res://scenes/enemy/cateroid_defeated_1.png")
-@onready var enemy_sprite_hurt_1: Texture = preload("res://scenes/enemy/cateroid_hurt_1.png")
-@onready var enemy_sprite_hurt_2: Texture = preload("res://scenes/enemy/cateroid_hurt_2.png")
-@onready var enemy_sprite_idle_1: Texture = preload("res://scenes/enemy/cateroid_idle_1.png")
+@onready var enemy_sprite_attack_1: Texture = preload("res://scenes/enemy/cateroid_angry_1a.png")
+@onready var enemy_sprite_defeated_1: Texture = preload("res://scenes/enemy/cateroid_defeated_1a.png")
+@onready var enemy_sprite_hurt_1: Texture = preload("res://scenes/enemy/cateroid_hurt_1c.png")
+@onready var enemy_sprite_hurt_2: Texture = preload("res://scenes/enemy/cateroid_hurt_2c.png")
+@onready var enemy_sprite_idle_1: Texture = preload("res://scenes/enemy/cateroid_idle_1b.png")
 
 
 

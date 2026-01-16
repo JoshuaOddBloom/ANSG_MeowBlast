@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de7dk4ap0hkr3"
-path="res://.godot/imported/cateroid_defeated_1.png-d93bc8bb77ff4981fd547175688fe425.ctex"
+uid="uid://ba4o08w0fn36u"
+path="res://.godot/imported/cateroid_angry_1a.png-88b5b81d14d661b214a10dfd22469a79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/cateroid_defeated_1.png"
-dest_files=["res://.godot/imported/cateroid_defeated_1.png-d93bc8bb77ff4981fd547175688fe425.ctex"]
+source_file="res://scenes/enemy/cateroid_angry_1a.png"
+dest_files=["res://.godot/imported/cateroid_angry_1a.png-88b5b81d14d661b214a10dfd22469a79.ctex"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bmve0wce3e23t" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="PackedScene" uid="uid://dhd4f3glgvj4h" path="res://scenes/components/health_component.tscn" id="2_a3pup"]
-[ext_resource type="Texture2D" uid="uid://dvs0ptsi1jt6l" path="res://scenes/enemy/CateroidChaosEnemies_defeated1.png" id="2_tjssy"]
 [ext_resource type="Material" uid="uid://ytptb75gvo1r" path="res://assets/particles/fire_trail_back_particle_process_material.tres" id="4_13gj6"]
 [ext_resource type="Material" uid="uid://b352dqe5vtsyn" path="res://assets/particles/fire_trail_front_particle_process_material.tres" id="5_4efjx"]
 [ext_resource type="PackedScene" uid="uid://dw7f8wl5cgno8" path="res://scenes/ui/off_screen_marker/target_reticles.tscn" id="5_gl05p"]
 [ext_resource type="Script" uid="uid://mmtdtbgat87y" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.gd" id="5_hvxgb"]
 [ext_resource type="PackedScene" uid="uid://cvrho56xhok43" path="res://scenes/components/item_drop_component.tscn" id="6_cwlon"]
 [ext_resource type="PackedScene" uid="uid://bstco5w5lxv1u" path="res://scenes/particle_scenes/fire_trail_gpu_particles_2d.tscn" id="7_nbhyu"]
+[ext_resource type="Texture2D" uid="uid://ba4o08w0fn36u" path="res://scenes/enemy/cateroid_angry_1a.png" id="9_4efjx"]
 
 [sub_resource type="Animation" id="Animation_nbhyu"]
 length = 0.001
@@ -212,7 +212,7 @@ override_reticle_sprite_color = Color(1, 1, 1, 1)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.564448, 0.953056, 1)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_tjssy")
+texture = ExtResource("9_4efjx")
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true

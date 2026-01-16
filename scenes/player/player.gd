@@ -3,6 +3,7 @@ class_name Player
 
 const MIN_X_POS: int = 170
 const MAX_X_POS: int = 470
+const MAX_WING_ROTATION: float = 0.2
 
 @export var is_init: bool = false
 @export var debuging: bool = false
@@ -18,6 +19,8 @@ const MAX_X_POS: int = 470
 @onready var using_power_timer: Timer = $UsingPowerTimer
 @onready var update_power_bar_value_timer: Timer = $UpdatePowerBarValueTimer
 @onready var power_ready_gpu_particles_2d: GPUParticles2D = %PowerReadyGPUParticles2D
+# Visuals
+@onready var wing_center_marker: Marker2D = %WingCenterMarker
 # Projectiles
 @export var base_projectile = preload("res://scenes/projectile/base_projectile.tscn")
 @export var projectile_base_x_10_scene = preload("res://scenes/projectile/projectile_base_x_10.tscn")
@@ -40,6 +43,7 @@ var lerp_scale_to_global_scale_target: bool = false
 var using_mouse: bool = false
 var projectile_scale_multiplier: float = 1.0
 var projectile_scale_max: float = 2.0
+var rotation_amount: float = 0.0
 
 
 func _ready() -> void:
@@ -88,8 +92,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	
 	if is_init:
 		return
+	
 	## Input Monitoring
 	if Input.is_action_pressed("pause"):
 		if GameEvents.game_over:
@@ -99,16 +105,36 @@ func _process(delta: float) -> void:
 	if scale != GameEvents.global_scale_target:
 		scale = GameEvents.global_scale_target
 	
+	
+	## USING MOUSE CONTROLS
 	if using_mouse:
 		if MousePointer.show_mouse_pointer != true:
 			MousePointer.show_mouse_pointer = true
 		var global_mouse_position = get_global_mouse_position()
 		# Apply Mouse position
 		if global_mouse_position.x > MIN_X_POS and global_mouse_position.x < MAX_X_POS:
+			var previous_x_position = global_position.x
 			global_position.x = global_mouse_position.x
+			rotation_amount += previous_x_position - global_mouse_position.x
 	
+	#print("rotation_amount B4: ", rotation_amount)
+	### Rotate the Player Wings
+	#var rotation_lerp_speed = 5 * delta
+	#rotation_amount = clampf(rotation_amount, -MAX_WING_ROTATION, MAX_WING_ROTATION)
+	#if rotation_amount > -0.002 and rotation_amount < 0.002:
+		#rotation_amount = 0.0
+	#elif rotation_amount > MAX_WING_ROTATION:
+		#rotation_amount = MAX_WING_ROTATION
+	#elif rotation_amount < -MAX_WING_ROTATION:
+		#rotation_amount = -MAX_WING_ROTATION
+	#rotation_amount = lerpf(rotation_amount, 0.0, rotation_lerp_speed * 10)
+	#wing_center_marker.rotation = lerpf(wing_center_marker.rotation, -rotation_amount, rotation_lerp_speed)
+	#
+	#
+	#print("rotation_amount AF: ", rotation_amount)
 	if y_position_anchor:
 		global_position.y = y_position_anchor.global_position.y
+	
 	
 	# Move Left
 	if Input.is_action_pressed("ui_left"):
