@@ -4,9 +4,6 @@ class_name OddMenu
 
 #TODO STILL NEEDS TRANSITIONS FOR CONFIRMATIONS
 
-#@export var show_controls_screen: PackedScene
-#@export var show_options_screen: PackedScene
-#@export var confirmation_timer_base_waittime: float
 @export var pause_game_on_ready: bool = false
 @onready var confirmation_screen := load("res://scenes/ui/menus/confirm_selection_menu.tscn")
 
@@ -21,11 +18,11 @@ class_name OddMenu
 @onready var restart_button: Button = %RestartButton
 @onready var leave_button: Button = %LeaveButton 
 
-
 var is_closing: bool = false
 var option_chosen: Button
 var button_was_confirmed: bool = false
 var almost_transparent: Color = Color(1.0, 1.0, 1.0, 0.25, )
+
 
 func _ready() -> void:
 	get_tree().paused = pause_game_on_ready
@@ -125,13 +122,16 @@ func run_button_code():
 			queue_free()
 		
 		restart_button:
+			if animation_player.is_playing():
+				animation_player.stop()
 			animation_player.play("out")
 			await animation_player.animation_finished
 			
 			ScreenTransition.transition()
 			await ScreenTransition.transitioned_halfway
+			close()
 			get_tree().reload_current_scene()
-			queue_free()
+			
 		
 		leave_button:
 			GameEvents.game_played = true

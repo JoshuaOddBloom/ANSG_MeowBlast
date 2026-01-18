@@ -1,8 +1,9 @@
 extends Node
 
+const ITEM_HEALTH_UP = preload("res://resources/items/item_health_up.tres")
+
 @export_range(0,1) var drop_percent: float = 0.5
 @export var item_base = preload("res://scenes/game_objects/item_drop/item_drop.tscn")
-const ITEM_HEALTH_UP = preload("res://resources/items/item_health_up.tres")
 @export var droppable_items: Array[DroppableItem]
 @onready var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 

@@ -51,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FireTrailGPUParticles2D:emitting")
+tracks/3/path = NodePath("FireParticles/FireTrailGPUParticles2D:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -63,7 +63,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FireTrailGPUParticles2D2:emitting")
+tracks/4/path = NodePath("FireParticles/FireTrailGPUParticles2D2:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -130,7 +130,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FireTrailGPUParticles2D:emitting")
+tracks/4/path = NodePath("FireParticles/FireTrailGPUParticles2D:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -142,7 +142,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("FireTrailGPUParticles2D2:emitting")
+tracks/5/path = NodePath("FireParticles/FireTrailGPUParticles2D2:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -181,7 +181,10 @@ process_mode = 4
 drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
-[node name="FireTrailGPUParticles2D2" parent="." instance=ExtResource("7_nbhyu")]
+[node name="FireParticles" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="FireTrailGPUParticles2D2" parent="FireParticles" instance=ExtResource("7_nbhyu")]
 unique_name_in_owner = true
 position = Vector2(0, 11)
 lifetime = 0.15000000000000002
@@ -190,7 +193,7 @@ process_material = ExtResource("4_13gj6")
 script = ExtResource("5_hvxgb")
 particle_number = 1
 
-[node name="FireTrailGPUParticles2D" parent="." instance=ExtResource("7_nbhyu")]
+[node name="FireTrailGPUParticles2D" parent="FireParticles" instance=ExtResource("7_nbhyu")]
 unique_name_in_owner = true
 position = Vector2(0, 11)
 lifetime = 0.75

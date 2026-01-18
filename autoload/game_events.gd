@@ -7,6 +7,7 @@ signal score_count_changed(new_score)
 signal level_changed(new_level)
 signal level_incremement_changed
 signal projectile_count_changed(new_projectile_count)
+signal game_over_stat_update(stat_id, stat_value)
 # Game-flow elements
 #signal global_scale_target_changed
 signal update_player_stats(stat: String, value: float)
@@ -39,12 +40,15 @@ signal item_drop_send(item_drop_type : String, item_drop_data : Resource)
 var player_can_restore: bool = false
 var player_at_max_health: bool = false
 var max_level: int = 99
-var current_level: int = 1
 var current_level_incremement_value: int = 0
 var level_increment_target_value: int = 10
 
+var current_level: int = 1
 var score_count: int = 0
+var score_multiplier: int = 5
 var projectile_count: int = 0
+var current_time: String
+var cateroids_defeated: int = 0
 # pausing
 var game_started: bool = false
 var can_pause: bool = false
@@ -75,6 +79,8 @@ func reset_values():
 	projectile_count = 0
 	current_level = 1
 	current_level_incremement_value = 0
+	cateroids_defeated = 0
+	current_time = ""
 
 
 func level_launch_signal_request():
@@ -128,9 +134,13 @@ func change_global_scale_target(new_global_scale: Vector2, transition_speed: flo
 	global_scale_target_tween.tween_callback(func(): global_scale_tweening = false)
 
 
+func emit_game_over_stat_update(stat_id, stat_value):
+	game_over_stat_update.emit(stat_id, stat_value)
+
+
 func emit_score_count_changed(amount_changed):
 	score_count += amount_changed
-	score_count_changed.emit(score_count*5)
+	score_count_changed.emit(score_count * score_multiplier)
 
 
 func emit_level_incremement_changed():
@@ -189,6 +199,7 @@ func emit_player_restored():
 
 
 func emit_game_over():
+	
 	game_over = true
 	game_ended.emit()
 

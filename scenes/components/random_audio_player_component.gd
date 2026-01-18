@@ -21,7 +21,9 @@ func play_random():
 	if randomize_pitch:
 		pitch_scale = randf_range(min_pitch,max_pitch)
 	else:
-		pitch_scale = 1
+		var pitches = [0.77, 0.59, 0.59]
+		#var pitches = [1.96, 1.77, 1.59, 0.96, 0.77, 0.59]
+		pitch_scale = pitches[randi_range(0, len(pitches) - 1)]
 	
 	stream = streams.pick_random()
 	play()

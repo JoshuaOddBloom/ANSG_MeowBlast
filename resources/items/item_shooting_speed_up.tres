@@ -7,6 +7,6 @@
 script = ExtResource("2_lodgy")
 item_name = "shooting_speed_up"
 item_icon = ExtResource("1_678fn")
-item_modulate_override_color = Color(0.43839672, 0.8180297, 1, 1)
+item_modulate_override_color = Color(0.52156866, 0.83137256, 1, 1)
 add_icon_to_ui = false
 metadata/_custom_type_script = "uid://df24bvw55uwn1"

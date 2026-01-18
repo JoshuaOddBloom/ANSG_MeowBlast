@@ -7,7 +7,7 @@
 script = ExtResource("1_f3hcb")
 item_name = "health_up"
 item_icon = ExtResource("1_7b43m")
-item_modulate_override_color = Color(0, 1, 0.0392157, 1)
+item_modulate_override_color = Color(0.5215746, 1, 0.630053, 1)
 item_weight = 5
 item_fall_speed_multiplier = 1.1
 add_icon_to_ui = false

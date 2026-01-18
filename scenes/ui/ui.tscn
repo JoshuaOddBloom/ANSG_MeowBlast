@@ -191,7 +191,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_y220t")
 }
 autoplay = "hit"
-blend_times = [&"power_ready", &"back_to_normal", 0.5, &"power_ready", &"power_ready", 0.5]
+next/power_ready = &"back_to_normal"
+blend_times = [&"power_ready", &"RESET", 0.5, &"power_ready", &"back_to_normal", 0.5, &"power_ready", &"hit", 0.5, &"power_ready", &"power_ready", 0.5]
 
 [node name="MovementBounds" type="StaticBody2D" parent="."]
 visible = false
@@ -401,10 +402,10 @@ size_flags_horizontal = 8
 theme = ExtResource("3_pfayw")
 
 [node name="ArenaTimeUI" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox" instance=ExtResource("5_uegxj")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = null
 
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox"]
 custom_minimum_size = Vector2(0, 96)
@@ -569,6 +570,19 @@ theme_override_font_sizes/font_size = 32
 text = "FPS : 999"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MenusMarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_aac20")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Vignette" parent="." instance=ExtResource("2_pfayw")]
 

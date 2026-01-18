@@ -60,7 +60,7 @@ func item_drop_collected():
 
 func destroy_item():
 	#print("projectile_destroyed")
-	queue_free()
+	call_deferred("queue_free")
 
 
 func disable_collision():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://77buhb1awwg3"]
+[gd_scene load_steps=10 format=3 uid="uid://77buhb1awwg3"]
 
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_eu3p8"]
 [ext_resource type="Script" uid="uid://b4ttc4jldyrvx" path="res://scenes/ui/menus/show_controls_screen.gd" id="1_nnn4t"]
@@ -57,22 +57,6 @@ _data = {
 &"RESET": SubResource("Animation_ycltl"),
 &"auto": SubResource("Animation_ge8p4")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ekit"]
-bg_color = Color(0.1292, 0.0988, 0.19, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [node name="ShowControlsScreen" type="Control"]
 layout_mode = 3
@@ -177,6 +161,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Mouse/ControllerHBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Mouse/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
@@ -238,7 +223,8 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
-text = "Hold Left Click + Move Mouse"
+text = "Move Mouse
+[Left Click to activate]"
 vertical_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Mouse/ControllerHBoxContainer/VBoxContainer"]
@@ -258,7 +244,8 @@ text = "Shoot : "
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Hold Left Click"
+text = "Left Click
+[Hold to auto-fire]"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Mouse/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 0.486275, 0.827451, 1)
@@ -286,7 +273,7 @@ visible = false
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_8ekit")
+theme_override_styles/panel = ExtResource("4_ne615")
 
 [node name="KeyboardHBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Keyboard"]
 layout_mode = 2
@@ -301,7 +288,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Keyboard/KeyboardHBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Keyboard/KeyboardHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)
@@ -428,6 +415,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Joypad/ControllerHBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MarginContainer/ControlsPanel/VBoxContainer/HBoxContainer/InstructionsContainer/Joypad/ControllerHBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.713726, 1)

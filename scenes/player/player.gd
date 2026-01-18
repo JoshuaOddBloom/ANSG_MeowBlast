@@ -5,10 +5,11 @@ const MIN_X_POS: int = 170
 const MAX_X_POS: int = 470
 const MAX_WING_ROTATION: float = 0.2
 
-@export var is_init: bool = false
 @export var debuging: bool = false
+@export var is_init: bool = false
+
 @export var y_position_anchor: Marker2D
-@export var move_speed : float = 400.0
+@export var move_speed : float = 375.0
 @export var max_move_speed: float = 450.0
 @export var acceleration: int = 5
 @export var power_charge_target: float = 50.0
@@ -21,6 +22,8 @@ const MAX_WING_ROTATION: float = 0.2
 @onready var power_ready_gpu_particles_2d: GPUParticles2D = %PowerReadyGPUParticles2D
 # Visuals
 @onready var wing_center_marker: Marker2D = %WingCenterMarker
+@onready var trails_r_sprite_2d: Sprite2D = %TrailsRSprite2D
+@onready var trails_l_sprite_2d: Sprite2D = %TrailsLSprite2D
 # Projectiles
 @export var base_projectile = preload("res://scenes/projectile/base_projectile.tscn")
 @export var projectile_base_x_10_scene = preload("res://scenes/projectile/projectile_base_x_10.tscn")
@@ -30,7 +33,9 @@ const MAX_WING_ROTATION: float = 0.2
 # Audio
 @onready var projectile_rand_audio_component: RandomAudioStreamPlayer = %ProjectileRandAudioComponent
 @onready var damaged_random_audio_player_component: RandomAudioStreamPlayer = %DamagedRandomAudioPlayerComponent
-
+@onready var previous_x_position = global_position.x
+@onready var rotation_amount: float = 0.0
+@onready var transparency_value: float = 0.0
 
 #var current_projectile_selected
 var can_shoot: bool = true
@@ -43,7 +48,7 @@ var lerp_scale_to_global_scale_target: bool = false
 var using_mouse: bool = false
 var projectile_scale_multiplier: float = 1.0
 var projectile_scale_max: float = 2.0
-var rotation_amount: float = 0.0
+var x_pos_safe_zone: float = 31
 
 
 func _ready() -> void:
@@ -102,40 +107,25 @@ func _process(delta: float) -> void:
 			return
 		GameEvents.emit_game_paused()
 	
+	previous_x_position = global_position.x
+	
+	
 	if scale != GameEvents.global_scale_target:
 		scale = GameEvents.global_scale_target
 	
-	
-	## USING MOUSE CONTROLS
+	## MOVEMENT
+	# MOUSE CONTROLS
 	if using_mouse:
 		if MousePointer.show_mouse_pointer != true:
 			MousePointer.show_mouse_pointer = true
 		var global_mouse_position = get_global_mouse_position()
 		# Apply Mouse position
-		if global_mouse_position.x > MIN_X_POS and global_mouse_position.x < MAX_X_POS:
-			var previous_x_position = global_position.x
-			global_position.x = global_mouse_position.x
-			rotation_amount += previous_x_position - global_mouse_position.x
-	
-	#print("rotation_amount B4: ", rotation_amount)
-	### Rotate the Player Wings
-	#var rotation_lerp_speed = 5 * delta
-	#rotation_amount = clampf(rotation_amount, -MAX_WING_ROTATION, MAX_WING_ROTATION)
-	#if rotation_amount > -0.002 and rotation_amount < 0.002:
-		#rotation_amount = 0.0
-	#elif rotation_amount > MAX_WING_ROTATION:
-		#rotation_amount = MAX_WING_ROTATION
-	#elif rotation_amount < -MAX_WING_ROTATION:
-		#rotation_amount = -MAX_WING_ROTATION
-	#rotation_amount = lerpf(rotation_amount, 0.0, rotation_lerp_speed * 10)
-	#wing_center_marker.rotation = lerpf(wing_center_marker.rotation, -rotation_amount, rotation_lerp_speed)
-	#
-	#
-	#print("rotation_amount AF: ", rotation_amount)
-	if y_position_anchor:
-		global_position.y = y_position_anchor.global_position.y
-	
-	
+		#if global_mouse_position.x > (MIN_X_POS + 31) and global_mouse_position.x < (MAX_X_POS - 31):
+		global_position.x = global_mouse_position.x
+		#if global_mouse_position.x > (MIN_X_POS) and global_mouse_position.x < (MAX_X_POS):
+	else:
+		if MousePointer.show_mouse_pointer:
+			MousePointer.show_mouse_pointer = false
 	# Move Left
 	if Input.is_action_pressed("ui_left"):
 		if using_mouse:
@@ -147,40 +137,59 @@ func _process(delta: float) -> void:
 			using_mouse = false
 		global_position.x += move_speed * delta
 	
-	# Fire Projectile
+	## global_position.x safety check - 
+	# This keeps the wings from rotating when the mouse is between the max pos and the ship cannot move to the MIN/MAX X POS
+	if global_position.x > MAX_X_POS - (x_pos_safe_zone * GameEvents.global_scale_target.x):
+		global_position.x = MAX_X_POS - (x_pos_safe_zone * GameEvents.global_scale_target.x)
+	if global_position.x < MIN_X_POS + (x_pos_safe_zone * GameEvents.global_scale_target.x):
+		global_position.x = MIN_X_POS + (x_pos_safe_zone * GameEvents.global_scale_target.x)
+	
+	## Rotate the Player Wings
+	rotation_amount = clampf(rotation_amount, -MAX_WING_ROTATION, MAX_WING_ROTATION)
+	if rotation_amount > -0.002 and rotation_amount < 0.002:
+		rotation_amount = 0.0
+	wing_center_marker.rotation = lerpf(wing_center_marker.rotation, -rotation_amount, delta * 5)
+	rotation_amount = lerpf(rotation_amount, 0.0, 50 * delta)
+	rotation_amount += previous_x_position - global_position.x
+	
+	## Adjust the Trail Transparency based on the rotation of the wings
+	if absf(wing_center_marker.rotation) != 0.0:
+		transparency_value = lerpf(0.0, 10.0 * absf(rotation_amount), 2 * delta)
+		var new_color = Color(1.0, 1.0, 1.0, transparency_value)
+		trails_r_sprite_2d.modulate = new_color
+		trails_l_sprite_2d.modulate = new_color
+	
+	## Keep Player's y value at the y anchor position
+	if y_position_anchor:
+		global_position.y = y_position_anchor.global_position.y
+	
+	## Fire Projectile
 	if Input.is_action_just_pressed("shoot"):
 		if ! can_shoot:
-			# Cannot shoot, break out of loop
 			return
 		fire_projectile()
-		
 		semi_automatic_timer.start()
-		# Fire Projectile
+	
 	if Input.is_action_just_pressed("mouse_button_left"):
 		if ! using_mouse:
 			using_mouse = true
-		
 		if ! can_shoot:
-			# Cannot shoot, break out of loop
 			return
 		fire_projectile()
-		
-		semi_automatic_timer.start()
+		semi_automatic_timer.start() # for next fire_projectile()
 	
-		
+	# stop shooting
 	elif Input.is_action_just_released("shoot") or Input.is_action_just_released("mouse_button_left"):
 		semi_automatic_timer.stop()
 	
+	# use power
 	if Input.is_action_just_pressed("use_power") or Input.is_action_just_pressed("mouse_button_right"):
 		use_power()
 	
+	# debug heal
 	if Input.is_action_just_pressed("debug_heal") and debuging:
 		health_component.heal(health_component.max_health - health_component.current_health)
 	
-	if global_position.x > MAX_X_POS:
-		global_position.x = MAX_X_POS
-	if global_position.x < MIN_X_POS:
-		global_position.x = MIN_X_POS
 	
 	move_and_slide()
 
@@ -227,6 +236,8 @@ func fire_projectile():
 	if projectile_instance == null:
 		return
 	
+	GameEvents.projectile_count += 1
+	
 	projectile_instance.global_position = projectile_spawn_marker_2d.global_position
 	projectile_instance.scale = (scale * projectile_scale_multiplier) # avoids scale differences by matching the player immediately before the instance is visible
 	projectile_instance.projectile_scale_multiplier = projectile_scale_multiplier
@@ -243,6 +254,16 @@ func take_damage(amount):
 	#print("PlayerTakingDamage")
 	damaged_random_audio_player_component.play_random()
 	health_component.take_damage(amount)
+
+
+func on_get_player_health():
+	health_component.check_health()
+
+
+func on_player_defeated():
+	MousePointer.disable_mouse_control()
+	GameEvents.emit_game_over()
+	queue_free()
 
 
 func on_player_damaged(_amount):
@@ -277,15 +298,6 @@ func on_using_power_timer_timeout():
 		GameEvents.emit_player_update_power_value(power_charge_amount, power_charge_target)
 		power_previous_charge_amount = 0.0
 
-
-func on_get_player_health():
-	health_component.check_health()
-
-
-func on_player_defeated():
-	MousePointer.disable_mouse_control()
-	GameEvents.emit_game_over()
-	queue_free()
 
 
 func on_score_count_changed(_score):

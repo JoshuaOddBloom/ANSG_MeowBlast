@@ -21,6 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6bgux")
+loading_text = "COMPILING"
+add_dots_to_label = false
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -42,7 +44,7 @@ position = Vector2(287, 302)
 is_init = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 6.0
 one_shot = true
 autostart = true
 
@@ -86,11 +88,13 @@ alignment = 1
 
 [node name="Label" type="Label" parent="LoadingLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "LOADING"
+theme = ExtResource("2_sx5u0")
+theme_override_font_sizes/font_size = 32
+text = "SET USING InitScreen"
+horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadingLayer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

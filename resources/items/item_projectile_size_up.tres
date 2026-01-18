@@ -7,7 +7,7 @@
 script = ExtResource("2_lwrjb")
 item_name = "projectile_size_up"
 item_icon = ExtResource("1_x1g8o")
-item_modulate_override_color = Color(1, 0.36106026, 0.31116885, 1)
+item_modulate_override_color = Color(1, 0.52, 0.52, 1)
 item_weight = 8
 add_icon_to_ui = false
 metadata/_custom_type_script = "uid://df24bvw55uwn1"

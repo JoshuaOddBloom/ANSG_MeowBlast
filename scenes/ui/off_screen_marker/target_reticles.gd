@@ -29,7 +29,7 @@ func _ready() -> void:
 	#GameEvents.player_restored.connect(func(): visible = true)
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	var canvas = get_canvas_transform()
 	var top_left = -canvas.origin / canvas.get_scale()
 	var size = get_viewport_rect().size / canvas.get_scale()

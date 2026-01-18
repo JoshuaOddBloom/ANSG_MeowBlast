@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr45y4w6u441y"]
+[gd_scene load_steps=8 format=3 uid="uid://dr45y4w6u441y"]
 
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="1_j8dh0"]
 [ext_resource type="Script" uid="uid://cr6sf6yfhnu5b" path="res://scenes/ui/arena_time_ui.gd" id="1_q3ra5"]
-[ext_resource type="Theme" uid="uid://c8rpr66nvv0bw" path="res://assets/themes/default_theme_small_font_with_outline.tres" id="3_ur7nr"]
 
 [sub_resource type="Animation" id="Animation_2ci11"]
 length = 0.1
@@ -16,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.87055),
 "update": 0,
-"values": [Color(0.158517, 0.121908, 0.23407, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -97,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.174384, 2.63516e-06, 0.127274, 1), Color(0.158517, 0.121908, 0.23407, 1), Color(0.174384, 2.63516e-06, 0.127274, 1)]
+"values": [Color(0, 0, 0, 1), Color(0.158517, 0.121908, 0.23407, 1), Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -150,7 +149,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.247059, 0.14902, 0.192157, 1), Color(0.14902, 0.168627, 0.266667, 1), Color(0.247059, 0.14902, 0.192157, 1)]
+"values": [Color(0, 0, 0, 1), Color(0.14902, 0.168627, 0.266667, 1), Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -225,10 +224,9 @@ offset_right = 96.4
 offset_bottom = 26.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("3_ur7nr")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 0)
-theme_override_colors/font_outline_color = Color(0.158517, 0.121908, 0.23407, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 8

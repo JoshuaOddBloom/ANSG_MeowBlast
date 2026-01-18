@@ -47,6 +47,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ConfirmSelectionPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "ARE YOU SURE?"
 horizontal_alignment = 1
 

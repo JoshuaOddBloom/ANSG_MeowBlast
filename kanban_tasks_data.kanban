@@ -13,31 +13,21 @@
 	],
 	"stages": [
 		{
-			"uuid": "f74b1513-6b50-43b6-895b-b0059d0584cd",
-			"title": "Todo",
-			"tasks": [
-				"8e9d04a4-f1de-405a-9026-57f3e2f1b71c",
-				"139a58c3-3953-4a48-a15b-f20cbe9dd70e",
-				"466c422e-7be1-4024-ba2d-f83645bd3651",
-				"6c4a771e-1ae2-4b6d-9fec-8bb3d62bf73b",
-				"971914dc-6f56-4a02-b033-e3c83e1de804"
-			]
-		},
-		{
 			"uuid": "269233df-2f6c-4020-a38c-0e039b78480e",
 			"title": "Doing",
-			"tasks": [
-				"cd07a355-3e9f-4846-9196-88e2b4c82e85",
-				"688fa071-aa24-450d-bc93-5de195abf303"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "48dc1195-2604-42bb-ac0d-c2a07de2cc0b",
 			"title": "Done",
 			"tasks": [
+				"ca3dc785-22a5-40c3-a314-64a4a2879586",
+				"b38e1549-37b3-4847-b149-1aaf29a52f80",
 				"179448fe-f0be-4289-aee0-09ff590a5dc9",
+				"6c4a771e-1ae2-4b6d-9fec-8bb3d62bf73b",
 				"b2bb9f14-e1f4-40ca-b5b7-baff9cebf362",
 				"dea18bc6-64ea-45a0-a177-6ddf101b4d42",
+				"4e9dcb9a-d97c-4fe6-a8ac-ac0fb54df22b",
 				"06e17eee-294c-4990-aed7-4ea17867d44c",
 				"0ee0064b-bd90-4751-89d8-80ef75d4bd9e",
 				"4574f957-0be0-4291-a77e-2c254dbd25a8",
@@ -54,11 +44,29 @@
 		},
 		{
 			"uuid": "193a51b6-73c1-4ff0-ad4a-76a7e253b08b",
+			"title": "Needs Reworking",
+			"tasks": []
+		},
+		{
+			"uuid": "c62bb69e-2199-4085-b792-a5f2225a937f",
 			"title": "Important",
 			"tasks": [
+				"63ed08f9-96c8-4261-b337-ab0b8b40c04c",
+				"8ecf317d-c77e-42b4-aaa0-e620ed2c8582",
+				"466c422e-7be1-4024-ba2d-f83645bd3651",
+				"688fa071-aa24-450d-bc93-5de195abf303",
+				"cd07a355-3e9f-4846-9196-88e2b4c82e85",
 				"bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
 				"495d178f-2d96-47cb-a6df-902a362e0d74",
-				"b38e1549-37b3-4847-b149-1aaf29a52f80"
+				"971914dc-6f56-4a02-b033-e3c83e1de804"
+			]
+		},
+		{
+			"uuid": "8540b6b3-fce2-4433-9c21-75117810bce6",
+			"title": "Todo",
+			"tasks": [
+				"8e9d04a4-f1de-405a-9026-57f3e2f1b71c",
+				"139a58c3-3953-4a48-a15b-f20cbe9dd70e"
 			]
 		}
 	],
@@ -83,7 +91,7 @@
 			"uuid": "bc9e1bc2-9066-429d-9fd8-2e616130c2d2",
 			"title": "Controls Screen",
 			"description": "",
-			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"category": "32c68ff9-8b01-47ee-814e-9d41b05e055a",
 			"steps": [
 				{
 					"details": "Not showing Mouse / Touch Input",
@@ -123,7 +131,7 @@
 			"uuid": "cd07a355-3e9f-4846-9196-88e2b4c82e85",
 			"title": "Gameplay",
 			"description": "",
-			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"category": "32c68ff9-8b01-47ee-814e-9d41b05e055a",
 			"steps": [
 				{
 					"details": "Unable to tap two things at once - not able to touch use power button unless I stop shooting (while using touch to shoot)",
@@ -131,14 +139,14 @@
 				},
 				{
 					"details": "Can touch in the area outside the gameplay area... Might need to change the parameters for mouse movement",
-					"done": false
+					"done": true
 				}
 			]
 		},
 		{
 			"uuid": "924d100f-ccad-4132-8cd8-e191b3ce6186",
 			"title": "UI",
-			"description": "I should just create the game_over_screen instead\n",
+			"description": "",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"steps": [
 				{
@@ -303,7 +311,7 @@
 		{
 			"uuid": "774fbce0-c0e8-47c1-bbd6-3d1790d583bd",
 			"title": "scale power-ups with global scale",
-			"description": "\n",
+			"description": "",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"steps": []
 		},
@@ -327,12 +335,41 @@
 			"description": "",
 			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
 			"steps": []
+		},
+		{
+			"uuid": "4e9dcb9a-d97c-4fe6-a8ac-ac0fb54df22b",
+			"title": "Make it to where the ship's movement causes the wings to rotate in the other direction (mostly working)",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "63ed08f9-96c8-4261-b337-ab0b8b40c04c",
+			"title": "Add Dialogue for Mochi",
+			"description": "Add the Dialogue Manager 3 addon\nMake a retro-classic web game type implementation of the system",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "ca3dc785-22a5-40c3-a314-64a4a2879586",
+			"title": "DROP FINISHED TASKS HERE",
+			"description": "\n\n-\n\n\n\n-",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
+		},
+		{
+			"uuid": "8ecf317d-c77e-42b4-aaa0-e620ed2c8582",
+			"title": "Create a game_over_screen instead of defeated_screen",
+			"description": "",
+			"category": "132c9679-8f5d-4a33-99d4-6cb49eecc871",
+			"steps": []
 		}
 	],
 	"layout": {
 		"columns": [
 			[
-				"f74b1513-6b50-43b6-895b-b0059d0584cd"
+				"c62bb69e-2199-4085-b792-a5f2225a937f",
+				"8540b6b3-fce2-4433-9c21-75117810bce6"
 			],
 			[
 				"269233df-2f6c-4020-a38c-0e039b78480e",

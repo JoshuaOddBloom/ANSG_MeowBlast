@@ -66,9 +66,10 @@ func _ready() -> void:
 	OddAudioManager.play_next_stream()
 	OddAudioManager.start_playing_with_fade_in(0.1)
 	
-	for timer in enemy_spawn_timers.get_children():
-		if timer is Timer:
-			timer.stop()
+	if ! spawn_enemies:
+		for timer in enemy_spawn_timers.get_children():
+			if timer is Timer:
+				timer.stop()
 	
 
 

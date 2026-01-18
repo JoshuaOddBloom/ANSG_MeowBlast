@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://yso7ajq0ligw"]
 
 [ext_resource type="Script" uid="uid://cv7ljaxahqkoe" path="res://autoload/game_events.gd" id="1_r3yq3"]
-[ext_resource type="PackedScene" uid="uid://cu480gijlilc" path="res://scenes/ui/menus/defeated_menu.tscn" id="2_jhetm"]
+[ext_resource type="PackedScene" uid="uid://cu480gijlilc" path="res://scenes/ui/menus/game_over_menu.tscn" id="2_jhetm"]
 [ext_resource type="PackedScene" uid="uid://dckpmijob2sj2" path="res://scenes/ui/menus/pause_menu_with_confirm.tscn" id="2_rnc14"]
 [ext_resource type="PackedScene" uid="uid://biluupw1ocump" path="res://scenes/ui/splash_intro_sequence/splash_intro_sequencer.tscn" id="4_jhetm"]
 

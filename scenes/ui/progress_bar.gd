@@ -40,7 +40,7 @@ func _ready() -> void:
 
 func _on_progress_bar_value_changed(value: float) -> void:
 	if value == progress_bar.max_value:
-		label.text = "FULLY CHARGED"
+		label.text = "POWER READY!"
 	else:
 		label.text = "POWER"
 

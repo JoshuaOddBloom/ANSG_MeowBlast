@@ -1,10 +1,14 @@
 extends Control
 
 #@export var intro_sequencer: PackedScene # = preload("res://scenes/ui/main_menu.tscn")
+@export var loading_text: String
+@export var show_loading_label: bool = true
+@export var add_dots_to_label: bool = true
+@export var show_loading_progress_bar: bool = true
 @onready var show_controls_screen = preload("res://scenes/ui/menus/show_controls_screen.tscn")
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = %ProgressBar
-@onready var label: Label = %Label
+@onready var loading_label: Label = %Label
 @onready var color_rect: ColorRect = %ColorRect
 @onready var loading_layer: CanvasLayer = %LoadingLayer
 @onready var ui: CanvasLayer = %UI
@@ -21,7 +25,9 @@ func _ready() -> void:
 	AudioServer.set_bus_mute(0, true)
 	player.is_init = true
 	GameEvents.can_pause = false
-	progress_bar.hide()
+	loading_label.text = loading_text
+	loading_label.visible = show_loading_label
+	progress_bar.visible = show_loading_progress_bar
 	get_window().grab_focus()
 	timer.timeout.connect(on_timer_timeout)
 	ui.init_finished.connect(func(): 
@@ -44,14 +50,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if GameEvents.can_pause:
 		GameEvents.can_pause = false
-	if progress_bar.value < progress_bar.max_value * 0.25:
-		label.text = "LOADING"
-	if progress_bar.value > progress_bar.max_value * 0.25:
-		label.text = "LOADING."
-	if progress_bar.value > progress_bar.max_value * 0.50:
-		label.text = "LOADING.."
-	if progress_bar.value > progress_bar.max_value * 0.75:
-		label.text = "LOADING..."
+	if add_dots_to_label:
+		if progress_bar.value < progress_bar.max_value * 0.25:
+			loading_label.text = str(loading_text,"")
+		if progress_bar.value > progress_bar.max_value * 0.25:
+			loading_label.text = str(loading_text,".")
+		if progress_bar.value > progress_bar.max_value * 0.50:
+			loading_label.text = str(loading_text,"..")
+		if progress_bar.value > progress_bar.max_value * 0.75:
+			loading_label.text = str(loading_text,"...")
 	OddAudioManager.stop()
 	progress_bar.value = timer.wait_time - timer.time_left
 	
@@ -66,7 +73,7 @@ func on_timer_timeout():
 		timer.start()
 		return
 	base_level.queue_free()
-	label.hide()
+	loading_label.hide()
 	loading_layer.layer = -1
 	get_tree().change_scene_to_packed(GameEvents.splash_intro_sequencer)
 	#return

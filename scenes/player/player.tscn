@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cojgne2mgqepd"]
+[gd_scene load_steps=29 format=3 uid="uid://cojgne2mgqepd"]
 
 [ext_resource type="Script" uid="uid://bt7qnmy611831" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://ccyrjfgwxtded" path="res://scenes/components/random_audio_player_component.tscn" id="2_je7p5"]
@@ -8,16 +8,79 @@
 [ext_resource type="Texture2D" uid="uid://bjrny37ardjbv" path="res://assets/textures/star_shot_trail.png" id="3_p47bc"]
 [ext_resource type="AudioStream" uid="uid://3yclqyiedd6c" path="res://assets/audio/sfx/basic_enemy/footstep_carpet_004.ogg" id="4_qek5x"]
 [ext_resource type="Texture2D" uid="uid://cnd1wjntj4n74" path="res://scenes/player/ship_gun_1.png" id="6_fm80t"]
+[ext_resource type="Texture2D" uid="uid://cevs8187oabfp" path="res://assets/ansg_meowblast.jpeg" id="6_ugbui"]
 [ext_resource type="Material" uid="uid://dsne8rx3g808s" path="res://assets/particles/player_power_ready_particle_process_material.tres" id="7_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://cbspvdb6vg2q0" path="res://scenes/player/ship_wing_1.png" id="7_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://sjavkrgqvexo" path="res://scenes/player/ship_body_1.png" id="8_ugbui"]
 [ext_resource type="Texture2D" uid="uid://csyquygvptofv" path="res://scenes/player/original_ship_cleanup_2.png" id="9_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://ch7rw03dbv026" path="res://assets/textures/star_outline_thicc.png" id="14_fcs02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(62, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p47bc"]
 height = 52.0
+
+[sub_resource type="Gradient" id="Gradient_ioxgp"]
+offsets = PackedFloat32Array(0, 0.27764422, 0.5264423, 0.88822114, 0.96033657)
+colors = PackedColorArray(1, 1, 0.7137255, 1, 1, 0.7058824, 0.47843137, 1, 0.9539085, 0.72805035, 0.52612215, 1, 0.60784316, 0.9647059, 1, 1, 1, 1, 0.713726, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cnsyf"]
+gradient = SubResource("Gradient_ioxgp")
+width = 480
+height = 128
+repeat = 2
+
+[sub_resource type="Curve" id="Curve_myrg7"]
+_limits = [0.0, 1.0, 0.0, 0.9]
+_data = [Vector2(0.16065, 0), 0.0, 0.0, 0, 0, Vector2(0.613718, 1), 0.00501466, 0.00501466, 0, 0, Vector2(0.763538, 0), -2.84719, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvlxm"]
+curve = SubResource("Curve_myrg7")
+
+[sub_resource type="Curve" id="Curve_uf5tr"]
+_limits = [-155.23, 23.9707, 0.0, 1.0]
+_data = [Vector2(0, -21.1437), 0.0, 0.0, 0, 0, Vector2(0.384477, -36.774), 0.0, 0.0, 0, 0, Vector2(1, -155.23), -25.1019, -25.1019, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgqa7"]
+curve = SubResource("Curve_uf5tr")
+
+[sub_resource type="Curve" id="Curve_8ydkj"]
+_data = [Vector2(0, 0), 0.0, 0.173923, 0, 0, Vector2(0.72055125, 0.19144005), 0.0686382, 0.0686382, 0, 0, Vector2(0.850181, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3j4b4"]
+curve = SubResource("Curve_8ydkj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yj68g"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(106, 86.49, 16.5)
+angle_min = -65.99999
+angle_max = 66.000015
+angular_velocity_min = -135.00002
+angular_velocity_max = 134.99998
+gravity = Vector3(0, -90, 0)
+radial_accel_curve = SubResource("CurveTexture_lgqa7")
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_3j4b4")
+alpha_curve = SubResource("CurveTexture_kvlxm")
+
+[sub_resource type="Gradient" id="Gradient_007i1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_6cv16"]
+offsets = PackedFloat32Array(0, 0.17307693, 0.96033657)
+colors = PackedColorArray(1, 1, 0.7137255, 1, 0.60784316, 0.9647059, 1, 1, 1, 1, 0.713726, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j4nxn"]
+gradient = SubResource("Gradient_6cv16")
+width = 480
+height = 128
+repeat = 2
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
@@ -63,6 +126,29 @@ max_health = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gmlin")
 
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p47bc")
+debug_color = Color(0.94, 0, 0.3603332, 0.48235294)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 101.00001
+offset_top = -454.00003
+offset_right = 3401.0
+offset_bottom = 1946.0
+scale = Vector2(0.24000365, 0.24000365)
+texture = ExtResource("6_ugbui")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.847059, 0.611765, 0.717647, 1)
+
 [node name="Visuals" type="Node2D" parent="."]
 scale = Vector2(0.25, 0.25)
 
@@ -70,14 +156,14 @@ scale = Vector2(0.25, 0.25)
 position = Vector2(0, -8)
 
 [node name="GunRMarker2D" type="Marker2D" parent="Visuals/GunCenterMarker2D"]
-position = Vector2(84, 0)
+position = Vector2(72, 4)
 
 [node name="GunRSprite2D" type="Sprite2D" parent="Visuals/GunCenterMarker2D/GunRMarker2D"]
 position = Vector2(0, -16)
 texture = ExtResource("6_fm80t")
 
 [node name="GunLMarker2D" type="Marker2D" parent="Visuals/GunCenterMarker2D"]
-position = Vector2(-84, 0)
+position = Vector2(-72, 4)
 
 [node name="GunLSprite2D" type="Sprite2D" parent="Visuals/GunCenterMarker2D/GunLMarker2D"]
 position = Vector2(0, -16)
@@ -89,12 +175,24 @@ unique_name_in_owner = true
 [node name="WingR" type="Marker2D" parent="Visuals/WingCenterMarker"]
 position = Vector2(28, 0)
 
+[node name="TrailsRSprite2D" type="Sprite2D" parent="Visuals/WingCenterMarker/WingR"]
+unique_name_in_owner = true
+position = Vector2(56, 80)
+scale = Vector2(2, 1)
+texture = ExtResource("3_lvxji")
+
 [node name="WingRSprite2D" type="Sprite2D" parent="Visuals/WingCenterMarker/WingR"]
 position = Vector2(-28, 0)
 texture = ExtResource("7_gx1jg")
 
 [node name="WingL" type="Marker2D" parent="Visuals/WingCenterMarker"]
 position = Vector2(-28, 0)
+
+[node name="TrailsLSprite2D" type="Sprite2D" parent="Visuals/WingCenterMarker/WingL"]
+unique_name_in_owner = true
+position = Vector2(-56, 80)
+scale = Vector2(2, 1)
+texture = ExtResource("3_lvxji")
 
 [node name="WingLSprite2D" type="Sprite2D" parent="Visuals/WingCenterMarker/WingL"]
 position = Vector2(28, 0)
@@ -105,16 +203,6 @@ flip_h = true
 
 [node name="BodySprite2D" type="Sprite2D" parent="Visuals/BodyMarker2D"]
 texture = ExtResource("8_ugbui")
-
-[node name="TrailsLSprite2D" type="Sprite2D" parent="Visuals"]
-visible = false
-position = Vector2(-23, 34.84)
-texture = ExtResource("3_lvxji")
-
-[node name="TrailsRSprite2D" type="Sprite2D" parent="Visuals"]
-visible = false
-position = Vector2(42.15, 34.84)
-texture = ExtResource("3_lvxji")
 
 [node name="BodySprite2D" type="Sprite2D" parent="Visuals"]
 visible = false
@@ -129,14 +217,45 @@ texture = ExtResource("3_p47bc")
 preprocess = 0.5
 process_material = ExtResource("7_5gtgg")
 
-[node name="HitBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_mask = 2
+[node name="MeowzaBlast" type="Marker2D" parent="Visuals"]
+position = Vector2(0, -100)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_p47bc")
-debug_color = Color(0.94, 0, 0.3603332, 0.48235294)
+[node name="Polygon2D" type="Polygon2D" parent="Visuals/MeowzaBlast"]
+clip_children = 2
+position = Vector2(0, 84)
+color = Color(0.24692032, 0.267139, 0.64585197, 1)
+polygon = PackedVector2Array(0, -82.54, -92, -124, -98, -1316, 98, -1316, 92, -124)
+uv = PackedVector2Array(0, -82.54, -92, -124, -160, -1316, 160, -1316, 92, -124)
+
+[node name="BlastGradientSprite2D" type="Sprite2D" parent="Visuals/MeowzaBlast/Polygon2D"]
+position = Vector2(0, -728.00006)
+rotation = -1.5707964
+scale = Vector2(2.7599878, 2.7599878)
+texture = SubResource("GradientTexture2D_cnsyf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Visuals/MeowzaBlast/Polygon2D"]
+modulate = Color(0.5647059, 1, 1, 1)
+position = Vector2(-12, -684)
+amount = 16
+texture = ExtResource("14_fcs02")
+lifetime = 2.25
+preprocess = 3.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_yj68g")
+
+[node name="Line2D" type="Line2D" parent="Visuals/MeowzaBlast"]
+clip_children = 2
+position = Vector2(0, 84)
+points = PackedVector2Array(0, -82.54, -92, -124, -98, -1316, 98, -1316, 92, -124)
+closed = true
+width = 20.0
+gradient = SubResource("Gradient_007i1")
+
+[node name="BlastGradientSprite2D2" type="Sprite2D" parent="Visuals/MeowzaBlast/Line2D"]
+position = Vector2(0, -728.00006)
+rotation = -1.5707964
+scale = Vector2(2.7599878, 2.7599878)
+texture = SubResource("GradientTexture2D_j4nxn")
 
 [node name="ProjectileSpawnMarker2D" type="Marker2D" parent="."]
 unique_name_in_owner = true

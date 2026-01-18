@@ -18,6 +18,7 @@ signal init_finished
 # Center UI
 @onready var enemy_health_bar: PanelContainer = %EnemyHealthBar
 # Right Side UI
+@onready var arena_time_ui: Control = %ArenaTimeUI
 @onready var next_level_label: Label = %NextLevelLabel
 @onready var increment_value_label: Label = $MarginContainer/HBoxContainer/PanelContainer2/RightUIVBox/VBoxContainer/VBoxContainer/IncrementValueLabel
 @onready var next_level_progress_bar: ProgressBar = %NextLevelProgressBar
@@ -32,7 +33,8 @@ signal init_finished
 @onready var pause_button: Button = %PauseButton
 @onready var pause_touch_screen_button: TouchScreenButton = %PauseTouchScreenButton
 # PLAYER DEFEATED MENU
-
+@onready var menus_margin_container: MarginContainer = %MenusMarginContainer
+@onready var game_over_triggered = false
 
 
 var active_hearts = []
@@ -178,12 +180,16 @@ func on_player_damaged(damage_amount):
 
 
 func _on_game_paused():
-	add_child(GameEvents.pause_menu_scene.instantiate())
+	menus_margin_container.add_child(GameEvents.pause_menu_scene.instantiate())
 
 
 func on_game_over():
-	var player_defeated_menu_instance = GameEvents.player_defeated_menu.instantiate()
-	add_child(player_defeated_menu_instance)
+	if game_over_triggered == true:
+		return
+	else:
+		game_over_triggered = true
+		var player_defeated_menu_instance = GameEvents.player_defeated_menu.instantiate()
+		menus_margin_container.add_child(player_defeated_menu_instance)
 
 
 func on_start_button_pressed():

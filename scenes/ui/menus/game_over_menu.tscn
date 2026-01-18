@@ -1,9 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://cu480gijlilc"]
+[gd_scene load_steps=22 format=3 uid="uid://cu480gijlilc"]
 
-[ext_resource type="Script" uid="uid://dhj5xa5aw5u7e" path="res://scenes/ui/menus/menu_with_confirm.gd" id="1_74csd"]
+[ext_resource type="Script" uid="uid://dhj5xa5aw5u7e" path="res://scenes/ui/menus/odd_menu.gd" id="1_74csd"]
 [ext_resource type="Theme" uid="uid://ch4ic0feakt4r" path="res://assets/themes/default_theme.tres" id="2_lqjak"]
 [ext_resource type="PackedScene" uid="uid://b7jbkkvivmc7c" path="res://scenes/ui/odd_button.tscn" id="3_48kp7"]
+[ext_resource type="Script" uid="uid://8o17udmcndge" path="res://scenes/ui/menus/game_stats_box.gd" id="3_kv4ee"]
+[ext_resource type="Script" uid="uid://ce2yyeroaj7w4" path="res://scenes/ui/menus/game_stat.gd" id="3_tcs3r"]
+[ext_resource type="Script" uid="uid://ca1e01sp6l8wt" path="res://scenes/components/random_audio_player_component.gd" id="4_52l1b"]
 [ext_resource type="PackedScene" uid="uid://da10yhbdl8klh" path="res://assets/particles/continue_particles.tscn" id="4_yooxo"]
+[ext_resource type="AudioStream" uid="uid://csxvnvfnvhio0" path="res://assets/audio/sfx/fifthSaw_stab_fast.ogg" id="5_7qmko"]
 [ext_resource type="Material" uid="uid://dxac3sbue2ygf" path="res://assets/particles/continue_particle_process_material.tres" id="5_j0c6a"]
 [ext_resource type="PackedScene" uid="uid://77buhb1awwg3" path="res://scenes/ui/menus/show_controls_screen.tscn" id="6_ene0j"]
 [ext_resource type="PackedScene" uid="uid://cr76tloydxhqv" path="res://scenes/ui/menus/show_options_screen.tscn" id="7_jfcxr"]
@@ -53,6 +57,18 @@ tracks/3/path = NodePath("MarginContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -111,10 +127,22 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3007678),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -158,7 +186,7 @@ _data = {
 &"restore": SubResource("Animation_7k7h4")
 }
 
-[sub_resource type="Theme" id="Theme_808v6"]
+[sub_resource type="Theme" id="Theme_kv4ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f748d"]
 content_margin_left = 0.0
@@ -207,7 +235,7 @@ _data = {
 &"restorebuttonshimmer": SubResource("Animation_moutl")
 }
 
-[node name="DefeatedMenu" type="CanvasLayer"]
+[node name="GameOverMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 5
 script = ExtResource("1_74csd")
@@ -228,11 +256,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-theme = SubResource("Theme_808v6")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 process_mode = 3
 layout_mode = 2
+theme = SubResource("Theme_kv4ee")
 theme_override_styles/panel = SubResource("StyleBoxFlat_f748d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
@@ -267,11 +295,127 @@ theme_override_constants/separation = 16
 [node name="MenuLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
 unique_name_in_owner = true
 process_mode = 3
+modulate = Color(0.4392157, 0.81960785, 1, 1)
 layout_mode = 2
+theme = ExtResource("2_lqjak")
+theme_type_variation = &"BigLabel"
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "DEFEATED"
+text = "GAME OVER"
 horizontal_alignment = 1
+
+[node name="StatsBox" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu" node_paths=PackedStringArray("game_stats")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_kv4ee")
+game_stats = [NodePath("Time"), NodePath("ThreatLevel"), NodePath("Projectiles"), NodePath("CateroidsDefeated"), NodePath("Score")]
+
+[node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox"]
+bus = &"SFX"
+script = ExtResource("4_52l1b")
+streams = Array[AudioStream]([ExtResource("5_7qmko")])
+randomize_vol = false
+min_volume = 0.0
+max_volume = -5.0
+min_pitch = 1.76
+max_pitch = 1.76
+metadata/_custom_type_script = "uid://ca1e01sp6l8wt"
+
+[node name="ShowStatTimer" type="Timer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Time" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox" node_paths=PackedStringArray("_value")]
+layout_mode = 2
+script = ExtResource("3_tcs3r")
+_value = NodePath("Value")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "TIME ELAPSED"
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Time"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0:00"
+horizontal_alignment = 2
+
+[node name="ThreatLevel" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox" node_paths=PackedStringArray("_value")]
+layout_mode = 2
+script = ExtResource("3_tcs3r")
+_value = NodePath("Value")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/ThreatLevel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "THREAT LEVEL"
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/ThreatLevel"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="Projectiles" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox" node_paths=PackedStringArray("_value")]
+layout_mode = 2
+script = ExtResource("3_tcs3r")
+_value = NodePath("Value")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Projectiles"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PROJECTILES"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Projectiles"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="CateroidsDefeated" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox" node_paths=PackedStringArray("_value")]
+layout_mode = 2
+script = ExtResource("3_tcs3r")
+_value = NodePath("Value")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/CateroidsDefeated"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CATEROIDS"
+horizontal_alignment = 2
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/CateroidsDefeated"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="Score" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox" node_paths=PackedStringArray("_value")]
+layout_mode = 2
+script = ExtResource("3_tcs3r")
+_value = NodePath("Value")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Score"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SCORE"
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/StatsBox/Score"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
 
 [node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu"]
 unique_name_in_owner = true
@@ -314,7 +458,6 @@ unique_name_in_owner = true
 process_mode = 3
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "RESUME"
 is_back_button = true
 
@@ -323,7 +466,6 @@ unique_name_in_owner = true
 process_mode = 3
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "CONTROLS"
 spawn_menu = true
 menu_to_spawn = ExtResource("6_ene0j")
@@ -333,7 +475,6 @@ unique_name_in_owner = true
 process_mode = 3
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "OPTIONS"
 spawn_menu = true
 menu_to_spawn = ExtResource("7_jfcxr")
@@ -342,13 +483,11 @@ menu_to_spawn = ExtResource("7_jfcxr")
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "RETRY"
 
 [node name="LeaveButton" parent="MarginContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/Menu/MenuOptions" instance=ExtResource("3_48kp7")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "QUIT"
+text = "MAIN MENU"
 require_selection_confirmation = true

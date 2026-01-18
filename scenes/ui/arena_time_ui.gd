@@ -19,6 +19,7 @@ func _process(_delta):
 		return
 	var time_elapsed = get_elapsed_time()
 	label.text = format_seconds_to_string(time_elapsed)
+	GameEvents.current_time = label.text
 
 
 func format_seconds_to_string(seconds: float):

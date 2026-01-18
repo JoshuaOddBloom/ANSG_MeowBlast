@@ -21,8 +21,10 @@ const MAX_ANGRY_FALL_SPEED: float = 135.0
 @onready var enemy_sprite_defeated_1: Texture = preload("res://scenes/enemy/cateroid_defeated_1a.png")
 @onready var enemy_sprite_hurt_1: Texture = preload("res://scenes/enemy/cateroid_hurt_1c.png")
 @onready var enemy_sprite_hurt_2: Texture = preload("res://scenes/enemy/cateroid_hurt_2c.png")
-@onready var enemy_sprite_idle_1: Texture = preload("res://scenes/enemy/cateroid_idle_1b.png")
-
+@onready var enemy_sprite_idle_1: Texture = preload("res://scenes/enemy/cateroid_idle_1c.png")
+@onready var fire_particles: Node2D = %FireParticles
+@onready var fire_trail_gpu_particles_2d_2: GPUParticles2D = %FireTrailGPUParticles2D2
+@onready var fire_trail_gpu_particles_2d: GPUParticles2D = %FireTrailGPUParticles2D
 
 
 var spawn_type: String = ""
@@ -77,8 +79,9 @@ func set_spawn_type():
 		"sleepy":
 			spawn_texture_chosen = enemy_sprite_defeated_1
 			fall_speed *= 0.6
-			if fall_speed > MAX_FALL_SPEED * 0.9:
-				fall_speed = MAX_FALL_SPEED * 0.9
+			if fall_speed > MAX_FALL_SPEED * 0.6:
+				fall_speed = MAX_FALL_SPEED * 0.6
+			fire_particles.modulate = Color(0.502, 0.612, 1.0)
 			
 		"angry":
 			spawn_texture_chosen = enemy_sprite_attack_1
@@ -126,6 +129,7 @@ func on_defeated():
 	if defeated_without_projectile:
 		pass
 	else:
+		GameEvents.cateroids_defeated += 1
 		GameEvents.emit_score_count_changed(1)
 		GameEvents.increment_level(increment_progress_value)
 	

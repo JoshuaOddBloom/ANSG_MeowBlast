@@ -16,7 +16,7 @@ func on_defeated():
 	if randf() > adjusted_drop_percent:
 		return
 	
-	if not owner is Node2D:
+	if not owner is Node2D and not owner is CharacterBody2D:
 		return
 	
 	GameEvents.emit_item_drop_requested(owner.global_position)
